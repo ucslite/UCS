@@ -1,0 +1,4 @@
+@mixin transition() {
+  -webkit-transition: all 0.3s ease 0s; /* Safari */
+	transition: all 0.3s ease 0s;
+}

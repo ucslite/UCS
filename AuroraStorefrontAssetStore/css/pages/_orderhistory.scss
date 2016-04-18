@@ -1,0 +1,71 @@
+#ProcessedOrdersStatusDisplay, #OrderConfirmPagingDisplay,#OrganizationUsersList_table_content,#MSOrderDetailPagingDisplay{
+	height:auto !important;
+	.order_status_table {
+	    padding: 0;
+	    width: 100%;
+		}
+ul{
+	border:1px solid #c7c7c7;
+	width:100%;
+	background:#fff;
+	
+}
+
+ul li{
+	list-style:none;
+	padding:5px 20px;
+	display:block;
+}
+ul li:first-child{
+	border-bottom:1px solid #c7c7c7;
+	display:block;
+	margin: 0 20px;
+    padding: 10px 0;
+    width: 94%;
+}
+.orderCreated{
+	color:#909193;
+	font-size:13px;
+}
+.orderstatusSymbol{
+	display: inline-block;
+    vertical-align: top;
+}
+.displayInline{
+	display:inline;
+}
+.displayInlineBlock{
+	display:inline-block;
+}
+.orderNumber{
+	font-size:16px;
+	color:#333;
+	font-weight:bold;
+}
+.price{
+	font-size:16px;
+	color:#333;
+	
+}
+}
+.header{
+	font-size:20px;
+	font-weight: bold;
+    line-height: 70px;
+}
+#OrderConfirmPagingDisplay ul.details-order li:first-child,#MSOrderDetailPagingDisplay ul.details-order li:first-child{
+	border-bottom:none;
+	display:block;
+	margin: 0 ;
+    padding:0x ;
+    width: 100%;
+     padding-left: 4%;
+}
+#OrderConfirmPagingDisplay .nodisplay,#MSOrderDetailPagingDisplay .nodisplay{
+display:none !important;
+}
+.qty-sku span{display: inline-block;
+    padding-right: 8%;margin-top:0px !important;}
+.order-head-style > ul {
+    padding:0px  18px;
+}

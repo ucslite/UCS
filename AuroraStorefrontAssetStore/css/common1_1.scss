@@ -1,0 +1,84 @@
+
+
+ 
+
+@import "assets/stylesheets/bootstrap";
+@import "common/header"; 
+@import "common/footer";
+@import "common/login";  
+@import "global/global"; 
+@import "common/global";
+@import "common/applyform";   
+@import "common/_owl.carousel";  
+@import "common/_owl.theme";
+@import "pages/homepage";
+@import "pages/payment"; 
+@import "pages/orderhistory";
+@import "common/trackdetail"; 
+@import "common/contactus"; 
+@import "common/style.blue"; 
+@import "common/bootstrap.min"; 
+ @import "common/font-awesome";
+/*@import url("//fast.fonts.net/cssapi/dcf1de9c-4fd6-480b-b98b-8c6adc850883.css");
+@import url("//fast.fonts.net/cssapi/d52cdef6-c65b-41ff-9a60-5fd7ffa7401f.css");*/
+
+@import "common/order"; 
+@import "common/forgotpassword"; 
+@import "common/search";
+
+@import "pages/myaccount"; 
+   
+#navigation{
+	.navbar-nav > li {
+    float: left !important;
+	}
+	.dropdown-menu{
+	}
+} 
+#page{width:100%;}
+.image{height:auto !important;}
+#search{
+	input
+	{
+		height: 32px;
+	    margin-top: -13px;
+	    width: 100%;
+	}
+	.list_section {
+	    background-color: #ffffff;
+    	border: 1px solid #c9cece;
+	    position: absolute;
+	     li {
+		    border-bottom: 1px solid #c9cece;
+		    list-style: outside none none;
+		    clear:both;
+			}
+	}
+	ul{
+	 li{
+	 	list-style: outside none none;
+	 }
+	}
+	
+	.as_thumbnail {
+    border: 1px solid #d9d9d9;
+    float: left;
+    margin-right: 15px;
+    padding: 0;
+	    img {
+	    height: 32px;
+	    width: 32px;
+		}
+	}
+	.partNumber {
+    color: #737373;
+    font-size: 12px;
+    line-height: 140%;
+	}
+	
+}
+.autocomplete ul {
+    background-color: #fff;
+    border: 1px solid #333;
+    text-align: center;
+}

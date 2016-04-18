@@ -1,0 +1,118 @@
+/*
+ *-----------------------------------------------------------------
+ * Licensed Materials - Property of IBM
+ *
+ * WebSphere Commerce
+ *
+ * (C) Copyright IBM Corp. 2012, 2014 All Rights Reserved.
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ *-----------------------------------------------------------------
+ */
+ 
+
+body{border-radius:0px !important;}
+#header{list-style:none; width: 100%; clear: both; float:left;border-bottom:1px solid #e2e2e2; height:66px;}
+#headerWrapper{width:100%;}
+#quickLinksBar{float:left;}
+#quickLinksBar li{float:left;}
+#header li{float:left;}
+#header div{float:left;}
+#headerRow1{margin-top:30px; height:auto;}
+#headerRow2{width: 100%; background:#fff;}
+#searchBar{margin-top:-51px; float:right; position: relative;}
+#allDepartmentsMenu{z-index:1;}
+#searchDropdown{z-index:1;}
+#quickLinksMenu ul li{width:100%;}
+.active#quickLinksMenu{top:25px;}
+#quickLinksBar > LI.hidden {position:relative; visibility:visible;}
+.banner_button_text2 {
+	display: table-cell;
+	margin: 0 0 0 45%;
+	padding: 5px 20px;
+	border: 1px solid #ab1032;
+	border-radius: 0px;
+	background:#ab1032;
+	font-size: 13px;
+	line-height: normal;
+	text-align: center;
+	vertical-align: middle;
+	bottom:26px;
+	color:#fff;
+}
+input[type="submit"].banner_button_text2{position:absolute; bottom:0px}
+.departmentMenu.active {z-index:1}
+
+.index-contain-area .col8{width:77%;}
+.resp-tab-content{height:132px;}
+
+.facetSelectContainer .swatch img {
+	border:1px solid #E5E5E5;
+}
+.facetSelectContainer .swatch .outline.facetSelectedHighlight > span > img {
+	border:3px solid #FAC549;
+}
+
+.widget_product_compare > .middle > .left_border > .right_border > .content > div:first-child + div + div {
+	display: none;
+}
+
+.loginMenuDropdown {
+	background-color: rgb(255, 255, 255);    
+    border: 1px solid #c9cece;    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: #4D4D4D;
+    display: none;
+    font-size: 13px;
+    position: absolute;
+    right: -66px;
+    top: 56px;
+    width: 290px;
+    z-index: 100;
+}
+
+.menuDropdown {
+    background-color: rgb(255, 255, 255);	
+    border: 1px solid #c9cece;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
+    border-top-left-radius: 10px;
+    color: #4D4D4D;
+    display: none;
+    font-size: 13px;
+    position: absolute;
+    right: 0px;
+    top: 56px;
+    width: 321px;
+    z-index: 100;    
+}
+
+#Header_GlobalLogin_WC_B2BMyAccountParticipantRole_select_2_dropdown.dijitMenuPopup,
+#QuickLinks_GlobalLogin_WC_B2BMyAccountParticipantRole_select_2_dropdown.dijitMenuPopup{
+	overflow-x: visible;
+}
+.signInForm .button_primary .button_text, .signInForm .button_secondary .button_text {
+    width: 105px;
+	padding: 0 5px;	
+	line-height:23px;	
+}
+.product_pageDesign_pageGroup>.col6{width:30%;}
+
+.order_status_table .status_column_1{
+	text-align:left;
+}
+.order_status_table .order_date_column_1{
+	text-align:left;
+}
+.order_status_table .purchase_order_column_1{
+	text-align:left;
+}
+.order_status_table .order_number_column_1{
+	text-align:left;
+}
+
+.signOutButton .button_text{line-height:24px;}

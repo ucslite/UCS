@@ -1,0 +1,52 @@
+.emptyorderfooter #footer {
+    position: absolute;
+    margin-top: 80%;
+}
+.emptyorderfooter{
+	#footer{
+		 position: absolute;
+   		 top: 82%;
+	}
+}
+#footer{
+	background:#333;
+	font-size:12px;	
+	a{
+	cursor:pointer;
+	}
+	ul{
+		 margin-bottom: 2.5px;
+	}
+	.list-inline{
+	font-weight: bold;
+	}
+	
+}
+.ltd{
+	margin-bottom:5px;
+	}
+#footer:first-child {
+    padding-top: 30px;
+}
+.dkshQuote{
+	font-size:14px;
+	font-weight:bold;
+	margin-top: 40px;
+	}
+#Login-page	{
+.dkshQuote{
+margin-top: 10px;
+}
+}
+#footer div,ul{
+	padding:5px 0px;
+	
+}
+.footerInfoLinks{
+	color:#909090;
+	font-size:12px;
+	
+	}
+.footerInfoLinks {
+    padding: 0 0 30px 0;
+}	

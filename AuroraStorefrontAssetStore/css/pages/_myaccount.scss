@@ -1,0 +1,292 @@
+#container_MyAccountDisplayB2B{
+
+	.col-sm-12{
+		padding:0px;
+	}
+
+	.content{
+		background:#fff;
+	}
+	
+	#content .collapsible, .categoryNavWidget.collapsible, .linkWidget.collapsible {
+    background-color: #f0f0f0;
+    border-radius: 0;
+    padding: 10px 5%;
+    transition: background-color 0.2s ease 0s;
+}
+.favList{
+
+	background:#fff;
+}
+#content .facetWidget.collapsible {
+    padding: 10px 5%;
+    position: relative;
+}
+.arrow {
+    background:url("../images/arrow.png") no-repeat scroll 0 0 / 7px auto;
+    float: right;
+    height: 25px;
+    line-height: 50px;
+    margin-top: 25px;
+    padding: 10px 5px;
+    width: 15px;
+}
+.arrowGrey{
+	background:url("../images/scrollrightarrow.png") no-repeat scroll 0 0 / 9px auto;
+    float: right;
+    margin-top: 5px;
+    width: 9px;
+    height:25px;
+}
+
+.arrowRed{
+	background:url("../images/arrow.png") no-repeat scroll 0 0 / 9px auto;
+    float: right;
+    margin-top: 5px;
+    width: 9px;
+    height:25px;
+}
+
+
+#content .collapsible > h3::before, .categoryNavWidget.collapsible > h3::before, .linkWidget.collapsible > h3::before {
+    clip: rect(41px, 78px, 58px, 61px);
+    content: url("../images/responsive/rwdUI.png");
+    left: -49px;
+    position: absolute;
+    top: -27px;
+}
+
+#content .collapsible > h3, .categoryNavWidget.collapsible > h3, .linkWidget.collapsible > h3 {
+    color: #333333;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 28px;
+    margin: -10px -12px;
+    min-height: 1.4em;
+    overflow: hidden;
+    padding: 10px 34px;
+    position: relative;
+}
+
+.collapsible > .content {
+    overflow: hidden;
+}
+
+.optionContainer > .title {
+    border-bottom: 1px solid #c7c8c9;
+    border-radius: 0;
+    color: #333333;
+   /* cursor: pointer;*/
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 60px;
+    margin: 0px ;
+    padding: 0px 15px;
+}
+
+.facetSelectContainer {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 0 0px;
+    
+    .facetSelect {
+    margin: 0;
+    padding: 0;
+	}
+    
+}
+
+	.facetSelect > li {
+	    line-height: 60px;
+	    margin: 0 15px;
+	    list-style-type:none;
+	    border-bottom:1px solid #d7d7d7;
+	    
+	    a{
+	    	color:#333;
+	    	text-decoration:none;
+	    	display:inline-block;
+	    	width:100%;
+	    }
+	}
+
+.myaccount_header{
+	background:#faf8f7;
+	padding:10px 15px;
+}
+
+.myaccountFooter{
+	background:#faf8f7;
+	height:75px;
+	margin:50px 0 0;
+}
+.newList {
+    margin: 8px 16px 20px 0px;
+}
+
+.listTableMobile {
+    display: none;
+    font-size: 12px;
+}
+.listTable .entry {
+    border-bottom: 1px solid #e9e9e9;
+    margin: 0 10px;
+}
+.listTable .cell {
+    padding: 13px 10px 7px 0;
+    word-wrap: break-word;
+}
+.fileName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.listTable .cell a, .listTableMobile .cell a {
+    color: #333;
+    display:inline-block;
+    width:100%;
+}
+
+.listTableMobile .toggle {
+    cursor: pointer;
+    float: right;
+    width: 20px;
+}
+
+.listTable .cell {
+    padding: 13px 10px 7px 0;
+    word-wrap: break-word;
+}
+
+.listTableMobile .expandedContent .expandedCol {
+    min-width: 200px;
+    padding: 0 11px;
+}
+
+.listTableMobile .expandedContent .expandedCol > div {
+    min-height: 10px;
+    padding: 5px 0 5px 20px;
+}
+.listTableMobile .expandedContent .expandedCol .leftCol {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    padding-right: 25px;
+    width: 40%;
+}
+
+.listTableMobile .expandedContent .expandedCol .rightCol {
+    display: inline-block;
+    width: 45%;
+}
+
+.vertical {
+    background: #faf9f7 none repeat scroll 0 0;
+}
+.head-lang-change {
+    cursor: pointer;
+}	
+.pageCount{
+	text-align:center;
+}
+
+.middleContent{
+	margin:0px 20px;
+}
+
+#addressId{
+	position:relative;
+	border-color: #c7c8c9;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 1px 5px;
+   /* line-height: 40px;
+    padding-left: 49px;*/
+    text-indent: 5px;
+    background-color:#fff;
+	height:40px;
+}
+
+#WC_AccountForm_div_9{
+	margin-top:15px;
+}
+
+}
+
+#addressId_dropdown{
+	position:absolute !important;
+	border:0px;
+		
+}
+.dijitBackgroundIframe{
+	border:0px;
+}
+
+.dijitValidationContainer{
+	input{
+		display:none;
+	}
+}
+
+ 
+.inputField.dijitSelect .dijitArrowButtonContainer::before {
+    /*content: url("../images/select-dropdown.png");*/
+    height: 28px;
+    margin-top: -19px;
+    margin-left:-30px;
+    overflow: hidden;
+    position: absolute;
+    width: 15px;
+    height:50px;
+}
+
+#Register .inputField.dijitSelect, #QuickCheckout .inputField.dijitSelect, #AddressForm .inputField.dijitSelect, #addressId.inputField.dijitSelect {
+    margin-bottom: 8px;
+    padding-right: 20px;
+    width:100%;
+    font-size:14px;
+     height: 31px;
+}
+
+.dijitReset.dijitInputField.dijitArrowButtonInner{
+	display:none;
+}
+
+#pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu, .wcSelectMenu {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e0e0e0;
+    /*box-shadow: 0 2px 13px -4px #000000;*/
+    font-size: 12px;
+    z-index: 20;
+}
+.wcSelectMenu .dijitMenuItemLabel, #pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu .dijitMenuItemLabel, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu .dijitMenuItemLabel, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu .dijitMenuItemLabel, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu .dijitMenuItemLabel {
+   /* border-bottom: 1px solid #e0e0e0;*/
+    padding: 10px 8px;
+}
+#addressId_menu .dijitReset.dijitMenuTable {
+    width: 455px;
+}
+
+.wcSelectMenu table tr.dijitSelectSelectedOption, #pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitSelectSelectedOption, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitSelectSelectedOption, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitSelectSelectedOption, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitSelectSelectedOption {
+    background: #fff none repeat scroll 0 0 !important;
+    color: #000 !important;
+  
+}
+.wcSelectMenu table tr.dijitMenuItemSelected, #pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr
+{border-bottom: 1px solid #e0e0e0;}
+.wcSelectMenu table tr.dijitMenuItemSelected, #pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr:last
+{border-bottom: none;}
+.wcSelectMenu table tr.dijitMenuItemSelected, #pay_expire_month_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #pay_expire_year_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #payMethodId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected, #addressId_dropdown.dijitMenuPopup > .dijitSelectMenu table tr.dijitMenuItemSelected {
+    background: #fff none repeat scroll 0 0;
+    color: #000;
+    cursor: pointer;
+   
+}
+
+#RequisitionListPageHeading > h2 {
+    margin-left: -4px;
+}
+.registartionLayout{
+	margin:15px 0px 0px 15px;
+}

@@ -1,0 +1,403 @@
+  @media (min-width: $screen-xs) {
+  body{
+		  font-size:11px;
+		  font-family:"FrutigerLTW01-45Light";
+		  line-height:16px;
+		  background:#FAF9F7;
+  }
+  
+  h1{
+		  font-size:$font-size-h1-xs;
+		  font-family:$font-family-h1;
+		  line-height:$line-height-h1-xs;
+  font-weight:normal;  } 
+   
+  h2{
+		  font-size:$font-size-h2-xs;
+		  font-family:$font-family-h2;
+		  line-height:$line-height-h2-xs;
+  			font-weight:normal;  } 
+  
+  p{
+		  font-size:16px;
+		  font-family:$font-family-h2;
+		  line-height:23px;
+		  color:#000;
+  } 
+  
+  .link{
+     	  font-size:$link-font-size-xs;
+		  font-family:$font-family-link;
+		  line-height:$link-line-height-xs;
+		  color:$grey;
+  }
+  
+  .form-group label{
+			color:$formGroupLabel;
+			font-size:13px;
+			line-height:18.5px;
+  }
+  #mainBanner{
+		padding:0px 0px;
+		
+		}
+  .product_name a{
+  	color:#acadae;
+  	font-size:19px;
+  }
+  .saveBtn {
+    background: #6a1c2c none repeat scroll 0 0;
+    display: inline-block;
+    height: 48px;
+	}
+	.cnclBtn{
+  	background:#ACADAF !important;
+  	}
+		.saveBtnText {
+		    color: #fff;
+		    margin-left: 15px;
+		    vertical-align: top;
+		    line-height:19px;
+		    display:inline;
+		    position: absolute;
+    		margin-top: 15px;
+		}
+
+		.cancelBtn {
+		    background: grey url("../images/cancel-arrow.png") no-repeat scroll 14px 16px / 9px auto;
+		    bottom: 0;
+		    display: inline;
+		    line-height: 48px;
+		    padding: 15px 20px;
+		}
+
+		.cancelBtnText {
+		    color: #fff;
+		    display: inline;
+		    margin-left: 10px;
+		}    
+  }
+  @media (min-width: $screen-sm-min) {
+  body{
+		  font-size:15px;
+		  font-family:"FrutigerLTW01-45Light";
+		  line-height:21.5px;
+		  background:#FAF9F7;
+  	  }
+  	  
+  h1{
+  		font-size:$font-size-h1-sm;
+  		font-family:$font-family-h1;
+  		line-height:$line-height-h1-sm;
+  font-weight:normal;  		
+  		 
+   	 } 
+   h2{
+		  font-size:$font-size-h2-sm;
+		  font-family:$font-family-h2;
+		  line-height:$line-height-h2-sm;
+  font-weight:normal;  	 }
+   .link{
+     	  font-size:$link-font-size-sm;
+		  font-family:$font-family-link;
+		  line-height:$link-line-height-sm;
+         }
+         
+    .form-group label{
+		color:$formGroupLabel;
+		font-size:16px;
+		line-height:23px;
+		color:$grey;
+                      } 
+
+	.product_name a{
+  	color:#acadae;
+  	font-size:19px;
+  	}
+  	.saveBtn {
+    background: #6a1c2c none repeat scroll 0 0;
+    display: inline-block;
+	}
+	.cnclBtn{
+  	background:#ACADAF !important;
+  	}
+		.saveBtnText {
+		    color: #fff;
+		    margin-left: 15px;
+		    vertical-align: top;
+		    line-height:19px;
+		    display:inline;
+		    position: absolute;
+    		margin-top: 15px;
+		}
+
+		.cancelBtn {
+		    background: grey url("../images/cancel-arrow.png") no-repeat scroll 14px 16px / 9px auto;
+		    bottom: 0;
+		    display: inline;
+		    line-height: 48px;
+		    padding: 14px 20px;
+		}
+
+		.cancelBtnText {
+		    color: #fff;
+		    display: inline;
+		    margin-left: 10px;
+		}    
+  }
+  @media (min-width: $screen-md-min) {
+   
+    
+  }
+  @media (min-width: $screen-lg-min) {
+    
+    
+    
+  }
+.btn-primary{
+	height:40px;
+	border:0px;
+	border-radius:0px;
+}
+
+
+.form-group input, input{
+    color:$formGroupInputColor;
+    border:$formGroupInputBorder;
+    border-left:$formGroupInputBorderLeft;
+    background:$formGroupInputBackground;
+    border-radius:0px;
+}
+
+.radio {
+  		padding-left: 5px; 
+  	   }
+  .radio label {
+			    display: inline-block;
+			    vertical-align: middle;
+			    position: relative;
+			    padding-left: 5px; 
+               }
+    .radio label::before {
+					      content: "";
+					      display: inline-block;
+					      position: absolute;
+					      width: 16px;
+					      height: 17px;
+					      left: 0;
+					      margin-left: -19.14px;
+					      border: 1px solid #cccccc;
+					      border-radius: 50%;
+					      background-color: #fff;
+					      -webkit-transition: border 0.15s ease-in-out;
+					      -o-transition: border 0.15s ease-in-out;
+					      transition: border 0.15s ease-in-out; 
+					      }
+    .radio label::after {
+					      display: inline-block;
+					      position: absolute;
+					      content: " ";
+					      width: 8px;
+					      height: 8px;
+					      left: 5px;
+					      top: 5px;
+					      margin-left: -20px;
+					      border-radius: 50%;
+					      background-color: #555555;
+					      -webkit-transform: scale(0, 0);
+					      -ms-transform: scale(0, 0);
+					      -o-transform: scale(0, 0);
+					      transform: scale(0, 0);
+					      -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+					      -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+					      -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+					      transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); 
+					      }
+  .radio input[type="radio"] {
+							    opacity: 0;
+							    z-index: 1; 
+							  }
+    .radio input[type="radio"]:focus + label::before {
+												      outline: none;
+												      outline: 5px auto -webkit-focus-ring-color;
+												      outline-offset: -2px; 
+     												 }
+    .radio input[type="radio"]:checked + label::after {
+												      -webkit-transform: scale(1, 1);
+												      -ms-transform: scale(1, 1);
+												      -o-transform: scale(1, 1);
+												      transform: scale(1, 1); 
+												      }
+    .radio input[type="radio"]:disabled + label {
+      											opacity: 0.65; 
+      											}
+      .radio input[type="radio"]:disabled + label::before {
+        													cursor: not-allowed; 
+        													}
+  .radio.radio-inline {
+    					margin-top: 0; 
+    					}
+
+.radio-primary input[type="radio"] + label::after {
+  													background-color: $dkshRed; 
+  													}
+.radio-primary input[type="radio"]:checked + label::before {
+  															border-color: #c7c8c9; 
+  															}
+.radio-primary input[type="radio"]:checked + label::after {
+  															background-color: $dkshRed;
+  														  }
+
+/*---------fonts-----------*/
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-soqjl0');
+	src:url('fonts/icomoon.eot?#iefix-soqjl0') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-soqjl0') format('truetype'),
+		url('fonts/icomoon.woff?-soqjl0') format('woff'),
+		url('fonts/icomoon.svg?-soqjl0#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color:#fff;
+	font-size:40px;
+	line-height:45px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cart2:before {
+	content: "\e800";
+	color:#acadae; 
+	font-size: 49px;
+    line-height: 49px;
+}
+.icon-filter:before {
+	content: "\e801";
+}
+.icon-linkarrow:before {
+	content: "\e802";
+}
+.icon-menu:before {
+	content: "\e803";
+}
+.icon-menuaccount:before {
+	content: "\e804";
+}
+.icon-menuboost:before {
+	content: "\e805";
+}
+.icon-menucontact:before {
+	content: "\e806";
+}
+.icon-menuexplore:before {
+	content: "\e807";
+}
+.icon-menufaq:before {
+	content: "\e808";
+}
+.icon-menufavorite:before {
+	content: "\e809";
+}
+.icon-menuhome:before {
+	content: "\e80a";
+}
+.icon-menulanguage:before {
+	content: "\e80b";
+}
+.icon-menunotification:before {
+	content: "\e80c";
+}
+.icon-menuorder:before {
+	content: "\e80d";
+}
+.icon-menupay:before {
+	content: "\e80e";
+}
+.icon-menuproduct:before {
+	content: "\e80f";
+}
+.icon-menureturn:before {
+	content: "\e810";
+}
+.icon-menutrack:before {
+	content: "\e811";
+}
+.icon-pagination-left:before {
+	content: "\e812";
+}
+.icon-pagination-right:before {
+	content: "\e813";
+}
+.icon-search:before {
+	content: "\e814";
+	color:#acadae;
+}
+.icon-usericon:before {
+	content: "\e815";
+}
+.icon-cart:before {
+	content: "\e606";
+	color:#acadae; 
+}
+.icon-menulines:before {
+	content: "\e607";
+}
+.icon-alert:before {
+	content: "\e600"; margin-right: 7px;
+}
+.icon-board:before {
+	content: "\e601"; margin-right: 6px;
+}
+.icon-dolar:before {
+	content: "\e602"; margin-right: 6px;
+}
+.icon-location:before {
+	content: "\e603"; margin-right: -6px;
+}
+.icon-phone:before {
+	content: "\e604";
+}
+.icon-user:before {
+	content: "\e605";
+	font-size:55px;
+	line-height:37px; margin-right: -2px;
+}
+
+
+h4 {margin-bottom:0px;}
+h5 { margin :0px;}
+h4 div.titleItems, h4.headtitle, .myaccount_header h2, h2.status_msg {font-family: "Frutiger LT W01_65 Bold" ; font-size:21px; color:#333; font-weight:normal; line-height:28px;}
+h5 .subtitlehead {font-family: "FrutigerLTW01-45Light" ; font-size:19px; color:#333;}
+
+#container_MyAccountDisplayB2B .Myacfix1 .myaccount_header{padding:10px 31px !important}
+.filterselect select { margin-left: 14px; width: 99.7%; margin-left:0px;}
+
+@media only screen and (min-width: 300px) and (max-width: 767px){ 
+	.Myacfix1 h4.headtitle {margin-left:-16px;}
+	.head-sec .myaccount_header{padding-left:15px !important;}
+	.filterselect {margin:0px; padding:0px;}
+	.filterselect select {margin: 0px;}
+	h1 .titleItems {font-size:16px;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){ 
+	.Myacfix1 h4.headtitle {margin-left:-16px;}
+	.adduser {padding-left: 15px !important;}
+	.head-sec .myaccount_header{padding-left:15px !important;}
+	.filterselect select { margin-left: 14px; width: 99.7%;}
+	.filterselect {margin:0px; padding:0px;}
+	.filterselect select {margin: 0px;}
+}

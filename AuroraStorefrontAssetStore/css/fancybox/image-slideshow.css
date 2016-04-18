@@ -1,0 +1,107 @@
+
+	#dhtmlgoodies_slideshow{
+		/*width:600px;	/* Total width of slideshow */
+		width:auto;
+	}
+	
+	#previewPane{
+		border:1px solid #CCCCCC;
+		margin-bottom:10px;	
+		text-align:center;
+		vertical-align:middle;
+		padding-top:10px;
+
+		position:relative;
+		width:78%;
+		
+		/* CSS HACK */
+		/*height: 432px;	/* IE 5.x */
+		/*height:420px;	/* Other browsers */
+		/*height: 420px;
+				
+	}
+	#previewPane img{
+		line-height:400px;
+	}
+	#previewPane #largeImageCaption{	/* CSS styling of image caption below large image */
+		font-style:italic;
+		text-align:center;
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;	/* Font to use */
+		font-size:0.9em;
+	}
+	#galleryContainer{
+		
+		height:102px;	/* Height of the images + 2 */
+		border:1px solid #CCCCCC;
+		position:relative;
+		overflow:hidden;
+		padding:1px;
+		width:88%;
+		margin: 0 25px;
+		
+		/* CSS HACK */
+		height: 104px;	/* IE 5.x - Added 2 pixels for border left and right */
+		height/* */:/**/102px;	/* Other browsers */
+		height: /**/102px;
+				
+	}
+@media screen and (min-device-width: 320px) and (max-device-width: 1000px) {#galleryContainer{width:62%;} }	
+@media screen and (min-device-width: 568px) and (max-device-width: 768px) {#galleryContainer{width:78%;} }		
+	#arrow_left{
+		position:absolute;
+		left:0px;
+		z-index:10;
+		/*background-color: #FFF;*/
+		padding:1px;
+		
+		height: 35px;
+		width: 10px;
+		margin-top:7px;
+	}
+	#arrow_right{
+		position:absolute;
+		z-index:10;
+		/*background-color: #FFF;*/
+		padding:1px;
+		
+		height: 35px;
+		width: 10px;
+		margin-top:7px;	
+		right: -9px;	
+	}
+	#theImages{
+		position:absolute;
+		height:100px;
+		left:8px;
+		width:100000px;
+		margin-top: -17px;
+	}
+	#theImages #slideEnd{
+		float:left;
+	}
+	#theImages img{
+		float:left;
+		padding:1px;
+		filter: alpha(opacity=50);
+		opacity: 0.5;
+		cursor:pointer;
+		border:0px;
+		left:-45px;
+	}
+
+	#waitMessage{
+		display:none;
+		position:absolute;
+		left:200px;
+		top:150px;
+		/*background-color:#FFF;
+		border:3px double #000;
+		padding:4px;
+		color:#555;
+		font-size:0.9em;
+		font-family:arial;*/	
+	}
+	
+	#theImages .imageCaption{
+		display:none;
+	}

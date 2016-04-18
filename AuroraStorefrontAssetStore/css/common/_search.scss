@@ -1,0 +1,189 @@
+
+
+#searchButton {
+	display: none;
+}
+#searchBar {
+	z-index:10;
+}
+#searchBox {
+	
+    position: relative;
+    width: 100%;
+    z-index:1;
+    background-color: #faf9f7;
+    margin-bottom:20px;
+}
+.col-sm-12.searchdisplay{padding:0px;}
+ul.autoSuggestDivNestedList {
+    background-color: #fff;
+    color: #000;
+}
+#searchBox > * {
+	text-align: left;
+}
+.basicMenu {
+    display: none;
+}
+#searchTermWrapper {
+	 padding: 0 29px;
+	  transition: background 0.4s;
+}
+#searchTermWrapper > .placeholder {
+	position: absolute;
+	color: #bfbfbf;
+	cursor: text;
+}
+#searchTermWrapper > input {
+	 background-color: #fff;
+    border: 1px solid #ccc;
+    height: 45px;
+    padding:0px 25px;
+    width: 96%;
+    float:left;
+}
+#searchFormLabel {
+	display: none;
+}
+#searchFilterButton {
+  	color: #333333;
+  	font-size:14px;
+	display: inline-block;
+	position: relative;
+	width: 110px;
+	padding: 5px 10px;
+	border-left: 1px solid #bfbfbf;
+	border-right: 1px solid #bfbfbf;
+	vertical-align: middle;
+}
+#searchFilterButton:after {
+	content: "";
+	display: block;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 4px;
+	height: 4px;
+	background-image: url("../images/responsive/rwdUI.png");
+	background-position: -201px -1px;
+}
+#searchFilterButton.selected:after {
+	content: " ";
+	background-position: -221px -1px;
+}
+#searchFilterMenu.active {
+	right: -1px;
+	width: 170px;
+}
+@media (min-width: 601px) and (max-width: 900px) {
+	#searchTermWrapper {
+		right: 35px;
+	}
+	#searchFilterButton {
+		display: none;
+	}
+	#searchFilterMenu.active {
+		display: none;
+	}
+}
+#searchBox > .submitButton {
+	background:url("../images/lenssearch.png") 12px 9px no-repeat #fff;
+	border: 1px solid #ccc;
+    height: 45px;
+    margin-top: 102px;
+    position: absolute;
+    float:right;
+     background-color: #fff;
+    top: 0px;
+    vertical-align: middle;
+    width: 50px;
+    border-left:none;
+
+}
+
+#searchBox > .submitButton:hover {background: url("../images/lenssearch_mo.png") 12px 9px no-repeat #ab1032;}
+#searchBox > .submitButton img {display:none;}
+
+#searchTermWrapper .text{font-weight:bold;font-size:14px;}
+#searchTermWrapper .text > img {
+    float: right;
+    width: 20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.search-icon {
+    margin: 0 4%;
+}
+.submitButton > img {
+    margin-left: 15px;
+    width: 23px;
+    display:none;
+}
+.search-icon > img{
+	margin-top: -1px;
+    width: 27px;
+    } 
+#searchBox > .submitButton:hover:before {
+	left: -140px;
+}
+
+/* Autocomplete menu */
+
+#searchDropdown {
+	position: absolute;
+	left: -1px;
+	right: -1px;
+	top: 150px;
+	padding:0px 22px;
+}
+#AutoSuggestDiv {
+	background-color: #f5f6f7;
+	
+	color:#000;
+	margin-top:19px;
+}
+#AutoSuggestDiv > ul,
+.autoSuggestDivNestedList {
+	padding: 0;
+}
+#AutoSuggestDiv > ul > li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#AutoSuggestDiv .list_section li {
+	border-bottom: 1px solid #c9cece;
+	list-style: none;
+}
+#AutoSuggestDiv .list_section li > a,
+#AutoSuggestDiv #autoSuggestAdvancedSearch > a {
+	padding: 15px;
+	display: inline-block;
+	height: 100%;
+	color:#000;
+}
+
+#AutoSuggestDiv .heading {
+	background-color: #f5f6f7;
+	text-transform: uppercase;
+	padding: 15px;
+	border-bottom: 1px solid #c9cece;
+	list-style: none;
+}
+#AutoSuggestDiv #autoSuggestAdvancedSearch {
+	border-bottom: 0 none;
+	background-color: #fff;
+	color: #b54200;
+	padding: 0;
+}
+#AutoSuggestDiv #autoSuggestAdvancedSearch:hover {
+	background-color: #d9e9f7;
+}
+#AutoSuggestDiv #autoSuggestAdvancedSearch > a:hover {
+	text-decoration: underline;
+}
+#autoSuggest_Result_div,
+#autoSuggestCachedSuggestions_div {
+	display: none;
+}
+.product_listing_container .content li{ float:left;}

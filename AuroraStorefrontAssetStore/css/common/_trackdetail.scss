@@ -1,0 +1,182 @@
+.trackDetails{
+		padding:0;
+		.trackdata{
+			font-size:16px;
+			font-weight:bold;
+			font-family:"FrutigerLTW01-45Bold",sans-serif;
+		}
+		.trackDetailView{
+			background:#E3E5E4;
+			padding:5px 10px;
+		}
+		.orderStatus{
+			font-family:"FrutigerLTW01-45Light",sans-serif;
+			font-size:16px;
+			color:#333;
+			padding:15px 30px;
+		}
+		.viewItem{
+			color:#747678;
+			font-size:14px;
+			padding:10px 30px;
+			background:#e3e4e4;
+		}
+		.viewItem a{
+			color:#747678;
+			font-size:14px;
+			display:inline-block;
+			width:80%;
+		}
+		
+		.arrowRed {
+				    background: rgba(0, 0, 0, 0) url("../images/arrow.png") no-repeat scroll 0 0 / 9px auto;
+				    float: right;
+				    height: 16px;
+				    margin-top: 3px;
+				    width: 9px;
+					}
+		.trackDetailsInvoice{
+			padding:30px 30px;
+		}
+		.invoiceBox{
+			padding:0px 0px 5px 0px;
+		}
+		.invoiceNumber{
+			width:60%;
+			font-weight:bold;
+			color:#333;
+			display:inline-block;
+		}	
+		.moreLink{
+					float: right;
+				    height: 16px;
+				    margin-top: 3px;
+				    width: 24%;
+				    display:inline-block;
+				    
+				    .arrowRed {
+				    background: rgba(0, 0, 0, 0) url("../images/arrow.png") no-repeat scroll 0 0 / 6px auto;
+				    height: 16px;
+				    margin-top: 6px;
+				    width: 9px;
+				    float:left;
+					}
+					
+					a{
+						color:#333;
+						font-size:14px;
+					}
+				    
+		}
+		.greyBlock{
+			background:#faf8f7;
+			padding:10px 0px;
+		}
+		.trackOrderBox{
+		margin-top:20px;
+		padding-left:30px;
+		padding-bottom:20px;
+		.title{
+			font-size:20px;
+			color:#333333;
+			font-family:"FrutigerLTW01-45Bold",sans-serif;
+			font-weight:bold;
+			margin-bottom:40px;
+		}
+		.orderStatusTitle{
+			color:#333333;
+			font-family:"FrutigerLTW01-45Bold",sans-serif;
+			font-weight:bold;
+			font-size:16px;
+		}
+		.trackDate{
+			color:#909193;
+			font-size:13px;
+		}
+		.trackStatus{
+			color:#333;
+			font-size:14px;
+		}
+		.icon-statusred{
+			background:rgba(0, 0, 0, 0) url("../images/order-red.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-statusgray{
+			background:rgba(0, 0, 0, 0) url("../images/order-gray.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-processgray{
+			background:rgba(0, 0, 0, 0) url("../images/process-gray.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-processred{
+			background:rgba(0, 0, 0, 0) url("../images/process-red.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-processhalf{
+			background:rgba(0, 0, 0, 0) url("../images/process-half.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-deliverygray{
+			background:rgba(0, 0, 0, 0) url("../images/delivery-gray.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-deliveryred{
+			background:rgba(0, 0, 0, 0) url("../images/delivery-red.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-deliveryhalf{
+			background:rgba(0, 0, 0, 0) url("../images/delivery-half.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-customergray{
+			background:rgba(0, 0, 0, 0) url("../images/customer-gray.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.icon-customerred{
+			background:rgba(0, 0, 0, 0) url("../images/customer-red.png") no-repeat scroll 0 0 / 60px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+			
+		}
+		.statusRight{
+			display: inline-block;
+    		width: 65%;
+    		margin-top:-18px;
+		}
+		.statusCol{
+			display: inline;
+    		width: 20%;
+		}
+		.icon-redline{
+			background:rgba(0, 0, 0, 0) url("../images/redline.png") no-repeat scroll 30px 6px / 1px auto;
+		    vertical-align: top;
+		    padding:10px 45px;
+		    height:38px
+			
+		}
+		}	
+			
+}	
+.trackDetailFooter{
+			background: #faf8f7 none repeat scroll 0 0;
+    		height: 75px;
+		}

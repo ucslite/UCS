@@ -1,0 +1,91 @@
+#mainBanner{
+		 
+		background:#FAF9F7;
+		
+		.content>ul{
+			margin:0px;
+			padding:0px;
+		}
+		
+		.owl-carousel .owl-wrapper-outer{
+		text-align:center;
+		}
+		
+		.img-responsive{
+		margin:0 auto;
+		}
+		.owl-pagination{
+			top:80%;
+		}
+		.owl-controls {
+		
+		.owl-buttons{
+		position:absolute;
+		top:40%;
+		top:50%;
+		width:100%;
+		}
+		
+		.owl-pagination{
+		position:absolute;
+		top:82%;
+		width:100%;
+		}
+		
+		.owl-buttons .owl-prev{
+		float:left;
+		background:url("../images/leftcarouselarrow.png") no-repeat scroll 0 0;
+		margin-left:38px;
+		background-size:9px;
+
+		padding:10px;
+		}
+		
+		.owl-buttons .owl-next{
+		position:absolute;
+		right:2px;
+		right:30px;
+		background:url("../images/rightcarouselarrow.png") no-repeat scroll 0 0;
+		padding:0px 14px;
+		background-size:11px;
+		background-size:11px;
+
+		padding:10px;
+		}
+		
+		}
+		
+		.content li{
+		list-style-type:none;
+		}
+		
+}
+
+#homepageDetailBlock{
+	background:#FAF9F7;
+
+}
+.item{
+	.listfix{
+		margin-right:10px;
+	}
+}
+#footerProductCategoriesSection{
+			
+		.panel-title a[aria-expanded="true"]{
+		 	color:#ab1032;
+		 	background:url("../images/up-arrow.png") no-repeat scroll right center / 12px auto;
+		 	display:block;
+		 	font-size:16px;
+		 	font-weight:bold;
+		 }
+		
+		.panel-title a[aria-expanded="false"]{
+		 	color:#333333;
+		 	background:url("../images/down-arrow.png") no-repeat scroll right center / 12px auto;
+		 	display:block;
+		 	font-size:16px;
+		 }
+		
+
+}

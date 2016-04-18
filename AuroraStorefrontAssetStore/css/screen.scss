@@ -1,0 +1,15 @@
+
+
+ 
+
+
+@import "common/header"; 
+@import "common/footer";
+ 
+body{
+	font-family: arial, sans-serif; 
+	-moz-transition: left 100ms ease-in-out, right 100ms ease-in-out;
+	-webkit-transition: left 100ms ease-in-out, right 100ms ease-in-out;
+	transition: left 100ms ease-in-out, right 100ms ease-in-out; 
+}
+
