@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data-deploy SYSTEM "ibm-wc-load.dtd">
+<data-deploy base-dir="." default-target="all">
+    <asset id="foreignKeys" location="ForeignKeys.dtd" type="dtd"/>
+    <asset id="auroraHostContract" location="AuroraESiteStore/AuroraHostingContract.xml"/>
+	<asset id="auroraB2BHostContract" location="AuroraB2BESiteStore/AuroraB2BHostingContract.xml"/>
+    <asset id="." location=""/>
+    <deploy-task-cmd name="sarFileDeploy" class="com.ibm.commerce.tools.devtools.publish.tasks.catalog.CatalogDataDeployTaskCmd"/>
+    <deploy-task-cmd name="commandInvoker" class="com.ibm.commerce.tools.devtools.publish.tasks.CommandInvokerTaskCmd"/>
+    <deploy-task-cmd name="copyLocaleFile" class="com.ibm.commerce.tools.devtools.publish.tasks.unpack.CopyLocaleFileTaskCmd"/>
+    <deploy-task-cmd name="contractImport" class="com.ibm.commerce.tools.devtools.publish.tasks.trading.ContractImportTaskCmd"/>
+    <deploy-task-cmd name="findStore" class="com.ibm.commerce.tools.devtools.publish.tasks.StoreIdBaseDeployTaskCmd"/>
+	<deploy-task-cmd name="enableSolrSearch" class="com.ibm.commerce.tools.devtools.publish.tasks.SetupSolrIndexForCatalogTaskCmd" />
+    <target id="all">
+    	<task name="sarFileDeploy">
+    		<param name="STORE_DIR" value="ExtendedSites" />
+      		<param name="storeArchiveFilename" value="${wc:SampleSarPath}${asset:foreignKeys#SAR_PATH_ORG}" />
+    	</task>
+    	<task name="sarFileDeploy">
+    		<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HCP}" />
+    		<param name="STORE_IDENTIFIER_HCP" value="${asset:foreignKeys#STORE_IDENTIFIER_HCP}" />
+    		<param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN}" />
+      		<param name="storeArchiveFilename" value="${wc:SampleSarPath}${asset:foreignKeys#SAR_PATH_HCP}" />
+      		<param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+    	<task name="sarFileDeploy">
+    		<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+    		<param name="STORE_IDENTIFIER_CPS" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+    		<param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN}" />
+      		<param name="storeArchiveFilename" value="${wc:SampleSarPath}${asset:foreignKeys#SAR_PATH_CPS}" />
+      		<param name="SAMPLE_CHOICE" value="*" />
+      		<param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+    	<task name="findStore">
+            <param name="storeIdentifier" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+            <param name="organizationDN" value="${asset:foreignKeys#ORG_DN_PROFILE_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+            <export name="storeEntityIdCPS" value="storeEntityId"/>
+    	</task>
+    	<task name="sarFileDeploy">
+    		<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_RPS2}" />
+    		<param name="STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_RPS2}" />
+      		<param name="storeArchiveFilename" value="${wc:SampleSarPath}${asset:foreignKeys#SAR_PATH_RPS2}" />
+      		<param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+			<param name="STORE_TYPE" value="${asset:foreignKeys#STORE_TYPE_RPS2}" />
+			<param name="SAMPLE_CHOICE" value="${asset:foreignKeys#SAMPLE_CHOICE_RPS2}" />
+			<param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN}" />
+			<param name="STORE_ID_CPS" value="${context:storeEntityIdCPS}" />
+			<param name="STORE_DIR_CPS" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+			<param name="STORE_IDENTIFIER_CPS" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+			<param name="ORGANIZATION_DN_PROFILE" value="${asset:foreignKeys#ORGANIZATION_DN_PROFILE}" />
+    	</task>
+    	<task name="sarFileDeploy">
+    		<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_BMP2}" />
+			<param name="STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_BMP2}" />
+      		<param name="storeArchiveFilename" value="${wc:SampleSarPath}${asset:foreignKeys#SAR_PATH_BMP2}" />
+      		<param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+			<param name="STORE_TYPE" value="${asset:foreignKeys#STORE_TYPE_BMP2}" />
+			<param name="SAMPLE_CHOICE" value="${asset:foreignKeys#SAMPLE_CHOICE_BMP2}" />
+			<param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN}" />
+			<param name="STORE_ID_CPS" value="${context:storeEntityIdCPS}" />
+			<param name="STORE_DIR_CPS" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+			<param name="STORE_IDENTIFIER_CPS" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+			<param name="ORGANIZATION_DN_PROFILE" value="${asset:foreignKeys#ORGANIZATION_DN_PROFILE}" />
+    	</task>
+		<task name="copyLocaleFile">
+            <param name="basename" value="${asset:auroraHostContract}" />
+    	</task>
+		<task name="contractImport">
+            <param name="tradingXMLFileName" value="${asset:auroraHostContract}" />
+            <param name="isXSD" value="true" />
+            <param name="storeIdentifier" value="${asset:foreignKeys#STORE_IDENTIFIER_HCP}" />
+            <param name="organizationDN" value="${asset:foreignKeys#ORG_DN_HCP_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+    	</task>
+		<task name="copyLocaleFile">
+            <param name="basename" value="${asset:auroraB2BHostContract}" />
+    	</task>
+		<task name="contractImport">
+            <param name="tradingXMLFileName" value="${asset:auroraB2BHostContract}" />
+            <param name="isXSD" value="true" />
+            <param name="storeIdentifier" value="${asset:foreignKeys#STORE_IDENTIFIER_HCP}" />
+            <param name="organizationDN" value="${asset:foreignKeys#ORG_DN_HCP_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+    	</task>
+    	<task name="sarFileDeploy">
+			<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+            <param name="CAT_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+            <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+            <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#ORG_DN_PROFILE_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="MAR_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_RPS2}" />
+            <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_RPS2}" />
+            <param name="MAR_ORGANIZATION_DN" value="ou=aurorastorefrontassetstore,${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="HOS_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS}" />
+            <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS}" />
+            <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS}" />
+            <param name="storeArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE}" />
+            <param name="AOP_CHOICE" value="${asset:foreignKeys#AOP_CHOICE}" />
+            <param name="FREE_SHIPPING_CARRIER" value="${asset:foreignKeys#FREE_SHIPPING_CARRIER}" />
+            <param name="FREE_SHIPPING_CODE" value="${asset:foreignKeys#FREE_SHIPPING_CODE}" />
+            <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+		<task name="sarFileDeploy">
+			<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_BMP2}" />
+			<param name="STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_BMP2}" />
+            <param name="ORGANIZATION_DN" value="ou=aurorab2bstorefrontassetstore,${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="CAT_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+            <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+            <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#ORG_DN_PROFILE_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="MAR_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_BMP2}" />
+            <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_BMP2}" />
+            <param name="MAR_ORGANIZATION_DN" value="ou=aurorab2bstorefrontassetstore,${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="HOS_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS2}" />
+            <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS2}" />
+            <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS2}" />
+            <param name="storeArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE_SAS}" />
+            <param name="owStoreArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE}" />
+            <param name="AOP_CHOICE" value="${asset:foreignKeys#AOP_CHOICE}" />
+            <param name="FREE_SHIPPING_CARRIER" value="${asset:foreignKeys#FREE_SHIPPING_CARRIER}" />
+            <param name="FREE_SHIPPING_CODE" value="${asset:foreignKeys#FREE_SHIPPING_CODE}" />
+            <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+		<task name="sarFileDeploy">
+			<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS2}" />
+			<param name="STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS2}" />
+            <param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS2}" />
+            <param name="CAT_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+            <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+            <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#ORG_DN_PROFILE_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="MAR_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_BMP2}" />
+            <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_BMP2}" />
+            <param name="MAR_ORGANIZATION_DN" value="ou=aurorab2bstorefrontassetstore,${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="HOS_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS2}" />
+            <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS2}" />
+            <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS2}" />
+            <param name="storeArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE_BMPSAS}" />
+            <param name="owStoreArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE}" />
+            <param name="AOP_CHOICE" value="${asset:foreignKeys#AOP_CHOICE}" />
+            <param name="FREE_SHIPPING_CARRIER" value="${asset:foreignKeys#FREE_SHIPPING_CARRIER}" />
+            <param name="FREE_SHIPPING_CODE" value="${asset:foreignKeys#FREE_SHIPPING_CODE}" />
+            <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+		<task name="sarFileDeploy">
+			<param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS2}" />
+			<param name="STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS2}" />
+            <param name="ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS2}" />
+            <param name="CAT_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_CPS}" />
+            <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_CPS}" />
+            <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#ORG_DN_PROFILE_PART}${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="MAR_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_BMP2}" />
+            <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_BMP2}" />
+            <param name="MAR_ORGANIZATION_DN" value="ou=aurorab2bstorefrontassetstore,${asset:foreignKeys#ORGANIZATION_DN}" />
+            <param name="HOS_STORE_DIR" value="${asset:foreignKeys#STORE_DIR_HOS2}" />
+            <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#STORE_IDENTIFIER_HOS2}" />
+            <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#ORGANIZATION_DN_HOS2}" />
+            <param name="storeArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE_ESITE}" />
+            <param name="owStoreArchiveFilename" value="${wc:SampleSarPath}/${asset:foreignKeys#SAMPLE_CHOICE}" />
+            <param name="AOP_CHOICE" value="${asset:foreignKeys#AOP_CHOICE}" />
+            <param name="FREE_SHIPPING_CARRIER" value="${asset:foreignKeys#FREE_SHIPPING_CARRIER}" />
+            <param name="FREE_SHIPPING_CODE" value="${asset:foreignKeys#FREE_SHIPPING_CODE}" />
+            <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+    	</task>
+		<task name="enableSolrSearch">
+			<param name="storeEntityId" value="${context:storeEntityIdCPS}" />
+			<param name="indextypes" value="CatalogEntry,CatalogGroup" />
+			<param name="timeInterval" value="10000" />
+		</task>
+   </target>
+</data-deploy>

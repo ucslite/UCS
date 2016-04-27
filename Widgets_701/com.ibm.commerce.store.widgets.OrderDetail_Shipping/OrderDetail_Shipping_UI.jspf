@@ -1,0 +1,103 @@
+<%--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2014 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+--%>
+
+<!-- BEGIN OrderDetail_Shipping_UI.jsp -->
+
+<%-- This widget is only designed to be used with single shipment. The shipping info returned from the first 
+		order item of the order is used to display the shipping address. --%>
+<c:if test="${shipmentTypeId == 1}">
+	<div class="col4" aria-labelledby="OrderDetail_Billing_DetailDiv" tabindex="0">
+		<%-- shipping address --%>
+		<div id="OrderDetail_Shipping_DetailDiv"><p><h2><fmt:message key="ORDERDETAIL_SHIPPEDTO" bundle="${widgetText}"/></h2></p></div>
+		<c:set var="contact" value="${order.orderItem[0]}" />	
+		<c:if test="${!empty contact.nickName}">
+			<p>
+				<c:choose>
+					<c:when test="${contact.nickName eq  profileShippingNickname}">
+						<fmt:message bundle="${widgetText}" key="QC_DEFAULT_SHIPPING" />
+					</c:when>
+					<c:when test="${contact.nickName eq  profileBillingNickname}">
+						<fmt:message bundle="${widgetText}" key="QC_DEFAULT_BILLING" />
+					</c:when>
+					<c:otherwise>
+						${contact.nickName}
+					</c:otherwise>
+				</c:choose>
+			</p>
+		</c:if>
+		<%@ include file="/Widgets_701/Common/Address/AddressDisplay.jspf"%>
+		
+		<%-- shipping method --%>
+		<br />
+		<fmt:message key="ORDERDETAIL_SHIPMETHOD" bundle="${widgetText}"/>
+		<c:choose>
+			<c:when test="${!empty order.orderItem[0].shipModeDescription}">
+				<c:out value="${order.orderItem[0].shipModeDescription}"/><br />
+			</c:when>
+			<c:otherwise>
+				<c:out value="${order.orderItem[0].shipModeCode}"/><br />
+			</c:otherwise>
+		</c:choose>		
+		
+		
+		<%-- shipping charge type --%>
+		<flow:ifEnabled feature="ShippingChargeType">
+			<c:if test="${not empty shipCharges.shipChargesByShipMode}">
+				<c:forEach items="${shipCharges.shipChargesByShipMode}" var="shipCharges_shipModeData"  varStatus="counter1">
+					<c:if test="${shipCharges_shipModeData.shipModeDesc == order.orderItem[0].shipModeDescription}">
+						<c:forEach items="${shipCharges_shipModeData.shippingChargeTypes}" var="shipCharges_data" varStatus="counter2">
+							<c:if test="${shipCharges_data.selected}">
+								<br />
+								<fmt:message bundle="${widgetText}" key="ORDERDETAIL_SHIPCHARGETYPE" />
+								<fmt:message bundle="${widgetText}" key="${shipCharges_data.policyName}" /><br />
+								<c:if test="${shipCharges_data.carrAccntNumber != null && shipCharges_data.carrAccntNumber != ''}">
+									<fmt:message bundle="${widgetText}" key="ORDERDETAIL_SHIPCHARGETYPEACCT" />
+									<c:out value="${shipCharges_data.carrAccntNumber}"/><br />
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</c:if>
+				</c:forEach>
+			</c:if>
+		</flow:ifEnabled>
+		
+		<%-- ship as complete --%>
+		<flow:ifEnabled feature="ShipAsComplete">
+			<br />
+			<fmt:message bundle="${widgetText}" key="ORDERDETAIL_SHIPASCOMPLETE" />
+			<c:choose>
+				<c:when test='${order.shipAsComplete}'>
+					<fmt:message bundle="${widgetText}" key="ORDERDETAIL_YES" /><br />
+				</c:when>
+				<c:otherwise>
+					<fmt:message bundle="${widgetText}" key="ORDERDETAIL_NO" /><br />
+				</c:otherwise>
+			</c:choose>
+			<br />
+		</flow:ifEnabled>
+		
+		<%-- shipping instructions --%>
+		<flow:ifEnabled feature="ShippingInstructions">
+			<c:if test="${!empty order.orderItem[0].shipInstruction}">
+				<br />
+				<fmt:message key="ORDERDETAIL_SHIPINSTRUCTIONS" bundle="${widgetText}"/>
+				<c:out value="${order.orderItem[0].shipInstruction}"/><br />
+			</c:if>
+		</flow:ifEnabled>
+
+	</div>
+</c:if>
+
+<!-- END OrderDetail_Shipping_UI.jsp -->
+

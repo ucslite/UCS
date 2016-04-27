@@ -1,0 +1,1545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<global-forwards>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ChangePassword/10001" path="/ChangePasswordForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AccessControlErrorView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericApplicationError/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericSystemError/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PreviewExclusionView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CookieErrorView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="InactiveActivityTokenErrorView/10001" path="/UserSessionTimeout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ProhibitedCharacterErrorView/10001" path="/ProhibitedCharacterError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AboutUsView/10001" path="/AboutUs.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CommonHeaderView/10001" path="/include/CachedCommonHeader.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ContactUsView/10001" path="/ContactUs.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ContactUsSendMessageView/10001" path="/ContactUsSendMessage.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CreateStoreView/10001" path="/CreateStore.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="FaqView/10001" path="/Faq.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonView/10001" path="/Logon.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonFormView/10001" path="/LogonForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ReLogonFormView/10001" path="/UserSessionTimeout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="NavigationView/10001" path="/include/CachedNavigation.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PricesView/10001" path="/Prices.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RegistrationView/10001" path="/Registration.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RegistrationSuccessView/10001" path="/RegistrationSuccess.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ServicesProvidedView/10001" path="/ServicesProvided.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StoreView/10001" path="/index.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ViewPublicAreaView/10001" path="/ViewPublicArea.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="WelcomeView/10001" path="/Welcome.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrgRegistrationAddFormView/10001" path="/OrgRegistrationAddForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrgRegistrationAddSuccessView/10001" path="/OrgRegistrationAddSuccess.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddFormView/10001" path="/UserRegistrationAddForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddPendingApprovalView/10001" path="/UserRegistrationAddSuccess.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="EmailESpotView/10001/-3" path="/include/eMarketingSpotDisplay.jsp">
+    <set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+    <set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+</forward>
+
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxActionResponse" path="/AjaxActionResponse.jsp">
+	<set-property property="resourceClassName" value="com.ibm.commerce.command.HttpForwardViewCommandImpl"/>
+	<set-property property="properties" value="storeDir=no"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxActionErrorResponse" path="/AjaxActionErrorResponse.jsp">
+	<set-property property="resourceClassName" value="com.ibm.commerce.command.HttpForwardViewCommandImpl"/>
+	<set-property property="properties" value="storeDir=no"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxCheckoutAddressDisplayView/10101" path="/Snippets/ReusableObjects/AddressDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxCheckoutDisplayView/10101" path="/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="EmptySnippetView/10101" path="/Snippets/EDP/PaymentMethods/Empty.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardCOD/10101" path="/Snippets/EDP/PaymentMethods/StandardCOD.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardBillMeLater/10101" path="/Snippets/EDP/PaymentMethods/StandardBillMeLater.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardPayLater/10101" path="/Snippets/EDP/PaymentMethods/StandardPayLater.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardAmex/10101" path="/Snippets/EDP/PaymentMethods/StandardAmex.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardMasterCard/10101" path="/Snippets/EDP/PaymentMethods/StandardMasterCard.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardVisa/10101" path="/Snippets/EDP/PaymentMethods/StandardVisa.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardDiscover/10101" path="/Snippets/EDP/PaymentMethods/StandardDiscover.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardBankServACH/10101" path="/Snippets/EDP/PaymentMethods/StandardBankServACH.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardCheck/10101" path="/Snippets/EDP/PaymentMethods/StandardCheck.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StandardLOC/10101" path="/Snippets/EDP/PaymentMethods/StandardLOC.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PayInStoreSnippetView/10101" path="/Snippets/EDP/PaymentMethods/PayInStore.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="SimplePunchout/10101" path="/Snippets/EDP/PaymentMethods/SimplePunchout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PunchoutPaymentRedirectView/10101" path="/ShoppingArea/CheckoutSection/PunchoutPaymentRedirect.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PunchoutPaymentCallBackView" path="/PunchoutPaymentCallBack.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxAddressDisplayView/10101" path="/Snippets/Member/Address/AddressDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxShopcartAddressFormView/10101" path="/Snippets/Member/Address/ShopcartAddressFormDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxAddressSelectView/10101" path="/Snippets/Member/Address/BillingAddressSelect.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxLogonForm/10101" path="/UserArea/AccountSection/LogonSubsection/LogonSetup.jsp">
+	<set-property property="properties" value="generic=true"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddPendingApprovalView/10101" path="/UserArea/AccountSection/LogonSubsection/LogonSetup.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddFormView/10101" path="/UserArea/AccountSection/RegistrationSubsection/UserRegistrationAddForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxPromotionCodeDisplayView/10101" path="/Snippets/Marketing/Promotions/PromotionCodeDisplay.jsp"/> 
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PromotionFreeGiftChoicesView/10101" path="/Snippets/Marketing/Promotions/PromotionChoiceOfFreeGiftsPopupContent.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CategoryOnlyResultsDisplayView/10101" path="/Snippets/Catalog/CategoryDisplay/CategoryOnlyResultsDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="SubCatListDisplayView/10101" path="/Snippets/Catalog/CategoryDisplay/SubCategoriesListDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AccessControlErrorView/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericApplicationError/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericSystemError/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PreviewExclusionView/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CookieErrorView/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="InactiveActivityTokenErrorView/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CouponsErrorView/10101" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ProhibitedCharacterErrorView/10101" path="/ProhibitedCharacterError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CrossSiteRequestForgeryErrorView/10101" path="/CSRFErrorDisplay.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationErrorView/10101" path="/UserArea/AccountSection/RegistrationSubsection/UserRegistrationSetup.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AuthenticationPolicyErrorView/10101" path="/UserArea/AccountSection/RegistrationSubsection/UserRegistrationSetup.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CategoryDisplayView/10101" path="/"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonForm/10101" path="/UserArea/AccountSection/LogonSubsection/LogonSetup.jsp">
+<set-property property="properties" value="generic=true"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogoffView/10101" path="/UserArea/AccountSection/LogonSubsection/LogoffSetup.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonErrorView/10101" path="/UserArea/AccountSection/LogonSubsection/LogonSetup.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ReLogonFormView/10101" path="/UserArea/AccountSection/LogonSubsection/UserTimeoutView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordForm/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordResetDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordErrorView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordGuestErrorView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordRegisterErrorView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="SendPasswordNotificationErrorView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="DoPaymentErrorView/10101" path="/UserArea/AccountSection/QuickCheckoutProfileSubsection/MyAccountQuickCheckoutProfileForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ProductDisplayView/10101" path="/"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CatalogAttachmentView/10101" path="/Snippets/Catalog/Attachments/CatalogAttachmentAssetsDisplay.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StoreCatalogDisplayView/10101" path="/ShoppingArea/CatalogSection/CategorySubsection/TopCategoriesDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StoreView/10101" path="/index.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="DiscountDetailsDisplayView/10101" path="/ShoppingArea/DiscountSection/DiscountDetailsDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ChangePassword/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordUpdateForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserPasswordUpdate/10101" path="/UserArea/AccountSection/RegistrationSubsection/UserPasswordUpdateForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PasswordReEnterErrorView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordReEnterForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PasswordReEnterFormView/10101" path="/UserArea/AccountSection/PasswordSubsection/PasswordReEnterForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ProductDisplayErrorView/10101" path="/GenericError.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingAddressView/10101" path="/ShoppingArea/CheckoutSection/StandardCheckoutSubsection/BillingAddressDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingDetailsView/10101" path="/FailedAJAXRequest.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RememberMeLogonFormView/10101" path="/UserArea/AccountSection/AccountDisplay.jsp">
+<set-property property="properties" value="generic=true"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RememberMeLogonFormView" path="/UserArea/AccountSection/LogonSubsection/LogonSetupSite.jsp">
+<set-property property="properties" value="generic=true"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderSummaryView/10101" path="/ShoppingArea/CheckoutSection/StandardCheckoutSubsection/OrderSummaryDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="Ping/10101" path="/Common/Ping.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UnsupportedBrowserErrorView/10101" path="/UnsupportedBrowserError.jsp"/>
+
+
+<!-- FEP4 BEGIN -->
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CurrentOrderInformationView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/SingleShipmentOrderTotalsSummary.jsp"/> 
+<forward className="com.ibm.commerce.struts.ECActionForward" name="SingleShipmentOrderSummaryView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/SingleShipmentSummary.jsp"/> 
+<forward className="com.ibm.commerce.struts.ECActionForward" name="TraditionalAjaxShippingDetailsURL/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/OrderItemDetails.jsp"/> 
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxQuickCheckoutAddressForm/10101" path="/UserArea/AccountSection/QuickCheckoutProfileSubsection/QuickCheckoutAccountAddressForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxUnregisteredCheckoutAddressForm/10101" path="/ShoppingArea/CheckoutSection/UnregisteredCheckout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutEmptySnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Empty.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutOfflineSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Offline.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutAmexSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Amex.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutMastercardSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Mastercard.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutVisaSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Visa.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutBankServACHSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/BankServACH.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutCheckSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/Check.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickCheckoutLOCSnippetView/10101" path="/Snippets/EDP/QuickCheckoutPaymentMethods/LOC.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxOrderItemDisplayView/10101" path="/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoAssoc/10101" path="/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoDsp/10101" path="/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ShopCartPageView/10101" path="/Snippets/Order/Cart/OrderItemDetail.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemPageView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/OrderItemDetailSummary.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="MSOrderItemPageView/10101" path="/ShoppingArea/CheckoutSection/MultipleShipment/MSOrderItemDetailSummary.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ShopCartDisplayView/10101" path="/ShoppingArea/ShopcartSection/ShopCartDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxQuickCartDisplay/10101" path="/include/MiniShopCartDisplay.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AddressEditView/10101" path="/Snippets/Member/Address/ShopcartAddressFormDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderShippingBillingView/10101" path="/ShoppingArea/CheckoutSection/OrderShippingBillingDetails.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UnregisteredCheckoutView/10101" path="/ShoppingArea/CheckoutSection/UnregisteredCheckoutView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderBillingView/10101" path="/ShoppingArea/CheckoutSection/OrderBillingDetails.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxMultipleShipmentOrderItemDetailsView/10101" path="/ShoppingArea/CheckoutSection/MultipleShipment/MSOrderItemDetails.jsp"/> 
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingAddressDisplayView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/BillingAddressDropDownDisplay.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ShippingAddressDisplayView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/ShippingAddressSelect.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="MultipleShipmentOrderSummaryView/10101" path="/ShoppingArea/CheckoutSection/MultipleShipment/MultipleShipmentSummary.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderShippingBillingConfirmationView/10101" path="/ShoppingArea/CheckoutSection/OrderShippingBillingConfirmationPage.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CompareProductsDisplay/10101" path="/ShoppingArea/CatalogSection/CatalogEntrySubsection/CompareProductsDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GetCatalogEntryDetailsByID/10101" path="/Snippets/Catalog/CatalogEntryDisplay/GetCatalogEntryDetailsByID.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingAddressDisplayView_1/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/BillingAddressDropDownDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingAddressDisplayView_2/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/BillingAddressDropDownDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="BillingAddressDisplayView_3/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/BillingAddressDropDownDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="orderTotalAsJSON/10101" path="/ShoppingArea/CheckoutSection/OrderTotalInJSON.jsp"/>
+  
+<forward className="com.ibm.commerce.struts.ECActionForward" name="HelpContactUsView/10101" path="/StoreInfoArea/HelpContactUsDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="QuickOrderView/10101" path="/ShoppingArea/OrderCreationSection/QuickOrderSubsection/QuickOrderForm.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="InvalidInputErrorView/10101" path="/GenericError.jsp"/>
+
+
+<!-- FEP4 end -->
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="EmailESpotView/10101/-3" path="/include/eMarketingSpotDisplay.jsp">
+    <set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+    <set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ContentSpotView/10101/-3" path="/Snippets/Marketing/Content/ContentSpotDisplay.jsp">
+    <set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+    <set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="DefaultSitemapView/10101" path="/Sitemap.jsp">       
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+</forward>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="SEOSiteMapView/10101" path="/SEOSitemap.jsp">       
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+</forward>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GetCatalogEntryInventoryData/10101" path="/Snippets/Catalog/CatalogEntryDisplay/GetCatalogEntryInventoryData.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxStoreLocatorDisplayView/10101" path="/StoreLocatorArea/StoreLocatorDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxProvinceSelectionDisplayView/10101" path="/Snippets/StoreLocator/ProvinceSelectionDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxCitySelectionDisplayView/10101" path="/Snippets/StoreLocator/CitySelectionDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxStoreLocatorResultsView/10101" path="/Snippets/StoreLocator/StoreLocatorResults.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxSelectedStoreListView/10101" path="/Snippets/StoreLocator/SelectedStoreList.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CheckoutStoreSelectionView/10101" path="/ShoppingArea/CheckoutSection/CheckoutStoreSelection.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CheckoutPayInStoreView/10101" path="/ShoppingArea/CheckoutSection/CheckoutPayInStore.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="DOMOrderShippingBillingView/10101" path="/ShoppingArea/CheckoutSection/DOMOrderShippingBillingDetails.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="DOMInventoryStatusView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/DOMInventoryStatusDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxSingleShipmentShipChargeView/10101" path="/ShoppingArea/CheckoutSection/SingleShipment/SingleShipmentShipChargeExt.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxMultipleShipmentShipChargeView/10101" path="/ShoppingArea/CheckoutSection/MultipleShipment/MultipleShipmentShipChargeExt.jsp"/>
+
+<!-- V7 FP1 BEGIN -->
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxBrowsingHistoryEspotDisplay/10101" path="/Snippets/Catalog/BrowsingHistoryNavDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxBrowsingHistoryView/10101" path="/UserArea/ServiceSection/BrowsingHistorySubsection/AjaxBrowsingHistory.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="NonAjaxBrowsingHistoryView/10101" path="/UserArea/ServiceSection/BrowsingHistorySubsection/NonAjaxBrowsingHistory.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxBrowsingHistoryDisplay/10101" path="/Snippets/Marketing/ESpot/BrowsingHistoryESpotDisplay.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxCategorySubscriptionDisplay/10101" path="/Snippets/Catalog/CategoryDisplay/CategorySubscriptionDisplay.jsp"/>
+<!-- V7 FP1 END -->
+
+<!-- Analytics views BEGIN -->
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsShopcartView/10101" path="/AnalyticsShopcartView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsProductView/10101" path="/AnalyticsProductView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsPageView/10101" path="/AnalyticsPageView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsElementView/10101" path="/AnalyticsElementView.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsRegistrationView/10101" path="/AnalyticsRegistrationView.jsp"/>
+<!-- Analytics views END -->
+
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="StaticContentSitemap/10101" path="/StoreInfoArea/StaticContentSitemap.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ConfigureView/10101" path="/ShoppingArea/Configurator/Configure.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="LaunchConfiguratorView/10101" path="/ShoppingArea/Configurator/LaunchConfigurator.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="LaunchConfiguratorRedirectView/10101" path="/ShoppingArea/Configurator/LaunchConfiguratorRedirect.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AllWishListsInProductDetailView/10101" path="/Snippets/MultipleWishList/AddToWishListPanelRefreshArea.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RemoteWidgetToolView/10101" path="/Snippets/Marketing/ESpot/RemoteWidgetToolDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="StaticContent/10101" path="/StaticContent/StaticContent.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AutoSuggestView/10101" path="/Snippets/Search/AutoSuggestSerialize.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CachedSuggestionsView/10101" path="/Snippets/Search/CachedSuggestions.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SubscriptionMerchantNotifyView/10101/-3" path="/Messages/SubscriptionMerchantNotify.jsp">
+			<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+			<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SubscriptionUserNotifyView/10101/-3" path="/Messages/SubscriptionMerchantNotify.jsp">
+			<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+			<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxIntelligentOfferDisplayView/10101" path="/Snippets/Marketing/ESpot/IntelligentOfferDisplayPartnumbers.jsp"/> 
+		<!-- Analytics views BEGIN -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AnalyticsConversionEventView/10101" path="/AnalyticsConversionEventView.jsp"/>
+		<!-- Analytics views END -->
+		
+		<!-- Shopper account activation BEGIN -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ResendActivationForm/10101" path="/UserArea/AccountSection/RegistrationSubsection/ActivationResendDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ResendActivationGuestView/10101" path="/UserArea/AccountSection/RegistrationSubsection/ActivationResendForm.jsp"/>				
+		<!-- Shopper account activation END -->
+		
+		<!-- get order details for FEP5  BEGIN-->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SBSOrderItemPageView/10101" path="/Snippets/Order/SterlingIntegration/SBSOrderItemDetailSummary.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SBSMSOrderItemPageView/10101" path="/Snippets/Order/SterlingIntegration/SBSMSOrderItemDetailSummary.jsp"/>
+		<!-- get order details for FEP5  END-->
+
+		<!-- My Account pages start -->
+		<!-- My Account personal information -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationForm/10101" path="/UserArea/AccountSection/RegistrationSubsection/UserRegistrationSetup.jsp"/>
+		
+		<!-- My Account address book -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AddressBookForm/10101" path="/UserArea/AccountSection/AddressbookSubsection/AddressBookForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxAddressBookForm/10101" path="/UserArea/AccountSection/AddressbookSubsection/AjaxAddressBookForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxAccountAddressForm/10101" path="/UserArea/AccountSection/AddressbookSubsection/AccountAddressForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AddressDeleteErrorView/10101" path="/UserArea/AccountSection/AddressbookSubsection/AddressBookForm.jsp"/>
+		
+		<!-- My Account quick checkout profile -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ProfileFormView/10101" path="/UserArea/AccountSection/QuickCheckoutProfileSubsection/MyAccountQuickCheckoutProfileForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AddressErrorView/10101" path="/UserArea/AccountSection/QuickCheckoutProfileSubsection/MyAccountQuickCheckoutProfileForm.jsp"/>
+		
+		<!-- My Account wish list -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="WishListDisplayView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/WishListDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxAccountWishListDisplayView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/WishlistCommonPage.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="WishListResultDisplayView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/WishListResultDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="MultipleWishListSelectionView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/MultipleWishListController.jsp"/>		
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SharedWishListView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/SharedWishListDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="InterestItemDisplayView/10101" path="/UserArea/ServiceSection/InterestItemListSubsection/SharedWishListDisplay.jsp"/>
+		
+		<!-- My Account orders, recurring orders and subscriptions -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="TrackOrderStatus/10101" path="/UserArea/ServiceSection/TrackOrderStatusSubsection/OrderStatusDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderDetail/10101" path="/UserArea/ServiceSection/TrackOrderStatusSubsection/OrderDetailDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="GuestOrderDetail/10101" path="/UserArea/ServiceSection/TrackOrderStatusSubsection/GuestOrderDetailDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderStatusTableDetailsDisplay/10101" path="/Snippets/Order/Cart/OrderStatusTableDetailsDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RecurringOrderTableDetailsDisplay/10101" path="/Snippets/Subscription/RecurringOrder/RecurringOrderTableDetailsDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SubscriptionTableDetailsDisplay/10101" path="/Snippets/Subscription/SubscriptionTableDetailsDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RecurringOrderChildOrdersTableDetailsDisplay/10101" path="/Snippets/Subscription/RecurringOrder/RecurringOrderChildOrdersTableDetailsDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SubscriptionChildOrdersTableDetailsDisplay/10101" path="/Snippets/Subscription/SubscriptionChildOrdersTableDetailsDisplay.jsp"/>
+
+		<!-- My Account coupon wallet -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CouponWallet/10101" path="/UserArea/ServiceSection/CouponWalletSubsection/CouponWalletDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CouponWalletTableView/10101" path="/Snippets/Marketing/Promotions/CouponWalletTable.jsp"/>
+		<!-- My Account pages end -->
+		
+		<!-- Full page requests made by browser.. Cache these pages -->
+
+		<!-- Home page View -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="TopCategoriesDisplayView/10101" path="/ShoppingArea/CatalogSection/CategorySubsection/TopCategoriesDisplay.jsp"/>
+
+		<!-- Display search based catalog navigation results..-->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchDisplayView/10101" path="/ShoppingArea/CatalogSection/SearchSubsection/SearchBasedCategoryPage.jsp"/>
+
+
+		<!-- Define views for which Ajax calls will be made to server as a result of some action by shopper and retrieve the updated/requested page data -->
+
+		<!-- To invalidate cached entries -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="InvalidateCache/10101" path="/ComponentTests/CacheInfo/Invalidate.jsp"/>
+
+		<!-- Search Component views. This entry is not cached. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchAutoSuggestJsonView/10101" path="/Widgets/Search/AutoSuggestJson.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchComponentAutoSuggestView/10101" path="/Widgets/Search/AutoSuggestSerialize.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchComponentCachedSuggestionsView/10101" path="/Widgets/Search/CachedSuggestions.jsp"/>
+
+		<!-- ESpot Related views. -->		
+		<!-- Get Catalog Entry Details by ID from Ajax call. Entry is cached -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="GetCatalogEntryDetailsByIDView/10101" path="/Widgets/Shared/GetCatalogEntryDetailsByID.jsp"/>
+		
+		<!-- For MiniShopCart Display. Entry is cached -->		
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="MiniShopCartDisplayView/10101" path="/Widgets/MiniShopCartDisplay/MiniShopCartDisplay.jsp"/>
+		
+		<!-- Department dropdown Refresh controller. Entry is cached   -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="DepartmentDropdownView/10101" path="/Widgets/Department/Department.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="DepartmentDropdownViewRWD/10101" path="/Widgets/Header/DepartmentDropDown.jsp"/>
+
+		<!-- Technical Specification. This entry is not cached. Fetch the specifications when shopper requests for it. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="TechnicalSpecificationView/10101" path="/Widgets/TechnicalSpecification/TechnicalSpecification.jsp"/>			
+		
+		<!-- For Product Comparison. This entry is not cached. Fetch the details of the products to be compared when shopper requests for it. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CompareProductsDisplayView/10101" path="/ShoppingArea/CatalogSection/CatalogEntrySubsection/CompareProductsDisplay.jsp"/>
+
+		<!-- Discounts. This entry is not cached. Fetch the specifications when shopper requests for it. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="DiscountDetailsView/10101" path="/Widgets/Discounts/Discounts.jsp"/>
+	
+		<!-- Content Area Espot. This entry is not cached. Fetch the specifications when shopper requests for it. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ContentAreaESpotView/10101" path="/Widgets/ESpot/ContentRecommendation/ContentRecommendation.jsp"/>
+				
+		<!-- Categories Espot. This entry is not cached. Fetch the specifications when shopper requests for it. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CategoriesESpotView/10101" path="/Widgets/ESpot/CategoryRecommendation/CategoryRecommendation.jsp"/>
+
+		<!-- Begin Static page layouts -->
+
+		<!-- Site Map Page -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SiteMapView/10101" path="/StoreInfoArea/SiteMap.jsp"/>
+
+		<!-- End Static page layouts -->
+		
+		<!-- Advanced Search Display Page -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AdvancedSearchDisplay/10101" path="/Widgets/Search/AdvancedSearchDisplay.jsp"/>
+
+		<!-- Best Sellers ESpot -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="BestSellerView/10101" path="/Widgets/ESpot/ESpot_BestSellers.jsp"/>
+		
+		<!-- Page to display static contents  like articles and videos. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="StaticContent/10101" path="/StaticContent/StaticContent.jsp"/>
+		
+		<!-- Password Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="PasswordNotifyView/10101/-3" path="/EmailTemplates/User/PasswordResetNotify.jsp">
+			<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+			<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+		
+		<!-- Wishlist Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="InterestItemListMessageView/10101/-3" path="/EmailTemplates/User/WishlistCreateNotify.jsp">
+			<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+			<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+
+		<!-- User/Buyer Approver Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ApproversNotifyView/10101/-3" path="/EmailTemplates/User/ApproverNotify.jsp">
+			<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+			<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+		
+		<!-- Order Create Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderReceivedView/10101/-3" path="/EmailTemplates/Order/OrderCreateNotify.jsp">
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+
+		<!-- Order Cancel Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderCancelView/10101/-3" path="/EmailTemplates/Order/OrderCancelNotify.jsp">
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+
+		<!-- Order Release Notification Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ReleaseShipNotifyView/10101/-3" path="/EmailTemplates/Order/OrderShipmentNotify.jsp">
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+		
+		<!-- Account Activation Email -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="UserAccountEmailActivateNotifyView/10101/-3" path="/EmailTemplates/User/AccountActivationNotify.jsp">
+		<set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+		<set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+		</forward>
+
+		<!-- Search Landing Pages. -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchLandingPage1/10101" path="/LandingPages/Page2/LandingPage.jsp"/>
+
+		<!-- Layout association for static pages -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericStaticContentPageLayoutView/10101" path="/StoreInfoArea/StaticContentPageDisplay.jsp"/>
+		
+		<!-- B2B features merge -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RequisitionListDisplayView/10101" path="/UserArea/ServiceSection/RequisitionListSubsection/RequisitionListDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RequisitionListDetailView/10101" path="/UserArea/ServiceSection/RequisitionListSubsection/RequisitionListDetailDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RequisitionListUploadDetailView/10101" path="/UserArea/ServiceSection/RequisitionListSubsection/RequisitionListUploadDetailDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ListOrdersDisplayView/10101" path="/UserArea/ServiceSection/SavedOrderSubsection/ListOrdersDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SavedOrderDetailView/10101" path="/UserArea/ServiceSection/SavedOrderSubsection/SavedOrderDetailDisplay.jsp"/>
+		
+		<!-- B2B Self service -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrganizationAdminCreateUserView/10101" path="/OrganizationManagement/UserManagementSection/AdminCreateUser.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrganizationAdminEditUserView/10101" path="/OrganizationManagement/UserManagementSection/AdminEditUser.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrganizationCreateEditView/10101" path="/OrganizationManagement/OrganizationCreateEdit.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrganizationsAndUsersView/10101" path="/OrganizationManagement/OrganizationsAndUsers.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderApprovalView/10101" path="/OrganizationManagement/ApprovalSection/OrderApprovalDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="BuyerApprovalView/10101" path="/OrganizationManagement/ApprovalSection/BuyerApprovalDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderApprovalDetailView/10101" path="/OrganizationManagement/ApprovalSection/OrderApprovalDetailDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="BuyerApprovalDetailView/10101" path="/OrganizationManagement/ApprovalSection/BuyerApprovalDetailDisplay.jsp"/>
+
+		<!-- CSR -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="FindRegisteredCustomerView/10101" path="/CustomerService/RegisteredCustomers.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderLockStatusView/10101" path="/ShoppingArea/ShopcartSection/ShopCartOnBehalfOfLock.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="CustomerServiceLandingPageView/10101" path="/CustomerService/CustomerServiceLandingPage.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="FindOrderView/10101" path="/OrderServices/FindOrders.jsp"/>
+		
+
+
+		<!-- FEP7 Mobile30 START -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30InterestListsView/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/WishLists.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="WishListDisplayView/10101/-21" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/WishLists.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30InterestListForm/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/WishListForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30InterestListDisplay/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/WishListDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30EmailWishlistDisplay/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/EmailWishlist.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30SendWishListMessage/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/EmailWishListConfirmationDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderItemDisplay/10101" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxOrderItemDisplayView/10101/-21" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoAssoc/10101/-21" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoDsp/10101/-21" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30LogonForm/10101" path="/mobile30/UserArea/AccountSection/LogonSubsection/logon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddForm/10101/-21" path="/mobile30/UserArea/AccountSection/RegistrationSubsection/UserRegistrationAddForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30UserRegistrationUpdate/10101" path="/mobile30/UserArea/AccountSection/RegistrationSubsection/UserRegistrationUpdate.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30MyAccountDisplay/10101" path="/mobile30/UserArea/AccountSection/MyAccountDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxLogonForm/10101/-21" path="/mobile30/UserArea/AccountSection/MyAccountDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30StoreLocatorView/10101" path="/mobile30/StoreLocatorArea/StoreLocator.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxStoreLocatorDisplayView/10101/-21" path="/mobile30/StoreLocatorArea/StoreLocator.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30StoreLocatorSearchView/10101" path="/mobile30/StoreLocatorArea/StoreLocatorSearch.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30StoreLocatorResultView/10101" path="/mobile30/StoreLocatorArea/StoreLocatorResults.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30StoreDetailView/10101" path="/mobile30/StoreLocatorArea/StoreDetails.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30StoreMapView/10101" path="/mobile30/StoreLocatorArea/StoreMap.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30SelectedStoreListView/10101" path="/mobile30/StoreLocatorArea/SelectedStoreList.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30AddToStoreList/10101" path="/mobile30/StoreLocatorArea/AddToStoreList.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30RemoveFromStoreList/10101" path="/mobile30/StoreLocatorArea/RemoveFromStoreList.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30SaveStoreSelection/10101" path="/mobile30/StoreLocatorArea/SaveStoreSelection.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30InStoreAvailabilityDetailsView/10101" path="/mobile30/StoreLocatorArea/InStoreAvailabilityDetails.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderHistory/10101" path="/mobile30/ShoppingArea/OrderSection/OrderHistory.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderDetails/10101" path="/mobile30/ShoppingArea/OrderSection/OrderDetails.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderBillingDetails/10101" path="/mobile30/ShoppingArea/CheckoutSection/OrderShippingBillingDetails.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderShippingOptions/10101" path="/mobile30/ShoppingArea/CheckoutSection/OrderShippingOptions.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderShippingAddressSelection/10101" path="/mobile30/ShoppingArea/CheckoutSection/OrderShippingAddressSelection.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderBillingAddressSelection/10101" path="/mobile30/ShoppingArea/CheckoutSection/OrderBillingAddressSelection.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderPaymentDetails/10101" path="/mobile30/ShoppingArea/CheckoutSection/OrderPaymentDetails.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderShippingBillingSummaryView/10101" path="/mobile30/ShoppingArea/OrderSection/OrderSummaryDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30OrderShippingBillingConfirmationView/10101" path="/mobile30/ShoppingArea/OrderSection/OrderConfirmationDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30CheckoutLogon/10101" path="/mobile30/UserArea/AccountSection/LogonSubsection/CheckoutLogon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30UserRegistrationUpdate/10101" path="/mobile30/UserArea/AccountSection/RegistrationSubsection/UserRegistrationUpdate.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30LanguageCurrencyDisplay/10101" path="/mobile30/UserArea/LanguageCurrencyDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordGuestErrorView/10101/-21" path="/mobile30/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30ResetPasswordDisplay/10101" path="/mobile30/UserArea/AccountSection/PasswordSubsection/PasswordResetDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30MySubscriptionDisplay/10101" path="/mobile30/UserArea/AccountSection/RegistrationSubsection/MySubscriptionDisplayForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30CouponsDisplay/10101" path="/mobile30/UserArea/AccountSection/ServiceSection/CouponWalletSubsection/CouponWalletDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="m30DiscountDetailsDisplay/10101" path="/mobile30/ShoppingArea/DiscountSection/DiscountDetailsDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SiteMapView/10101/-21" path="/mobile30/ShoppingArea/CatalogSection/CategorySubsection/TopCategoriesDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ChangePassword/10101/-21" path="/mobile30/UserArea/AccountSection/PasswordSubsection/PasswordUpdateForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ReLogonFormView/10101/-21" path="/mobile30/UserArea/AccountSection/LogonSubsection/UserTimeoutView.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RememberMeLogonFormView/10101/-21" path="/mobile30/UserArea/AccountSection/LogonSubsection/logon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonForm/10101/-21" path="/mobile30/UserArea/AccountSection/LogonSubsection/logon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchLandingPage1/10101/-21" path="/ShoppingArea/CatalogSection/SearchSubsection/SearchBasedCategoryPage.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderProcessErrorView/10101/-21" path="/GenericError.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RLBadPartNumberErrorView/10101/-21" path="/GenericError.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RLInvalidInputErrorView/10101/-21" path="/GenericError.jsp"/>
+		<!-- Worklight Hybrid (-42) START -->
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="WishListDisplayView/10101/-42" path="/mobile30/UserArea/AccountSection/ServiceSection/InterestItemListSubsection/WishLists.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxOrderItemDisplayView/10101/-42" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoAssoc/10101/-42" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderItemDisplayViewShiptoDsp/10101/-42" path="/mobile30/ShoppingArea/ShopcartSection/OrderItemDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxLogonForm/10101/-42" path="/mobile30/UserArea/AccountSection/MyAccountDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddForm/10101/-42" path="/mobile30/UserArea/AccountSection/RegistrationSubsection/UserRegistrationAddForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="AjaxStoreLocatorDisplayView/10101/-42" path="/mobile30/StoreLocatorArea/StoreLocator.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SiteMapView/10101/-42" path="/mobile30/ShoppingArea/CatalogSection/CategorySubsection/TopCategoriesDisplay.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ChangePassword/10101/-42" path="/mobile30/UserArea/AccountSection/PasswordSubsection/PasswordUpdateForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ResetPasswordGuestErrorView/10101/-42" path="/mobile30/UserArea/AccountSection/PasswordSubsection/PasswordResetForm.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="ReLogonFormView/10101/-42" path="/mobile30/UserArea/AccountSection/LogonSubsection/UserTimeoutView.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RememberMeLogonFormView/10101/-42" path="/mobile30/UserArea/AccountSection/LogonSubsection/logon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonForm/10101/-42" path="/mobile30/UserArea/AccountSection/LogonSubsection/logon.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="SearchLandingPage1/10101/-42" path="/ShoppingArea/CatalogSection/SearchSubsection/SearchBasedCategoryPage.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="OrderProcessErrorView/10101/-42" path="/GenericError.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RLBadPartNumberErrorView/10101/-42" path="/GenericError.jsp"/>
+		<forward className="com.ibm.commerce.struts.ECActionForward" name="RLInvalidInputErrorView/10101/-42" path="/GenericError.jsp"/>
+		<!-- Worklight Hybrid (-42) END -->
+		<!-- FEP7 Mobile30 END -->
+
+</global-forwards>
+<action-mappings type="com.ibm.commerce.struts.ECActionMapping">
+	<action path="/ChangePassword" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1,10101:1"/>
+</action>
+<action path="/AccessControlErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/GenericApplicationError" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/GenericSystemError" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/PreviewExclusionView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ProhibitedCharacterErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AboutUsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CommonHeaderView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ContactUsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ContactUsSendMessageView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CreateStoreView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/FaqView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/LogonView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/LogonFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/ReLogonFormView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/NavigationView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PricesView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/RegistrationView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/RegistrationSuccessView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/ServicesProvidedView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StoreView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/ViewPublicAreaView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/WelcomeView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrgRegistrationAddFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/OrgRegistrationAddSuccessView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/UserRegistrationAddFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/UserRegistrationAddPendingApprovalView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/EmailESpotView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SingleShipmentOrderSummaryView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/CurrentOrderInformationView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/TraditionalAjaxShippingDetailsURL" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxQuickCheckoutAddressForm" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxUnregisteredCheckoutAddressForm" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutEmptySnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutOfflineSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutAmexSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutMastercardSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutVisaSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutLOCSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutCheckSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/QuickCheckoutBankServACHSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrderItemDisplayViewShiptoAssoc" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/OrderItemDisplayViewShiptoDsp" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/ShopCartPageView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/OrderItemPageView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/MSOrderItemPageView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/ShopCartDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxQuickCartDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AddressEditView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrderShippingBillingView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/UnregisteredCheckoutView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/OrderBillingView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxMultipleShipmentOrderItemDetailsView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/BillingAddressDisplayView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/ShippingAddressDisplayView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/MultipleShipmentOrderSummaryView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/OrderShippingBillingConfirmationView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/CompareProductsDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/GetCatalogEntryDetailsByID" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/BillingAddressDisplayView_1" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/BillingAddressDisplayView_2" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/BillingAddressDisplayView_3" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/orderTotalAsJSON" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/HelpContactUsView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/PasswordNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrderReceivedView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrderCancelView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ReleaseShipNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/InterestItemListMessageView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ApproversNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.marketing.commands.CouponAddRemoveControllerCmd" path="/AjaxCouponsAddRemove" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.security.commands.LogonCmd" path="/AjaxLogon" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.orderitems.commands.OrderItemMoveCmd" path="/AjaxOrderItemMove" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderCalculateCmd" path="/AjaxOrderCalculate" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderProfileUpdateCmd" path="/AjaxOrderProfileUpdate" type="com.ibm.commerce.struts.AjaxAction">
+    <set-property property="authenticate" value="10101:0"/>
+    <set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.marketing.commands.PromotionCodeAddRemoveControllerCmd" path="/AjaxPromotionCodeManage" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.interestitems.commands.InterestItemDeleteCmd" path="/AjaxInterestItemDelete" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.messaging.commands.InterestItemListMessageCmd" path="/AjaxInterestItemListMessage" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxCheckoutAddressDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxCheckoutDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/EmptySnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardCOD" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardBillMeLater" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardPayLater" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardAmex" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardMasterCard" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardVisa" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardDiscover" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardLOC" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PayInStoreSnippetView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardCheck" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StandardBankServACH" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxAddressDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SimplePunchout" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PunchoutPaymentRedirectView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/PunchoutPaymentCallBackView" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.payment.punchout.commands.PunchoutPaymentCallBackCmd" path="/PunchoutPaymentCallBack" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.payment.punchout.commands.ExpiredPunchoutPaymentsProcessCmd" path="/ExpiredPunchout" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxShopcartAddressFormView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxAddressSelectView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxLogonForm" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxPromotionCodeDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PromotionFreeGiftChoicesView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CategoryOnlyResultsDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/SubCatListDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.edp.commands.PIAddCmd" path="/PIAdd" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.edp.commands.PIEditCmd" path="/PIEdit" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.edp.commands.PIRemoveCmd" path="/PIRemove" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.order.commands.OrderCreateCmd" path="/OrderCreate" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CouponsErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/CrossSiteRequestForgeryErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/UnsupportedBrowserErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/UserRegistrationErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AuthenticationPolicyErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/CategoryDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/LogonForm" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/LogoffView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/LogonErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/ResetPasswordForm" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ResetPasswordErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/ResetPasswordGuestErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/ResetPasswordRegisterErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/SendPasswordNotificationErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/DoPaymentErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ProductDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/CatalogAttachmentView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/StoreCatalogDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/InvalidInputErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/DiscountDetailsDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/UserPasswordUpdate" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/PasswordReEnterErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PasswordReEnterFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/ProductDisplayErrorView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/BillingAddressView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+</action>
+<action path="/BillingDetailsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/RememberMeLogonFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.SetPendingOrderCmd" path="/SetPendingOrder" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.marketingcenter.events.runtime.ClickMonitorCommand" path="/ClickInfo" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.security.commands.LogonCmd" path="/Logon" type="com.ibm.commerce.struts.LTPATokenGenerationEnabledBaseAction">
+<set-property property="https" value="10101:1"/>
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.orderitems.commands.OrderItemAddCmd" path="/OrderItemAdd" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.orderitems.commands.OrderItemDeleteCmd" path="/OrderItemDelete" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderCalculateCmd" path="/OrderCalculate" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderDisplayCmd" path="/OrderDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.orderitems.commands.OrderItemDisplayCmd" path="/OrderItemDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.catalog.commands.CategoryDisplayCmd" path="/CategoryDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.catalog.commands.ProductDisplayCmd" path="/ProductDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.catalog.commands.StoreCatalogDisplayCmd" path="/StoreCatalogDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.catalog.commands.TopCategoriesDisplayCmd" path="/TopCategoriesDisplay" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.security.commands.LogoffCmd" path="/Logoff" type="com.ibm.commerce.struts.LTPATokenGenerationEnabledBaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderCopyCmd" path="/AjaxOrderCopy" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/OrderSummaryView" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="order.addOrderItem" path="/OrderChangeServiceItemAdd" type="com.ibm.commerce.struts.ComponentServiceAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action parameter="order.deleteOrderItem" path="/AjaxOrderChangeServiceItemDelete" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action parameter="order.deleteOrderItem" path="/OrderChangeServiceItemDelete" type="com.ibm.commerce.struts.ComponentServiceAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action parameter="order.updateOrderItem" path="/AjaxOrderChangeServiceItemUpdate" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action parameter="order.updateOrderItem" path="/OrderChangeServiceItemUpdate" type="com.ibm.commerce.struts.ComponentServiceAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/ContentSpotView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/DefaultSitemapView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SEOSiteMapView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/GetCatalogEntryInventoryData" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxStoreLocatorDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxProvinceSelectionDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxCitySelectionDisplayView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxStoreLocatorResultsView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxSelectedStoreListView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/CheckoutStoreSelectionView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CheckoutPayInStoreView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/DOMOrderShippingBillingView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/DOMInventoryStatusView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="credentialsAccepted" value="10101:P"/>
+</action>
+<action path="/AjaxSingleShipmentShipChargeView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:1"/>
+</action>
+<action path="/AjaxMultipleShipmentShipChargeView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:1"/>
+</action>
+<action path="/AjaxBrowsingHistoryEspotDisplay" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxBrowsingHistoryView" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/NonAjaxBrowsingHistoryView" type="com.ibm.commerce.struts.BaseAction">	
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxBrowsingHistoryDisplay" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AjaxCategorySubscriptionDisplay" type="com.ibm.commerce.struts.BaseAction">
+</action>
+<action parameter="order.addPaymentInstruction" path="/AjaxOrderChangeServicePIAdd" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="order.addPaymentInstruction" path="/OrderChangeServicePIAdd" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="order.updatePaymentInstruction" path="/AjaxOrderChangeServicePIUpdate" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="order.updatePaymentInstruction" path="/OrderChangeServicePIUpdate" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="orderlist.addPaymentInstruction" path="/AjaxRESTOrderPIAdd" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="orderlist.addPaymentInstruction" path="/RESTOrderPIAdd" type="com.ibm.commerce.struts.RESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="orderlist.updatePaymentInstruction" path="/AjaxRESTOrderPIUpdate" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="orderlist.scheduleOrder" path="/AjaxRESTScheduleOrder" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="orderlist.submitOrder" path="/AjaxRESTOrderSubmit" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="subscription.submitRecurringOrSubscription" path="/AjaxRESTSubmitRecurringOrSubscription" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="member.addAddressForPerson" path="/AjaxPersonChangeServiceAddressAdd" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.addAddressForPerson" path="/PersonChangeServiceAddressAdd" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updateAddressForPerson" path="/AjaxPersonChangeServiceAddressUpdate" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updateAddressForPerson" path="/PersonChangeServiceAddressUpdate" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updateCheckoutProfile" path="/AjaxPersonChangeServiceCheckoutProfileUpdate" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updateCheckoutProfile" path="/PersonChangeServiceCheckoutProfileUpdate" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updatePerson" path="/AjaxPersonChangeServicePersonUpdate" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.updatePerson" path="/PersonChangeServicePersonUpdate" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.resetPassword" path="/AjaxPersonChangeServicePasswordReset" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.resetPassword" path="/PersonChangeServicePasswordReset" type="com.ibm.commerce.struts.ComponentServiceAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="member.registerPerson" path="/AjaxPersonProcessServicePersonRegister" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="member.registerPerson" path="/PersonProcessServicePersonRegister" type="com.ibm.commerce.struts.LTPATokenGenerationEnabledComponentServiceAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.usermanagement.commands.UserRegistrationAddCmd" path="/UserRegistrationAdd" type="com.ibm.commerce.struts.LTPATokenGenerationEnabledBaseAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="personHandler.updatePerson" path="/RESTUserRegistrationUpdate" type="com.ibm.commerce.struts.RESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="personHandler.updatePersonContact" path="/AjaxRESTPersonChangeServiceAddressAdd" type="com.ibm.commerce.struts.AjaxRESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="personHandler.updateCheckoutProfile" path="/RESTPersonChangeServiceCheckoutProfileUpdate" type="com.ibm.commerce.struts.RESTAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="https" value="10101:1"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.usermanagement.commands.BuyerRegistrationAddCmd" path="/BuyerRegistrationAdd" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="authenticate" value="10101:0"/>
+	<set-property property="csrfProtected" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.order.commands.OrderCreateQuoteCmd" path="/AjaxSubmitQuote" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="https" value="10101:1"/>
+	<set-property property="authenticate" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.interestitems.commands.InterestItemAddCmd" path="/AjaxInterestItemAdd" type="com.ibm.commerce.struts.AjaxAction">
+	<set-property property="authenticate" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action parameter="com.ibm.commerce.interestitems.commands.InterestItemAddCmd" path="/InterestItemAdd" type="com.ibm.commerce.struts.BaseAction">
+	<set-property property="authenticate" value="10101:1"/>
+	<set-property property="https" value="10101:1"/>
+</action>
+<action path="/AnalyticsShopcartView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AnalyticsPageView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AnalyticsElementView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AnalyticsProductView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AnalyticsRegistrationView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StaticContentSitemap" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ConfigureView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/LaunchConfiguratorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/LaunchConfiguratorRedirectView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AllWishListsInProductDetailView" type="com.ibm.commerce.struts.BaseAction">
+			    <set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/RemoteWidgetToolView" type="com.ibm.commerce.struts.BaseAction"/>
+<action parameter="com.ibm.commerce.catalog.commands.SearchDisplayCmd" path="/SearchDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="0:P"/>
+		</action>
+<action path="/StaticContent" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AutoSuggestView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CachedSuggestionsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SubscriptionMerchantNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SubscriptionUserNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AjaxIntelligentOfferDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AnalyticsConversionEventView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ResendActivationForm" type="com.ibm.commerce.struts.BaseAction">
+				<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/ResendActivationGuestView" type="com.ibm.commerce.struts.BaseAction">
+				<set-property property="https" value="10101:1"/>
+				<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/UserAccountEmailActivateNotifyView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SBSOrderItemPageView" type="com.ibm.commerce.struts.BaseAction">
+		    <set-property property="https" value="10101:1"/>
+		</action>
+<action path="/SBSMSOrderItemPageView" type="com.ibm.commerce.struts.BaseAction">
+		    <set-property property="https" value="10101:1"/>
+		</action>
+<action path="/UserRegistrationForm" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/AddressBookForm" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/AjaxAddressBookForm" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/RequisitionListsView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/AjaxAccountAddressForm" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AddressDeleteErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ProfileFormView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/AddressErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/WishListDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/AjaxAccountWishListDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/WishListResultDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/MultipleWishListSelectionView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/SharedWishListView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/InterestItemDisplayView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/TrackOrderStatus" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrderDetail" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/GuestOrderDetail" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/OrderStatusTableDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/RecurringOrderTableDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/SubscriptionTableDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/RecurringOrderChildOrdersTableDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/SubscriptionChildOrdersTableDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/CouponWallet" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/CouponWalletTableView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/TopCategoriesDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/SearchDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/InvalidateCache" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SearchAutoSuggestJsonView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/SearchComponentAutoSuggestView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/SearchComponentCachedSuggestionsView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/GetCatalogEntryDetailsByIDView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/MiniShopCartDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/DepartmentDropdownView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/DepartmentDropdownViewRWD" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/TechnicalSpecificationView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/CompareProductsDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/DiscountDetailsView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/ContentAreaESpotView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/CategoriesESpotView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/AdvancedSearchDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/SiteMapView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/SearchLandingPage1" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/GenericStaticContentPageLayoutView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/Ping" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/RequisitionListDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/> 
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/RequisitionListDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/> 
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/RequisitionListUploadDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/> 
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/ListOrdersDisplayView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/SavedOrderDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrganizationAdminCreateUserView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrganizationAdminEditUserView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrganizationsAndUsersView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrganizationCreateEditView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrderApprovalView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/BuyerApprovalView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrderApprovalDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/BuyerApprovalDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.security.commands.OnBehalfOfRouterCmd" path="/OnBehalfOfRouter" type="com.ibm.commerce.struts.BaseAction">
+            <set-property property="https" value="10101:1"/>
+            <set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.security.commands.TerminateOnBehalfOfSessionCmd" path="/TerminateOnBehalfOfSession" type="com.ibm.commerce.struts.BaseAction">
+            <set-property property="https" value="10101:1"/>
+            <set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.order.external.commands.ProcessExternalOrderCmd" path="/AJAXProcessExternalOrder" type="com.ibm.commerce.struts.AjaxAction">
+            <set-property property="https" value="0:1"/>
+            <set-property property="authenticate" value="0:0"/>
+		</action>
+<action parameter="com.ibm.commerce.order.external.commands.ProcessExternalOrderCmd" path="/ProcessExternalOrder" type="com.ibm.commerce.struts.BaseAction">
+            <set-property property="https" value="0:1"/>
+            <set-property property="authenticate" value="0:0"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListCreateCmd" path="/AjaxRequisitionListCreate" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListCreateCmd" path="/RequisitionListCreate" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListItemUpdateCmd" path="/AjaxRequisitionListUpdateItem" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListItemUpdateCmd" path="/RequisitionListUpdateItem" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListConfigurationAddCmd" path="/AjaxRequisitionListItemUpdate" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListConfigurationAddCmd" path="/RequisitionListItemUpdate" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListItemUpdateCmd" path="/AjaxRequisitionListItemDelete" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListItemUpdateCmd" path="/RequisitionListItemDelete" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListUpdateCmd" path="/AjaxRequisitionListUpdate" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListUpdateCmd" path="/RequisitionListUpdate" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListDeleteCmd" path="/AjaxRequisitionListDelete" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListDeleteCmd" path="/RequisitionListDelete" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListCopyCmd" path="/AjaxRequisitionListCopy" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListCopyCmd" path="/RequisitionListCopy" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListSubmitCmd" path="/RequisitionListSubmit" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.RequisitionListSubmitCmd" path="/AjaxRequisitionListSubmit" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.requisitionlist.commands.CreateRequisitionListUploadCmd" path="/CreateRequisitionListUpload" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.order.commands.OrderCreateCmd" path="/AjaxOrderCreate" type="com.ibm.commerce.struts.AjaxAction"/>
+<action parameter="com.ibm.commerce.order.commands.SetPendingOrderCmd" path="/AjaxSetPendingOrder" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action parameter="com.ibm.commerce.order.commands.ShipInfoUpdateCmd" path="/AjaxShipInfoUpdate" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.usermanagement.commands.AddressDeleteCmd" path="/AjaxPersonChangeServiceAddressDelete" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/FindRegisteredCustomerView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/OrderLockStatusView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/CustomerServiceLandingPageView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action path="/FindOrderView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="authenticate" value="10101:1"/>
+		</action>
+<action parameter="orderlist.lockCart" path="/AjaxRESTOrderLock" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			   <set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="orderlist.unlockCart" path="/AjaxRESTOrderUnlock" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="orderlist.takeOverLockOrder" path="/AjaxRESTTakeOverlock" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="personHandler.UserRegistrationAdminUpdateCmd" path="/AjaxRESTUserRegistrationAdminUpdate" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+		    <set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="com.ibm.commerce.usermanagement.commands.RunAsUserSetInSessionCmd" path="/AjaxRunAsUserSetInSession" type="com.ibm.commerce.struts.AjaxAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+			<set-property property="authenticate" value="10101:0"/>
+		</action>
+<action parameter="personHandler.MemberPasswordResetByAdmin" path="/AjaxRESTMemberPasswordResetByAdmin" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="guestIdentityHandler.logIn" path="/AjaxRESTCreateGuestUser" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="personHandler.MemberPasswordResetByAdminOnBehalf" path="/AjaxRESTMemberPasswordResetByAdminOnBehalf" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="personHandler.UserRegistrationAdminAddCmd" path="/AjaxRESTUserRegistrationAdminAdd" type="com.ibm.commerce.struts.AjaxRESTAction">
+			<set-property property="authenticate" value="10101:0"/>
+			<set-property property="https" value="10101:1"/>
+			<set-property property="csrfProtected" value="10101:1"/>
+		</action>
+<action parameter="order.addOrderItem" path="/AjaxOrderChangeServiceItemAdd" type="com.ibm.commerce.struts.AjaxComponentServiceAction">
+		<set-property property="authenticate" value="10101:0"/>
+		<set-property property="credentialsAccepted" value="10101:P"/>
+		<set-property property="https" value="10101:1"/>
+	</action>
+<action path="/QuickOrderView" type="com.ibm.commerce.struts.BaseAction">
+		<set-property property="credentialsAccepted" value="10101:P"/>
+	</action>
+<action path="/AjaxOrderItemDisplayView" type="com.ibm.commerce.struts.BaseAction">
+		<set-property property="https" value="10101:1"/>
+		<set-property property="credentialsAccepted" value="10101:P"/>
+	</action>
+<action path="/m30InterestListsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30InterestListForm" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30InterestListDisplay" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30EmailWishlistDisplay" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30SendWishListMessage" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30OrderItemDisplay" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/m30LogonForm" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30UserRegistrationUpdate" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30MyAccountDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30StoreLocatorView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30StoreLocatorSearchView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30StoreLocatorResultView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30StoreDetailView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30StoreMapView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30SelectedStoreListView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30AddToStoreList" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30RemoveFromStoreList" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30SaveStoreSelection" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30InStoreAvailabilityDetailsView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30OrderHistory" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderDetails" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderBillingDetails" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderShippingOptions" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderShippingAddressSelection" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderBillingAddressSelection" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderPaymentDetails" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30OrderShippingBillingConfirmationView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30OrderShippingBillingSummaryView" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30CheckoutLogon" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30LanguageCurrencyDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="credentialsAccepted" value="10101:P"/>
+		</action>
+<action path="/m30ResetPasswordDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30MySubscriptionDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30CouponsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+<action path="/m30DiscountDetailsDisplay" type="com.ibm.commerce.struts.BaseAction">
+			<set-property property="https" value="10101:1"/>
+		</action>
+</action-mappings>
+
+</struts-config>

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2014, 2015 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+<_config:rest-action-config xmlns:_config="http://www.ibm.com/xmlns/prod/commerce/foundation/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/xmlns/prod/commerce/foundation/config ../../xsd/rest-action-config.xsd ">
+	<resource path="{serverHost}/wcs/resources/store/{storeId}/cart" name="orderlist">
+
+		<serverParam name="serverHost">$WCParam.serverHost</serverParam>
+		<serverParam name="storeId">$WCParam.storeId</serverParam>
+
+		<method name="calculateOrder" httpMethod="POST" path="calculate">
+		</method>
+
+		<method name="cancelOrder" httpMethod="DELETE" path="{orderId}/cancel_order?forcedCancel={forcedCancel}">
+			<var name="orderId">$WCParam.orderId</var>
+			<var name="forcedCancel">$WCParam.forcedCancel</var>
+			<template>
+				<![CDATA[{
+					"description" : "$name"
+				}]]>
+			</template>
+		</method>
+		
+		<method name="csrCancelOrderOnbehalf" httpMethod="DELETE" path="{orderId}/csrcancel_order_onbehalf?forcedCancel={forcedCancel}">
+			<var name="orderId">$WCParam.orderId</var>
+			<var name="forcedCancel">$WCParam.forcedCancel</var>
+			<template>
+				<![CDATA[{
+					"description" : "$name"
+				}]]>
+			</template>
+		</method>
+		
+
+		<method name="copyOrder" httpMethod="POST" path="copy_order">
+		</method>
+
+		<method name="moveOrderItem" httpMethod="PUT" path="move_order_item">
+		</method>
+
+		<method name="createOrder" httpMethod="POST" path="create_order?description={description}">
+			<var name="description">$WCParam.description</var>
+			<template>
+				<![CDATA[{
+					"description" : "$name"
+				}]]>
+			</template>
+		</method>
+
+		<method name="prepareOrder" httpMethod="PUT" path="@self/precheckout">
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId",
+					"orderId" : "$orderId",
+					"inventoryReservation" : "$inventoryReservation",
+					"authToken" : "$authToken"
+				}]]>
+			</template>
+		</method>
+
+		<method name="scheduleOrder" httpMethod="POST" path="schedule_order">
+			<template>
+				<![CDATA[{
+					"orderId" : "$orderId",
+					"outOrderName" : "$outOrderName",
+					"notifyShopper" : "$notifyShopper",
+					"purchaseorder_id" : "$purchaseorder_id"
+				}]]>
+			</template>
+		</method>
+
+		<method name="setPendingOrder" httpMethod="POST" path="{orderId}/set_pending_order?">
+			<var name="orderId">$WCParam.orderId</var>
+			<template>
+				<![CDATA[{
+					"description" : "$name"
+				}]]>
+			</template>
+		</method>
+
+		<method name="submitOrder" httpMethod="POST" path="@self/checkout">
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId",
+					"orderId" : "$orderId",
+					"notifyMerchant" : "$notifyMerchant",
+					"notifyShopper" : "$notifyShopper",
+					"notifyOrderSubmitted" : "$notifyOrderSubmitted",
+					"purchaseorder_id" : "$purchaseorder_id",
+					"notify_EMailSender_recipient" : "$notify_EMailSender_recipient",
+					"SMS" : "$SMS",
+					"inventoryValidation" : "$inventoryValidation"
+				}]]>
+			</template>
+		</method>
+
+		<method name="submitRecurringOrder" httpMethod="POST" path="{orderId}/submit_Recurring_Order">
+			<var name="orderId">$WCParam.orderId</var>
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"startDate" : "$startDate",
+					"endDate" : "$endDate",
+					"fulfillmentInterval" : "$fulfillmentInterval",
+					"fulfillmentIntervalUOM" : "$fulfillmentIntervalUOM",
+					"purchaseorder_id" : "$purchaseorder_id",
+					"payMethodId" : "$payMethodId",
+					"paymentInterval" : "$paymentInterval",
+					"paymentIntervalUOM" : "$paymentIntervalUOM",
+					"paymentTCId" : "$paymentTCId",
+					"piAmount" : "$piAmount",
+					"billing_address_id" : "$billing_address_id",
+					"numberOfFulfillment" : "$numberOfFulfillment",
+					"timePeriodUOM" : "$timePeriodUOM",
+					"timePeriod" : "$timePeriod"
+				}]]>
+			</template>
+		</method>
+
+		<method name="addOrderItem" httpMethod="POST" path="">
+			<template>
+				<![CDATA[{
+					"authToken" : "$authToken",
+					"orderId" : "$orderId",
+					"orderItem" : [
+						{
+							"comment" : "$comment",
+							"productId" : "$catEntryId",
+							"partNumber" : "$partNumber",
+							"quantity" : "$quantity",
+							"UOM" : "$UOM",
+							"contractId" : "$contractId",
+							"calculationUsage" : "$calculationUsage",
+							"fulfillmentCenterId" : "$fulfillmentCenterId",
+							"fulfillmentCenterName" : "$fulfillmentCenterName"
+						}
+					],
+					"x_calculationUsage" : "$calculationUsage",
+					"x_calculateOrder" : "$calculateOrder",
+					"x_inventoryValidation" : "$inventoryValidation",
+					"x_remerge" : "$remerge",
+					"x_merge" : "$merge",
+					"x_check" : "$check",
+					"x_allocate" : "$allocate",
+					"x_backorder" : "$backorder",
+					"x_reverse" : "$reverse"
+				}]]>
+			</template>
+		</method>
+
+		<method name="deleteOrderItem" httpMethod="PUT" path="@self/delete_order_item">
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId",
+					"orderId" : "$orderId",
+					"orderItemId" : "$orderItemId",
+					"catEntryId" : "$catEntryId",
+					"outOrderName" : "$outOrderName",
+					"calculateOrder" : "$calculateOrder",
+					"calculationUsage" : "$calculationUsage",
+					"check" : "$check"
+				}]]>
+			</template>
+		</method>
+
+		<method name="updateOrderItem" httpMethod="PUT" path="@self/update_order_item">
+			<template>
+				<![CDATA[{
+					"orderId" : "$orderId",
+					"orderItem" : [
+						{
+							"productId" : "$catEntryId",
+							"quantity" : "$quantity",
+							"orderItemId" : "$orderItemId",
+							"contractId" : "$contractId",
+							"partNumber" : "$partNumber",
+							"xitem_field1" : "$xitem_field1",
+							"xitem_field2" : "$xitem_field2"
+						}
+					],
+					"x_calculationUsage" : "$calculationUsage",
+					"x_calculateOrder" : "$calculateOrder",
+					"x_inventoryValidation" : "$inventoryValidation",
+					"x_remerge" : "$remerge",
+					"x_merge" : "$merge",
+					"x_check" : "$check",
+					"x_allocate" : "$allocate",
+					"x_backorder" : "$backorder",
+					"x_reverse" : "$reverse"
+				}]]>
+			</template>
+		</method>
+
+		<method name="addConfigurationToCart" httpMethod="POST" path="@self/add_configuration_to_cart">
+		</method>
+
+		<method name="addPreConfigurationToCart" httpMethod="POST" path="@self/add_preconfiguration_to_cart">
+		</method>
+
+		<method name="updateConfigurationInCart" httpMethod="PUT" path="@self/update_configuration_in_cart">
+		</method>
+
+		<method name="addPaymentInstruction" httpMethod="POST" path="@self/payment_instruction">
+			<template>
+				<![CDATA[{
+					"orderId" : "$orderId",
+					"piId" : "$piId",
+					"billing_address_id" : "$billing_address_id",
+					"piAmount" : "$piAmount",
+					"payMethodId" : "$payMethodId",
+					"paymentTermConditionId" : "$paymentTCId",
+					"cc_brand" : "$cc_brand",
+					"cc_cvc" : "$cc_cvc",
+					"account" : "$account",
+					"expire_month" : "$expire_month",
+					"expire_year" : "$expire_year",
+					"check_routing_number" : "$check_routing_number",
+					"checkingAccountNumber" : "$checkingAccountNumber",
+					"checkRoutingNumber" : "$checkRoutingNumber",
+					"valueFromProfileOrder" : "$valueFromProfileOrder",
+					"valueFromPaymentTC" : "$valueFromPaymentTC",
+					"requesttype" : "$requesttype",
+					"authToken" : "$authToken",
+					"x_unbound" : "$unbound"
+				}]]>
+			</template>
+		</method>
+
+		<method name="deletePaymentInstruction" httpMethod="DELETE" path="@self/payment_instruction/{paymentInstruction_id}">
+			<var name="paymentInstruction_id">$WCParam.piId</var>
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"langId" : "$langId",
+					"authToken" : "$authToken",
+					"catalogId" : "$catalogId",
+					"orderId" : "$orderId",
+					"piId" : "$piId"
+				}]]>
+			</template>
+		</method>
+
+		<method name="updatePaymentInstruction" httpMethod="PUT" path="@self/payment_instruction">
+			<template>
+				<![CDATA[{
+					"piId" : "$piId",
+					"piAmount" : "$piAmount",
+					"payMethodId" : "$payMethodId",
+					"billing_address_id" : "",
+					"authToken" : "$authToken",
+					"orderId" : "$orderId",
+					"paymentDataEditable" : "$paymentDataEditable",
+					"requesttype" : "$requesttype",
+					"storeId" : "$storeId",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId"
+				}]]>
+			</template>
+		</method>
+
+		<method name="ajaxUpdateOrderShippingInfo" httpMethod="PUT" path="@self/shipping_info">
+			<template>
+				<![CDATA[{
+					"x_calculationUsage" : "$calculationUsage",
+					"orderId" : "$orderId",
+					"shipModeId" : "$shipModeId",
+					"addressId" : "$addressId",
+					"requestedShipDate" : "$requestedShipDate",
+					"shipAsComplete" : "$ShipAsComplete",
+					"orderItem" : [
+						{
+							"orderItemId" : "$orderItemId",
+							"physicalStoreId" : "$physicalStoreId",
+							"shipModeId" : "$shipModeId",
+							"addressId" : "$addressId",
+							"isExpedited" : "$isExpedited",
+							"requestedShipDate" : "$requestedShipDate",
+							"shipInstructions" : "$shipInstructions",
+							"shippingChargePolicyID" : "$shipChargTypeId",
+							"shipToRegistrant" : "$shipToRegistrant",
+							"tieShipCode" : "$tieShipCode"
+						}
+					],
+					"x_calculationUsage" : "$calculationUsage",
+					"x_calculateOrder" : "$calculateOrder"
+				}]]>
+			</template>
+		</method>
+
+		<method name="updateOrderShippingInfo" httpMethod="PUT" path="@self/shipping_info">
+			<template>
+				<![CDATA[{
+					"x_calculationUsage" : "$calculationUsage",
+					"orderId" : "$orderId",
+					"shipModeId" : "$shipModeId",
+					"addressId" : "$addressId",
+					"requestedShipDate" : "$requestedShipDate",
+					"shipAsComplete" : "$ShipAsComplete",
+					"orderItem" : [
+						{
+							"orderItemId" : "$orderItemId",
+							"physicalStoreId" : "$physicalStoreId",
+							"shipModeId" : "$shipModeId",
+							"addressId" : "$addressId",
+							"isExpedited" : "$isExpedited",
+							"requestedShipDate" : "$requestedShipDate",
+							"shipInstructions" : "$shipInstructions",
+							"shippingChargePolicyID" : "$shipChargTypeId",
+							"shipToRegistrant" : "$shipToRegistrant",
+							"tieShipCode" : "$tieShipCode"
+						}
+					]
+				}]]>
+			</template>
+		</method>
+
+		<method name="updateRewardOption" httpMethod="PUT" path="@self/update_reward_option">
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"orderId" : "$orderId",
+					"calculationUsage" : "$calculationUsage",
+					"rewardOptionId" : "$rewardOptionId",
+					"catEntryId" : "$catEntryId",
+					"quantity" : "$quantity"
+				}]]>
+			</template>
+		</method>
+		
+		<method name="lockOrderOnBehalf" httpMethod="POST" path="{cartId}/lockOnBehalf">
+			<var name="cartId">$WCParam.orderId</var>
+		</method>
+
+		<method name="takeOverLockOrderOnBehalf" httpMethod="POST" path="{cartId}/lockOnBehalf">
+			<var name="cartId">$WCParam.orderId</var>
+			<template>
+				<![CDATA[{
+					"takeOverLock" : "$takeOverLock"
+				}]]>
+			</template>
+		</method>
+		
+		<method name="unlockOrderOnBehalf" httpMethod="POST" path="{cartId}/unlockOnBehalf">
+			<var name="cartId">$WCParam.orderId</var>
+		</method>
+		
+		<method name="lockCart" httpMethod="POST" path="{cartId}/lock">
+			<var name="cartId">$WCParam.orderId</var>
+		</method>
+
+		<method name="unlockCart" httpMethod="POST" path="{cartId}/unlock">
+			<var name="cartId">$WCParam.orderId</var>
+		</method>
+		
+		<method name="takeOverLockOrder" httpMethod="POST" path="{cartId}/lock">
+			<var name="cartId">$WCParam.orderId</var>
+			<template>
+				<![CDATA[{
+					"takeOverLock" : "$takeOverLock"
+				}]]>
+			</template>
+		</method>
+		<method name="displayOrderItem" httpMethod="POST" path="@self/renew_order_items">
+		</method>
+	</resource>
+	<resource path="{serverHost}/wcs/resources/store/{storeId}/order" name="order">
+		<serverParam name="serverHost">$WCParam.serverHost</serverParam>
+		<serverParam name="storeId">$WCParam.storeId</serverParam>
+		<method name="processExternalOrder" httpMethod="POST" path="process_oms_order/{extOrderId}">
+			<var name="extOrderId">$WCParam.extOrderId</var>
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"orderId" : "$orderId",
+					"actionCode" : "$actionCode",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId"
+				}]]>
+			</template>
+		</method>
+		<method name="copyExternalOrder" httpMethod="POST" path="copy_oms_order/{extOrderId}">
+			<var name="extOrderId">$WCParam.OrderHeaderKey</var>
+			<template>
+				<![CDATA[{
+					"storeId" : "$storeId",
+					"orderNo" : "$orderId",
+					"actionCode" : "$actionCode",
+					"catalogId" : "$catalogId",
+					"langId" : "$langId",
+					"toOrderId" : "$toOrderId",
+					"outOrderItemName" : "$outOrderItemName",
+					"outOrderName" : "$outOrderName",
+					"prepare" : "$prepare",
+					"sensitiveInfoCopy" : "$sensitiveInfoCopy",
+					"copyOrderPromotionCode" : "$copyOrderPromotionCode",
+					"copyOrderUniquePromotionCode" : "$copyOrderUniquePromotionCode",
+					"copyAutoAddedOrderItems" : "$copyAutoAddedOrderItems"
+				}]]>
+			</template>
+		</method>
+	</resource>
+</_config:rest-action-config>

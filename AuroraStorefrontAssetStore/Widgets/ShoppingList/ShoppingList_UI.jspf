@@ -11,6 +11,7 @@
   IBM Corp.
  =================================================================
 --%>
+<%-- 
 <script>
 	shoppingListJS<c:out value="${param.parentPage}"/> = new ShoppingListJS(${storeParams}, ${catEntryParams}, {${shoppingListNames}}, "shoppingListJS<c:out value="${param.parentPage}"/>");
 	dojo.topic.subscribe("DefiningAttributes_Resolved", function(catEntryId, productId) {
@@ -29,6 +30,7 @@
 		eval("shoppingListJS<c:out value="${param.parentPage}"/>.deleteItemFromCart();");
 	});
 </script>
+--%>
 <%-- Use this section to evaluate the script if this component is added to a refresh area where script will not run directly --%>
 <div id="shoppingListScript_<c:out value="${param.parentPage}"/>" style="display:none;">
 	if(typeof(shoppingListJS<c:out value="${param.parentPage}"/>) == "undefined" || shoppingListJS<c:out value="${param.parentPage}"/> == null || !shoppingListJS<c:out value="${param.parentPage}"/>) {

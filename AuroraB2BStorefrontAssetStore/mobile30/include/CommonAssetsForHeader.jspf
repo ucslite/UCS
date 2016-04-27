@@ -1,0 +1,34 @@
+<%--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2013, 2014 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+--%>
+
+<!-- BEGIN CommonAssetsForHeader.jspf -->
+
+<!--Main Stylesheet for browser -->
+<link rel="stylesheet" href="${jspStoreImgDir}${env_vfileStylesheet}" type="text/css" media="screen"/>
+
+<!-- Include script files -->
+<%@ include file="../../Common/CommonJSToInclude.jspf" %>
+<script type="text/javascript" src="${jsAssetsDir}javascript/CommonContextsDeclarations.js"></script>
+<script type="text/javascript" src="${jsAssetsDir}javascript/CommonControllersDeclaration.js"></script>
+<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/ShoppingList/ShoppingList.js"></script>
+<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/ShoppingList/ShoppingListServicesDeclaration.js"></script>
+<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/QuickInfo/QuickInfo.js"></script>
+<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/collapsible.js"></script>
+<script type="text/javascript">
+	dojo.addOnLoad(function() { 
+		shoppingActionsServicesDeclarationJS.setCommonParameters('<c:out value="${langId}" />','<c:out value="${storeId}" />','<c:out value="${catalogId}" />');
+		});
+</script>
+
+<!-- END CommonAssetsForHeader.jspf -->

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<global-forwards>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ChangePassword/10001" path="/ChangePasswordForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AccessControlErrorView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericApplicationError/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="GenericSystemError/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PreviewExclusionView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CookieErrorView/10001" path="/GenericError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="InactiveActivityTokenErrorView/10001" path="/UserSessionTimeout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ProhibitedCharacterErrorView/10001" path="/ProhibitedCharacterError.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="AboutUsView/10001" path="/AboutUs.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CommonHeaderView/10001" path="/include/CachedCommonHeader.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ContactUsView/10001" path="/ContactUs.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ContactUsSendMessageView/10001" path="/ContactUsSendMessage.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="CreateStoreView/10001" path="/CreateStore.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="FaqView/10001" path="/Faq.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonView/10001" path="/Logon.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="LogonFormView/10001" path="/LogonForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ReLogonFormView/10001" path="/UserSessionTimeout.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="NavigationView/10001" path="/include/CachedNavigation.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="PricesView/10001" path="/Prices.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RegistrationView/10001" path="/Registration.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="RegistrationSuccessView/10001" path="/RegistrationSuccess.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ServicesProvidedView/10001" path="/ServicesProvided.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="StoreView/10001" path="/index.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="ViewPublicAreaView/10001" path="/ViewPublicArea.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="WelcomeView/10001" path="/Welcome.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrgRegistrationAddFormView/10001" path="/OrgRegistrationAddForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="OrgRegistrationAddSuccessView/10001" path="/OrgRegistrationAddSuccess.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddFormView/10001" path="/UserRegistrationAddForm.jsp"/>
+<forward className="com.ibm.commerce.struts.ECActionForward" name="UserRegistrationAddPendingApprovalView/10001" path="/UserRegistrationAddSuccess.jsp"/>
+
+<forward className="com.ibm.commerce.struts.ECActionForward" name="EmailESpotView/10001/-3" path="/include/eMarketingSpotDisplay.jsp">
+    <set-property property="interfaceName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommand"/>
+    <set-property property="implClassName" value="com.ibm.commerce.messaging.viewcommands.MessagingViewCommandImpl"/>
+</forward>
+
+</global-forwards>
+<action-mappings type="com.ibm.commerce.struts.ECActionMapping">
+	<action path="/ChangePassword" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/AccessControlErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/GenericApplicationError" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/GenericSystemError" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PreviewExclusionView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ProhibitedCharacterErrorView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/AboutUsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CommonHeaderView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ContactUsView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ContactUsSendMessageView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/CreateStoreView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/FaqView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/LogonView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/LogonFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/ReLogonFormView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/NavigationView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/PricesView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/RegistrationView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/RegistrationSuccessView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/ServicesProvidedView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/StoreView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/ViewPublicAreaView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/WelcomeView" type="com.ibm.commerce.struts.BaseAction"/>
+<action path="/OrgRegistrationAddFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/OrgRegistrationAddSuccessView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/UserRegistrationAddFormView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/UserRegistrationAddPendingApprovalView" type="com.ibm.commerce.struts.BaseAction">
+<set-property property="https" value="10001:1"/>
+</action>
+<action path="/EmailESpotView" type="com.ibm.commerce.struts.BaseAction"/>
+</action-mappings>
+
+</struts-config>

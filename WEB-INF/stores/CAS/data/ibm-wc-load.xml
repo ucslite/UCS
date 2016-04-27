@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data-deploy SYSTEM "ibm-wc-load.dtd">
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2013 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<data-deploy base-dir="." default-target="all">
+
+  <asset id="master" location="store-cas-data.xml"/>
+  <asset id="foreignKeys" location="ForeignKeys.dtd" type="dtd"/>
+  <asset id="." location=""/>
+
+  <deploy-task-cmd name="dataload" class="com.ibm.commerce.tools.devtools.publish.tasks.DataLoadTaskCmd"/>
+  <deploy-task-cmd name="copy" class="com.ibm.commerce.tools.devtools.publish.tasks.unpack.CopyTaskCmd"/>
+  <deploy-task-cmd name="findStore" class="com.ibm.commerce.tools.devtools.publish.tasks.StoreIdBaseDeployTaskCmd"/>
+  <deploy-task-cmd name="commandInvoker" class="com.ibm.commerce.tools.devtools.publish.tasks.CommandInvokerTaskCmd"/>
+  <deploy-task-cmd name="seoLoad" class="com.ibm.commerce.seo.loader.publish.SEOURLLoaderTaskCmd"/>
+  <deploy-task-cmd name="copyLocaleSampleDataFile" class="com.ibm.commerce.tools.devtools.publish.tasks.unpack.CopyLocaleSampleDataFileTaskCmd"/>
+  <deploy-task-cmd name="enableSolrSearch" class="com.ibm.commerce.tools.devtools.publish.tasks.SetupSolrIndexForCatalogTaskCmd" />
+
+  <target id="all">
+    <task name="copyLocaleSampleDataFile">
+      <param name="sourceDirectory" value="${wc:StoresDataPath}/CAS/data"/>
+      <param name="locale" value="en_US"/>
+    </task>
+    
+    <task name="dataload">
+      <param name="infile" value="${asset:master}" />
+      <param name="storePublish" value="true" />
+    </task>
+    
+    <task name="findStore">
+        <param name="storeIdentifier" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+        <param name="organizationDN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+        <export name="storeEntityId" value="storeEntityId"/>
+        <export name="storeType" value="storeType"/>
+    </task>
+
+    <task name="commandInvoker">
+      <param name="invoked_commandClassName" value="com.ibm.commerce.scheduler.commands.RefreshRegistryCmd" />
+      <param name="URL" value="/ignore" />
+    </task>
+
+    <task name="seoLoad">
+        <param name="storeName" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+        <param name="storeOrganizationName" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+        <param name="masterCatalogStoreName" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+        <param name="masterCatalogStoreOrganizationName" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+        <param name="shareURLKeywordForAllLanguages" value="all" />
+    </task>
+
+    <task name="enableSolrSearch">
+      <param name="storeEntityId" value="${context:storeEntityId}" />
+      <param name="indextypes" value="CatalogEntry,CatalogGroup" />
+      <param name="timeInterval" value="10000" />
+    </task>
+  </target>
+</data-deploy>

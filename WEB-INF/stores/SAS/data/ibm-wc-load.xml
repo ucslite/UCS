@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data-deploy SYSTEM "ibm-wc-load.dtd">
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2014 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<data-deploy base-dir="." default-target="all">
+
+  <asset id="master" location="store-sas-data.xml"/>
+  <asset id="foreignKeys" location="ForeignKeys.dtd" type="dtd"/>
+  <asset id="." location=""/>
+
+  <deploy-task-cmd name="findStore" class="com.ibm.commerce.tools.devtools.publish.tasks.StoreIdBaseDeployTaskCmd"/>
+  <deploy-task-cmd name="dataload" class="com.ibm.commerce.tools.devtools.publish.tasks.DataLoadTaskCmd"/>
+  <deploy-task-cmd name="commandInvoker" class="com.ibm.commerce.tools.devtools.publish.tasks.CommandInvokerTaskCmd"/>
+  <deploy-task-cmd name="UpdateDMTable" class="com.ibm.commerce.tools.devtools.publish.tasks.UpdateDMTaskCmd"/>
+  <deploy-task-cmd name="UpdatePXTable" class="com.ibm.commerce.tools.devtools.publish.tasks.UpdatePXTaskCmd"/>
+
+  <target id="all">
+    <task name="findStore">
+      <param name="storeIdentifier" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+      <param name="organizationDN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+      <export name="storeEntityId" value="storeEntityId"/>
+      <export name="storeType" value="storeType"/>
+    </task>
+
+    <task name="dataload">
+      <param name="infile" value="${asset:master}" />
+      <param name="storePublish" value="true" />
+    </task>
+    
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="SearchLandingPage1MainAd,CoffeeAccessoriesDiscountAd,CoffeeCakesRecipeAd" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_search_01,@dmelement_id2_collateral_search_02_col1,@dmelement_id2_collateral_search_02_col2" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="SearchLandingPage1RowAds,SearchLandingPage1SideBarAds" />
+      <param name="elementIdsParam" value="@dmelement_id1_collateral_search_01,@dmelement_id1_collateral_search_02" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="SearchLandingWomenRow3_CatEntries,SearchLandingWomenRow4_CatEntries" />
+      <param name="elementIdsParam" value="@new_emspot_collateralWomen_search_01,@new_emspot_collateralWomen_search_02" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="WomenShirtsBlousesProductRight_CatEntries,WomenSweatersProductRight_CatEntries,WomenSkirtsProductRight_CatEntries,WomenPantsProductRight_CatEntries,WomenShoesProductRight_CatEntries,WomenHandbagsProductRight_CatEntries,WomenAccessoriesProductRight_CatEntries,MenAccessoriesProductRight_CatEntries,MenShoesProductRight_CatEntries,MenPantsProductRight_CatEntries,MenSuitsProductRight_CatEntries,MenShirtsProductRight_CatEntries,MenJacketsProductRight_CatEntries,GirlsShoesProductRight_CatEntries,GirlsPantsProductRight_CatEntries,GirlsDressesSkirtsProductRight_CatEntries,GirlsTopsProductRight_CatEntries,BoysPantsProductRight_CatEntries,BoysTopsProductRight_CatEntries,BoysShoesProductRight_CatEntries,MenRow4_CatEntries,BoysRow4_CatEntries,GirlsRow4_CatEntries" />
+      <param name="elementIdsParam" value="@new_emspot_id_prod01_651,@new_emspot_id_prod02_651,@new_emspot_id_prod03_651,@new_emspot_id_prod04_651,@new_emspot_id_prod05_651,@new_emspot_id_prod06_651,@new_emspot_id_prod07_651,@new_emspot_id_prod08_651,@new_emspot_id_prod09_651,@new_emspot_id_prod010_651,@new_emspot_id_prod011_651,@new_emspot_id_prod012_651,@new_emspot_id_prod013_651,@new_emspot_id_prod014_651,@new_emspot_id_prod015_651,@new_emspot_id_prod016_651,@new_emspot_id_prod017_651,@new_emspot_id_prod018_651,@new_emspot_id_prod019_651,@new_emspot_id_prod020_651,@new_emspot_id_prod21_651,@new_emspot_id_prod22_651,@new_emspot_id_prod23_651" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="ComputersDesktopsProductRight_CatEntries,ComputersLaptopsProductRight_CatEntries,ComputersTabletsProductRight_CatEntries,ComputersAccessoriesProductRight_CatEntries,ComputersComponentsProductRight_CatEntries,NewslettersProductRight_CatEntries,MagazinesProductRight_CatEntries,AppliancesProductRight_CatEntries,LightingProductRight_CatEntries,TablewareProductRight_CatEntries,KitchenwareProductRight_CatEntries,BathAccessoriesProductRight_CatEntries,FurnitureProductRight_CatEntries,FruitProductRight_CatEntries,VegetablesProductRight_CatEntries,MeatProductRight_CatEntries,DairyProductRight_CatEntries,MedicineProductRight_CatEntries,VitaminsProductRight_CatEntries,ElectronicsRow4_CatEntries,NewslettersAndMagazinesRow4_CatEntries,HomeFurnishingsRow4_CatEntries,GroceryRow4_CatEntries,HealthRow4_CatEntries,FastenersRow4_CatEntries" />
+      <param name="elementIdsParam" value="@new_emspot_id_prod24_651,@new_emspot_id_prod25_651,@new_emspot_id_prod26_651,@new_emspot_id_prod27_651,@new_emspot_id_prod28_651,@new_emspot_id_prod29_651,@new_emspot_id_prod30_651,@new_emspot_id_prod31_651,@new_emspot_id_prod32_651,@new_emspot_id_prod33_651,@new_emspot_id_prod34_651,@new_emspot_id_prod35_651,@new_emspot_id_prod36_651,@new_emspot_id_prod37_651,@new_emspot_id_prod38_651,@new_emspot_id_prod39_651,@new_emspot_id_prod40_651,@new_emspot_id_prod41_651,@new_emspot_id_prod42_651,@new_emspot_id_prod43_651,@new_emspot_id_prod44_651,@new_emspot_id_prod45_651,@new_emspot_id_prod46_651,@new_emspot_id_prod47_651,@dmelement_id1_fasteners001" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="CatalogBanner_Content,HomeRow2_Categories,ApparelRow1_Content,ApparelRow2_Content,WomenCategoryRecommendations,WomenRow1_Content,ApparelRow4_CatEntries,ApparelRow3_Categories,WomenRow3_Categories,WomenRow4_CatEntries,DressesProductRight_CatEntries,SearchLandingPageAd,SeachLandingClearance,MenRow1_Content,GirlsRow1_Content,BoysRow1_Content,BoysTopsRow2_Content,BoysShoesRow2_Content,BoysPantsRow2_Content,GirlsTopsRow2_Content,GirlsShoesRow2_Content,GirlsPantsRow2_Content,GirlsDressesSkirtsRow2_Content,MenShoesRow2_Content,MenShirtsRow2_Content,MenPantsRow2_Content,MenJacketsRow2_Content,MenAccessoriesRow2_Content,MenSuitsRow2_Content,WomenShirtsBlousesRow2_Content,WomenPantsRow2_Content,WomenHandbagsRow2_Content,WomenAccessoriesRow2_Content,WomenSweatersRow2_Content,WomenSkirtsRow2_Content,WomenShoesRow2_Content,BoysRow3_Categories,MenRow3_Categories,GirlsRow3_Categories,SearchLandingWomen_BrandEspots" />
+      <param name="elementIdsParam" value="@dmelement_id1_collateral_100,@new_emspot_id_601,@dmelement_id1_collateral_700,@dmelement_id1_collateral_800,@dmelement_id1_c1000,@dmelement_id1_collateral_1010,@new_emspot_id_651,@dmelement_id1_c2000,@dmelement_id1_c3000,@new_emspot_id_751,@new_emspot_id_951,@dmelement_id1_collateral_50,@new_emspot_id_901,@dmelement_id1_collateral_11000,@dmelement_id1_collateral_31000,@dmelement_id1_collateral_21000,@dmelement_id1_collateral_21001,@dmelement_id1_collateral_21002,@dmelement_id1_collateral_21003,@dmelement_id1_collateral_31001,@dmelement_id1_collateral_31004,@dmelement_id1_collateral_31003,@dmelement_id1_collateral_31002,@dmelement_id1_collateral_11004,@dmelement_id1_collateral_11003,@dmelement_id1_collateral_11005,@dmelement_id1_collateral_11002,@dmelement_id1_collateral_11006,@dmelement_id1_collateral_11001,@dmelement_id1_collateral_41007,@dmelement_id1_collateral_41003,@dmelement_id1_collateral_41005,@dmelement_id1_collateral_41006,@dmelement_id1_collateral_41001,@dmelement_id1_collateral_41002,@dmelement_id1_collateral_41004,@dmelement_id1_c20000,@dmelement_id1_c10000,@dmelement_id1_c30000,@dmelement_id1_womensearch_brand1" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="CatalogBanner_Content_Left,CatalogBanner_Content_Right,ApparelRow2_Content_Left,ApparelRow2_Content_Right,WomenLandingRow1_Content,WomenLandingRow2_Content,WomenLandingRow2_Content2" />
+      <param name="elementIdsParam" value="@dmelement_id1_collateral_101,@dmelement_id1_collateral_102,@dmelement_id1_collateral_801,@dmelement_id1_collateral_802,@dmelement_id1_womenlanding_video_700,@dmelement_id1_womenlanding_richtext_700,@dmelement_id1_womenlanding_richtext_700_2" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="NewslettersAndMagazinesRow3_Categories,HealthRow3_Categories,HomeFurnishingsRow3_Categories,ElectronicsRow3_Categories,FastenersRow3_Categories,GroceryRow3_Categories,NewslettersAndMagazinesRow1_Content,ElectronicsRow1_Content,HomeFurnishingsRow1_Content,HealthRow1_Content,GroceryRow1_Content,HardwareRow1_Content,NewslettersAndMagazinesRow2_Content,ElectronicsRow2_Content,HomeFurnishingsRow2_Content,HealthRow2_Content,GroceryRow2_Content" />
+      <param name="elementIdsParam" value="@dmelement_id1_nam0004,@dmelement_id1_health0004,@dmelement_id1_haf0004,@dmelement_id1_elec0004,@dmelement_id1_fasteners0004,@dmelement_id1_grocery0004,@dmelement_id1_collateral_nam0001,@dmelement_id1_collateral_elec0001,@dmelement_id1_collateral_haf0001,@dmelement_id1_collateral_health0001,@dmelement_id1_collateral_grocery0001,@dmelement_id1_collateral_hardware0001,@dmelement_id1_collateral_nam0002,@dmelement_id1_collateral_elec0002,@dmelement_id1_collateral_haf0002,@dmelement_id1_collateral_health0002,@dmelement_id1_collateral_grocery0002" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="ComputersAccessoriesRow2_Content,AppliancesRow2_Content,BathAccessoriesRow2_Content,ComputersComponentsRow2_Content,DairyRow2_Content,ComputersDesktopsRow2_Content,FruitRow2_Content,FurnitureRow2_Content,KitchenwareRow2_Content,ComputersLaptopsRow2_Content,LightingRow2_Content,MagazinesRow2_Content,MeatRow2_Content,MedicineRow2_Content,NewslettersRow2_Content,ComputersTabletsRow2_Content,TablewareRow2_Content,VegetablesRow2_Content,VitaminsRow2_Content" />
+      <param name="elementIdsParam" value="@dmelement_id1_collateral_Accessories1001,@dmelement_id1_collateral_Appliances1001,@dmelement_id1_collateral_BathAcc1001,@dmelement_id1_collateral_Components1001,@dmelement_id1_collateral_Dairy1001,@dmelement_id1_collateral_Desktops1001,@dmelement_id1_collateral_Fruits1001,@dmelement_id1_collateral_Furniture1001,@dmelement_id1_collateral_Kitchenware1001,@dmelement_id1_collateral_Laptops1001,@dmelement_id1_collateral_Lighting1001,@dmelement_id1_collateral_Magazines1001,@dmelement_id1_collateral_Meat1001,@dmelement_id1_collateral_Medicines1001,@dmelement_id1_collateral_Newsletters1001,@dmelement_id1_collateral_Tablets1001,@dmelement_id1_collateral_Tableware1001,@dmelement_id1_collateral_Vegetables1001,@dmelement_id1_collateral_Vitamins1001" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="HardwareLightingProductRight_CatEntries,BoltsProductRight_CatEntries,NutsProductRight_CatEntries,ScrewsProductRight_CatEntries" />
+      <param name="elementIdsParam" value="@new_emspot_id_prod60_651,@new_emspot_id_prod61_651,@new_emspot_id_prod62_651,@new_emspot_id_prod63_651" />
+    </task>
+
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="HeaderESpot15OffPurchaseAd,HeaderESpotFreeShippingSpecial,CozySweaters,WomensJeans,MensShoes,EbonyIvoryCollection,PerfectHandbag,WomensShoeSale,SearchLandingDressSale,MenRow1_Content,GirlsRow1_Content,BoysRow1_Content,BoysTops_Atct_1,BoysTops_Atct_2,BoysShoes_Atct_1,BoysShoes_Atct_2,BoysPants_Atct_1,BoysPants_Atct_2,GirlsTops_Atct_1,GirlsTops_Atct_2,GirlsShoes_Atct_1,GirlsShoes_Atct_2,GirlsPants_Atct_1,GirlsPants_Atct_2,GirlsDS_Atct_1,GirlsDS_Atct_2,MenShoes_Atct_1,MenShoes_Atct_2,MenShirts_Atct_1,MenShirts_Atct_2,MenPants_Atct_1,MenPants_Atct_2,MenJackets_Atct_1,MenJackets_Atct_2,MenAcc_Atct_1,MenAcc_Atct_2,MenSuits_Atct_1,MenSuits_Atct_2,WSB_Atct_1,WSB_Atct_2,WPants_Atct_1,WPants_Atct_2,WHB_Atct_1,WHB_Atct_2,WAcc_Atct_1,WAcc_Atct_2" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_100_col1,@dmelement_id2_collateral_100_col2,@dmelement_id2_collateral_700_col1,@dmelement_id2_collateral_800_col1,@dmelement_id2_collateral_900_col1,@dmelement_id2_collateral_1010_col1,@dmelement_id2_collateral_1100_col1,@dmelement_id2_collateral_1200_col1,@dmelement_id2_collateral_50_col1,@dmelement_id2_collateral_11000_col1,@dmelement_id2_collateral_31000_col1,@dmelement_id2_collateral_21000_col1,@dmelement_id2_collateral_21001_col1,@dmelement_id2_collateral_22001_col1,@dmelement_id2_collateral_21002_col1,@dmelement_id2_collateral_22002_col1,@dmelement_id2_collateral_21003_col1,@dmelement_id2_collateral_22003_col1,@dmelement_id2_collateral_31001_col1,@dmelement_id2_collateral_32001_col1,@dmelement_id2_collateral_31004_col1,@dmelement_id2_collateral_32004_col1,@dmelement_id2_collateral_31003_col1,@dmelement_id2_collateral_32003_col1,@dmelement_id2_collateral_31002_col1,@dmelement_id2_collateral_32002_col1,@dmelement_id2_collateral_11004_col1,@dmelement_id2_collateral_12004_col1,@dmelement_id2_collateral_11003_col1,@dmelement_id2_collateral_12003_col1,@dmelement_id2_collateral_11005_col1,@dmelement_id2_collateral_12005_col1,@dmelement_id2_collateral_11002_col1,@dmelement_id2_collateral_12002_col1,@dmelement_id2_collateral_11006_col1,@dmelement_id2_collateral_12006_col1,@dmelement_id2_collateral_11001_col1,@dmelement_id2_collateral_12001_col1,@dmelement_id2_collateral_41007_col1,@dmelement_id2_collateral_42007_col1,@dmelement_id2_collateral_41003_col1,@dmelement_id2_collateral_42003_col1,@dmelement_id2_collateral_41005_col1,@dmelement_id2_collateral_42005_col1,@dmelement_id2_collateral_41006_col1,@dmelement_id2_collateral_42006_col1" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="WomenLandingPage_Atct_brand1,WomenLandingPage_Atct_brand2,WomenLandingPage_Atct_brand3,WomenLandingPage_Atct_brand4,WomenLandingPage_Atct_brand5" />
+      <param name="elementIdsParam" value="@collateral_id_womenlanding_brand1,@collateral_id_womenlanding_brand2,@collateral_id_womenlanding_brand3,@collateral_id_womenlanding_brand4,@collateral_id_womenlanding_brand5" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="HeaderESpot15OffPurchaseAd,HeaderESpotFreeShippingSpecial,ShirtSale,ShoeSale,LivingRoom,WomensJeans,MensShoes" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_101_nvp,@dmelement_id2_collateral_102_nvp,@dmelement_id2_collateral_301_nvp,@dmelement_id2_collateral_302_nvp,@dmelement_id2_collateral_303_nvp,@dmelement_id2_collateral_801_nvp,@dmelement_id2_collateral_802_nvp" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="WSw_Atct_1,WSw_Atct_2,WSk_Atct_1,WSk_Atct_2,WSh_Atct_1,WSh_Atct_2" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_41001_col1,@dmelement_id2_collateral_42001_col1,@dmelement_id2_collateral_41002_col1,@dmelement_id2_collateral_42002_col1,@dmelement_id2_collateral_41004_col1,@dmelement_id2_collateral_42004_col1" />
+    </task>
+
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="Accessories_Atct_1,Accessories_Atct_2,Appliances_Atct_1,Appliances_Atct_2,BathAcc_Atct_1,BathAcc_Atct_2,Components_Atct_1,Components_Atct_2,Dairy_Atct_1,Dairy_Atct_2,Desktops_Atct_1,Desktops_Atct_2,Fruits_Atct_1,Fruits_Atct_2,Furniture_Atct_1,Furniture_Atct_2,Kitchenware_Atct_1,Kitchenware_Atct_2,Laptops_Atct_1,Laptops_Atct_2,Lighting_Atct_1,Lighting_Atct_2,Magazines_Atct_1,Magazines_Atct_2,Meat_Atct_1,Meat_Atct_2,Medicines_Atct_1,Medicines_Atct_2,Newsletters_Atct_1,Newsletters_Atct_2,Tablets_Atct_1,Tablets_Atct_2,Tableware_Atct_1,Tableware_Atct_2,Vegetables_Atct_1,Vegetables_Atct_2,Vitamins_Atct_1,Vitamins_Atct_2" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_Accessories1001_col1,@dmelement_id2_collateral_Accessories1002_col1,@dmelement_id2_collateral_Appliances1001_col1,@dmelement_id2_collateral_Appliances1002_col1,@dmelement_id2_collateral_BathAcc1001_col1,@dmelement_id2_collateral_BathAcc1002_col1,@dmelement_id2_collateral_Components1001_col1,@dmelement_id2_collateral_Components1002_col1,@dmelement_id2_collateral_Dairy1001_col1,@dmelement_id2_collateral_Dairy1002_col1,@dmelement_id2_collateral_Desktops1001_col1,@dmelement_id2_collateral_Desktops1002_col1,@dmelement_id2_collateral_Fruits1001_col1,@dmelement_id2_collateral_Fruits1002_col1,@dmelement_id2_collateral_Furniture1001_col1,@dmelement_id2_collateral_Furniture1002_col1,@dmelement_id2_collateral_Kitchenware1001_col1,@dmelement_id2_collateral_Kitchenware1002_col1,@dmelement_id2_collateral_Laptops1001_col1,@dmelement_id2_collateral_Laptops1002_col1,@dmelement_id2_collateral_Lighting1001_col1,@dmelement_id2_collateral_Lighting1002_col1,@dmelement_id2_collateral_Magazines1001_col1,@dmelement_id2_collateral_Magazines1002_col1,@dmelement_id2_collateral_Meat1001_col1,@dmelement_id2_collateral_Meat1002_col1,@dmelement_id2_collateral_Medicines1001_col1,@dmelement_id2_collateral_Medicines1002_col1,@dmelement_id2_collateral_Newsletters1001_col1,@dmelement_id2_collateral_Newsletters1002_col1,@dmelement_id2_collateral_Tablets1001_col1,@dmelement_id2_collateral_Tablets1002_col1,@dmelement_id2_collateral_Tableware1001_col1,@dmelement_id2_collateral_Tableware1002_col1,@dmelement_id2_collateral_Vegetables1001_col1,@dmelement_id2_collateral_Vegetables1002_col1,@dmelement_id2_collateral_Vitamins1001_col1,@dmelement_id2_collateral_Vitamins1002_col1" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="collateralIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="SubscribeAndSave,FreeConsultation,LivingRoomSale,FreeDelivery,DesktopsAndLaptops,SubscribeToNewsletters,SubscribeToMagazines,NaturalVitamins,AutomaticRefills,PerfectEveryTime,SaveOnLighting,AtlanticLobster,CrispRomaine,GetReadyForSchool,PowerOnTheGo" />
+      <param name="elementIdsParam" value="@dmelement_id2_collateral_nam0001_col1,@dmelement_id2_collateral_health0001_col1,@dmelement_id2_collateral_haf0001_col1,@dmelement_id2_collateral_grocery0001_col1,@dmelement_id2_collateral_elec0001_col1,@dmelement_id2_collateral_nam0002_col1,@dmelement_id2_collateral_nam0003_col1,@dmelement_id2_collateral_health0002_col1,@dmelement_id2_collateral_health0003_col1,@dmelement_id2_collateral_haf0002_col1,@dmelement_id2_collateral_haf0003_col1,@dmelement_id2_collateral_grocery0002_col1,@dmelement_id2_collateral_grocery0003_col1,@dmelement_id2_collateral_elec0002_col1,@dmelement_id2_collateral_elec0003_col1" />
+    </task>
+
+	<task name="findStore">
+      <param name="storeIdentifier" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+      <param name="organizationDN" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+      <export name="storeEntityIdCAT" value="storeEntityId"/>
+      <export name="storeType" value="storeType"/>
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="WCL001_0102,WCL001_0105,WCL001_0108,WCL001_0111,WCL002_0201,WCL002_0204,WCL002_0207,WCL002_0209,WCL003_0302,WCL003_0305,WCL003_0307,WCL003_0311,WCL004_0401,WCL004_0410,WCL004_0407,WCL004_0405,WSH005_0501,WSH005_0527,WSH005_0519,WSH005_0533,WBG006_0601,WBG006_0609,WBG006_0612,WBG006_0616,WAC007_0701,WAC007_0706,WAC007_0711,WAC007_0714,MAC013_1301,MAC013_1308,MAC013_1315,MAC013_1317,MSH012_1201,MSH012_1217,MSH012_1219,MSH012_1222,MCL010_1001,MCL010_1004,MCL010_1006,MCL010_1009,MCL008_0802,MCL008_0806,MCL008_0810,MCL008_0812,MCL011_1101,MCL011_1115,MCL011_1117,MCL011_1121,MCL009_0901,MCL009_0904,MCL009_0906,MCL009_0908" />
+      <param name="elementIdsParam" value="@catentry_id_prod01_651,@catentry_id_prod01_652,@catentry_id_prod01_653,@catentry_id_prod01_650,@catentry_id_prod02_651,@catentry_id_prod02_652,@catentry_id_prod02_653,@catentry_id_prod02_650,@catentry_id_prod03_651,@catentry_id_prod03_652,@catentry_id_prod03_653,@catentry_id_prod03_650,@catentry_id_prod04_651,@catentry_id_prod04_652,@catentry_id_prod04_653,@catentry_id_prod04_650,@catentry_id_prod05_651,@catentry_id_prod05_652,@catentry_id_prod05_653,@catentry_id_prod05_650,@catentry_id_prod06_651,@catentry_id_prod06_652,@catentry_id_prod06_653,@catentry_id_prod06_650,@catentry_id_prod07_651,@catentry_id_prod07_652,@catentry_id_prod07_653,@catentry_id_prod07_650,@catentry_id_prod08_651,@catentry_id_prod08_652,@catentry_id_prod08_653,@catentry_id_prod08_650,@catentry_id_prod09_651,@catentry_id_prod09_652,@catentry_id_prod09_653,@catentry_id_prod09_650,@catentry_id_prod010_651,@catentry_id_prod010_652,@catentry_id_prod010_653,@catentry_id_prod010_650,@catentry_id_prod011_651,@catentry_id_prod011_652,@catentry_id_prod011_653,@catentry_id_prod011_650,@catentry_id_prod012_651,@catentry_id_prod012_652,@catentry_id_prod012_653,@catentry_id_prod012_650,@catentry_id_prod013_651,@catentry_id_prod013_652,@catentry_id_prod013_653,@catentry_id_prod013_650" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="CDE021_2102,CDE021_2104,CDE021_2101,CDE021_2103,CLA022_2201,CLA022_2206,CLA022_2204,CLA022_2202,CTA023_2306,CTA023_2304,CTA023_2303,CTA023_2301,CAC024_2402,CAC024_2404,CAC024_2401,CAC024_2403,CCM039_3905,CCM039_3903,CCM039_3901,CCM039_3904,NNE025_2501,NNE025_2502,NNE025_2503,NNE025_2504,NMA026_2609,NMA026_2605,NMA026_2607,NMA026_2602,HAP027_2711,HAP027_2715,HAP027_2706,HAP027_2709,HLG028_2811,HLG028_2816,HLG028_2808,HLG028_2803,HTA029_2901,HTA029_2917,HTA029_2923,HTA029_2904,HKT030_3011,HKT030_3014,HKT030_3010,HKT030_3005,HBA031_3101,HBA031_3110,HBA031_3112,HBA031_3107,HFU032_3230,HFU032_3223,HFU032_3217,HFU032_3213,GFR033_3301,GFR033_3303,GFR033_3305,GFR033_3307,GVE034_3410,GVE034_3408,GVE034_3405,GVE034_3402,GME036_3610,GME036_3608,GME036_3604,GME036_3601,GDA035_3509,GDA035_3503,GDA035_3504,GDA035_3506,HME037_3710,HME037_3707,HME037_3702,HME037_3704,HVT038_3808,HVT038_3804,HVT038_3802,HVT038_3807"/>
+      <param name="elementIdsParam" value="@catentry_id_prod24_650,@catentry_id_prod24_651,@catentry_id_prod24_652,@catentry_id_prod24_653,@catentry_id_prod25_650,@catentry_id_prod25_651,@catentry_id_prod25_652,@catentry_id_prod25_653,@catentry_id_prod26_650,@catentry_id_prod26_651,@catentry_id_prod26_652,@catentry_id_prod26_653,@catentry_id_prod27_650,@catentry_id_prod27_651,@catentry_id_prod27_652,@catentry_id_prod27_653,@catentry_id_prod28_650,@catentry_id_prod28_651,@catentry_id_prod28_652,@catentry_id_prod28_653,@catentry_id_prod29_650,@catentry_id_prod29_651,@catentry_id_prod29_652,@catentry_id_prod29_653,@catentry_id_prod30_650,@catentry_id_prod30_651,@catentry_id_prod30_652,@catentry_id_prod30_653,@catentry_id_prod31_650,@catentry_id_prod31_651,@catentry_id_prod31_652,@catentry_id_prod31_653,@catentry_id_prod32_650,@catentry_id_prod32_651,@catentry_id_prod32_652,@catentry_id_prod32_653,@catentry_id_prod33_650,@catentry_id_prod33_651,@catentry_id_prod33_652,@catentry_id_prod33_653,@catentry_id_prod34_650,@catentry_id_prod34_651,@catentry_id_prod34_652,@catentry_id_prod34_653,@catentry_id_prod35_650,@catentry_id_prod35_651,@catentry_id_prod35_652,@catentry_id_prod35_653,@catentry_id_prod36_650,@catentry_id_prod36_651,@catentry_id_prod36_652,@catentry_id_prod36_653,@catentry_id_prod37_650,@catentry_id_prod37_651,@catentry_id_prod37_652,@catentry_id_prod37_653,@catentry_id_prod38_650,@catentry_id_prod38_651,@catentry_id_prod38_652,@catentry_id_prod38_653,@catentry_id_prod39_650,@catentry_id_prod39_651,@catentry_id_prod39_652,@catentry_id_prod39_653,@catentry_id_prod40_650,@catentry_id_prod40_651,@catentry_id_prod40_652,@catentry_id_prod40_653,@catentry_id_prod41_650,@catentry_id_prod41_651,@catentry_id_prod41_652,@catentry_id_prod41_653,@catentry_id_prod42_650,@catentry_id_prod42_651,@catentry_id_prod42_652,@catentry_id_prod42_653" />
+    </task>
+  
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="CDE021_2104,CLA022_2202,CCM039_3901,CTA023_2301,NNE025_2503,NMA026_2607,NNE025_2505,NMA026_2602,HLG028_2816,HAP027_2709,HTA029_2923,HKT030_3005,GME036_3610,GVE034_3408,GFR033_3307,GDA035_3503,HME037_3704,HVT038_3804,HVT038_3807,HME037_3710,GSH020_2001,GSH020_2004,GSH020_2006,GSH020_2008,GCL018_1801,GCL018_1804,GCL018_1806,GCL018_1808,GCL019_1901,GCL019_1907,GCL019_1904,GCL019_1908,GCL017_1701,GCL017_1704,GCL017_1706,GCL017_1708,BCL015_1501,BCL015_1504,BCL015_1506,BCL015_1508,BCL014_1401,BCL014_1404,BCL014_1406,BCL014_1407,BSH016_1601,BSH016_1604,BSH016_1606,BSH016_1608,MCL011_1103,MCL008_0815,MCL011_1110,MCL009_0910,BCL014_1402,BCL014_1403,BCL014_1408,BCL014_1415,GCL019_1901,GCL019_1913,GCL017_1707,GCL017_1711"/>
+      <param name="elementIdsParam" value="@catentry_id_prod43_650,@catentry_id_prod43_651,@catentry_id_prod43_652,@catentry_id_prod43_653,@catentry_id_prod44_650,@catentry_id_prod44_651,@catentry_id_prod44_652,@catentry_id_prod44_653,@catentry_id_prod45_650,@catentry_id_prod45_651,@catentry_id_prod45_652,@catentry_id_prod45_653,@catentry_id_prod46_650,@catentry_id_prod46_651,@catentry_id_prod46_652,@catentry_id_prod46_653,@catentry_id_prod47_650,@catentry_id_prod47_651,@catentry_id_prod47_652,@catentry_id_prod47_653,@catentry_id_prod014_651,@catentry_id_prod014_652,@catentry_id_prod014_653,@catentry_id_prod014_650,@catentry_id_prod015_651,@catentry_id_prod015_652,@catentry_id_prod015_653,@catentry_id_prod015_650,@catentry_id_prod016_651,@catentry_id_prod016_652,@catentry_id_prod016_653,@catentry_id_prod016_650,@catentry_id_prod017_651,@catentry_id_prod017_652,@catentry_id_prod017_653,@catentry_id_prod017_650,@catentry_id_prod018_651,@catentry_id_prod018_652,@catentry_id_prod018_653,@catentry_id_prod018_650,@catentry_id_prod019_651,@catentry_id_prod019_652,@catentry_id_prod019_653,@catentry_id_prod019_650,@catentry_id_prod020_651,@catentry_id_prod020_652,@catentry_id_prod020_653,@catentry_id_prod020_650,@catentry_id_prod21_650,@catentry_id_prod21_651,@catentry_id_prod21_652,@catentry_id_prod21_653,@catentry_id_prod22_650,@catentry_id_prod22_651,@catentry_id_prod22_652,@catentry_id_prod22_653,@catentry_id_prod23_650,@catentry_id_prod23_651,@catentry_id_prod23_652,@catentry_id_prod23_653" />
+    </task>
+
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="FSC039_3910,FSC039_3902,FB041_4101,FBU040_4001,FSC039_3901"/>
+      <param name="elementIdsParam" value="@dmelement_id2_fasteners001_prod1,@dmelement_id2_fasteners001_prod2,@dmelement_id2_fasteners001_prod3,@dmelement_id2_fasteners001_prod4,@dmelement_id2_fasteners001_prod5" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="LA042_420401,LA042_421002,LA042_420905,LA042_420603,FNU040_4006018,FNU040_400905,FNU040_4003018,FNU040_400406,FSC039_390502,FSC039_390309,FB041_410603,FB041_410804,FNU040_400105,FNU040_400501,FNU040_4002014,FNU040_401001"/>
+      <param name="elementIdsParam" value="@catentry_id_prod60_650,@catentry_id_prod60_651,@catentry_id_prod60_652,@catentry_id_prod60_653,@catentry_id_prod61_650,@catentry_id_prod61_651,@catentry_id_prod61_652,@catentry_id_prod61_653,@catentry_id_prod62_650,@catentry_id_prod62_651,@catentry_id_prod62_652,@catentry_id_prod62_653,@catentry_id_prod63_650,@catentry_id_prod63_651,@catentry_id_prod63_652,@catentry_id_prod63_653" />
+    </task>
+    
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="AuroraWMDRS-25,WBG006_0608,WBG006_0603,WSH005_0514,MCL008_0816,MCL008_0820,AuroraWMDRS-36,AuroraWMDRS-15,WBG006_0608,WSH005_0518,WSH005_0514,WAC007_0730,AuroraWMDRS-3,AuroraWMDRS-7,AuroraWMDRS-21,AuroraWMDRS-29,HAP027_2714,HAP027_2715,HAP027_2716,HAP027_2717,HAP027_2718,HAP027_2719,HAP027_2720,HAP027_2721" />
+      <param name="elementIdsParam" value="@catentry_id_650,@catentry_id_651,@catentry_id_652,@catentry_id_653,@catentry_id_654,@catentry_id_655,@catentry_id_750,@catentry_id_751,@catentry_id_752,@catentry_id_753,@catentry_id_754,@catentry_id_755,@catentry_id_950,@catentry_id_951,@catentry_id_952,@catentry_id_953,@catentry_id_900,@catentry_id_901,@catentry_id_902,@catentry_id_903,@catentry_id_904,@catentry_id_905,@catentry_id_906,@catentry_id_907" />
+    </task>
+  
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="WAC007_0711,WAC007_0716,WAC007_0713,WAC007_0715,WAC007_0714,WAC007_0701,WAC007_0705,WAC007_0706,WAC007_0707,WAC007_0704" />
+      <param name="elementIdsParam" value="@catentry_id_0711,@catentry_id_0712,@catentry_id_0713,@catentry_id_0714,@catentry_id_0715,@catentry_id_0716,@catentry_id_0717,@catentry_id_0718,@catentry_id_0719,@catentry_id_0720" />
+    </task>
+    
+    <task name="UpdateDMTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Women Shirts Blouses,Women Accessories,Men Suits,Girls Dresses Skirts,Boys Tops" />
+      <param name="elementIdsParam" value="@dmelement_id_c3000_catt1,@dmelement_id_c3000_catt2,@dmelement_id_c3000_catt3,@dmelement_id_c3000_catt4,@dmelement_id_c3000_catt5" />
+    </task>
+  
+    <task name="UpdateDMTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Dresses,Sleepwear,Tops,Bottoms,Women,Men,Girls,Boys,Women Handbags,Women Sweaters,Women Shoes,Dresses,Men Accessories,Men Jackets,Men Shoes,Men Suits,Men Shirts,Men Pants,Girls Tops,Girls Pants,Girls Dresses Skirts,Girls Shoes,Boys Tops,Boys Pants,Boys Shoes,Women Pants,Women Skirts,Women Shirts Blouses,Women Accessories" />
+      <param name="elementIdsParam" value="@dmelement_id2_c1000_cat1,@dmelement_id2_c1000_cat2,@dmelement_id2_c1000_cat3,@dmelement_id2_c1000_cat4,@dmelement_id2_c2000_cat1,@dmelement_id2_c2000_cat2,@dmelement_id2_c2000_cat3,@dmelement_id2_c2000_cat4,@dmelement_id2_c3000_cat1,@dmelement_id2_c3000_cat2,@dmelement_id2_c3000_cat3,@dmelement_id2_c3000_cat4,@dmelement_id2_c10000_cat1,@dmelement_id2_c10000_cat2,@dmelement_id2_c10000_cat3,@dmelement_id2_c10000_cat4,@dmelement_id2_c10000_cat5,@dmelement_id2_c10000_cat6,@dmelement_id2_c30000_cat1,@dmelement_id2_c30000_cat2,@dmelement_id2_c30000_cat3,@dmelement_id2_c30000_cat4,@dmelement_id2_c20000_cat1,@dmelement_id2_c20000_cat2,@dmelement_id2_c20000_cat3,@dmelement_id2_c3000_cat5,@dmelement_id2_c3000_cat6,@dmelement_id2_c3000_cat7,@dmelement_id2_c3000_cat8" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Computers Laptops,Computers Desktops,Computers Tablets,Computers Accessories,Computers Components,Newsletters,Magazines,Appliances,Tableware,Furniture,Kitchenware,Lighting,Bath Accessories,Fruit,Vegetables,Meat,Dairy,Medicine,Vitamins" />
+      <param name="elementIdsParam" value="@dmelement_id2_elec0004_cat1,@dmelement_id2_elec0004_cat2,@dmelement_id2_elec0004_cat3,@dmelement_id2_elec0004_cat4,@dmelement_id2_elec0004_cat5,@dmelement_id2_nam0004_cat1,@dmelement_id2_nam0004_cat2,@dmelement_id2_haf0004_cat1,@dmelement_id2_haf0004_cat2,@dmelement_id2_haf0004_cat3,@dmelement_id2_haf0004_cat4,@dmelement_id2_haf0004_cat5,@dmelement_id2_haf0004_cat6,@dmelement_id2_grocery0004_cat1,@dmelement_id2_grocery0004_cat2,@dmelement_id2_grocery0004_cat3,@dmelement_id2_grocery0004_cat4,@dmelement_id2_health0004_cat1,@dmelement_id2_health0004_cat2" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="ShoppingCartRight_CatEntries,WishListCenter_CatEntries" />
+      <param name="elementIdsParam" value="@dmelement_id1_p3,@dmelement_id1_p6" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="AuroraWMDRS-41,MCL011_1101,WBG006_0601,FSC039_3906019,FB041_410602,FNU040_401001,AuroraWMDRS-40,MCL011_1102,WBG006_0602,WSH005_0501,FB041_410903,FSC039_390804,LA042_420401,LA042_420502" />
+      <param name="elementIdsParam" value="@dmelement_id2_p3_prod1,@dmelement_id2_p3_prod2,@dmelement_id2_p3_prod3,@dmelement_id2_p3_prod4,@dmelement_id2_p3_prod5,@dmelement_id2_p3_prod6,@dmelement_id2_p6_prod1,@dmelement_id2_p6_prod2,@dmelement_id2_p6_prod3,@dmelement_id2_p6_prod4,@dmelement_id2_p6_prod5,@dmelement_id2_p6_prod6,@dmelement_id2_p6_prod7,@dmelement_id2_p6_prod8" />
+    </task>
+    
+    <task name="UpdateDMTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Fasteners,Hardware Lighting" />
+      <param name="elementIdsParam" value="@dmelement_id_b2bhomepage1002_cat1,@dmelement_id_b2bhomepage1002_cat2" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="LA042_4203,FNU040_4001,FB041_4101,LA042_4201,FB041_4102,LA042_4202,FSC039_3910" />
+      <param name="elementIdsParam" value="@dmelement_id_b2bhomepage1006_catentry1,@dmelement_id_b2bhomepage1006_catentry2,@dmelement_id_b2bhomepage1006_catentry3,@dmelement_id_b2bhomepage1006_catentry4,@dmelement_id_b2bhomepage1006_catentry5,@dmelement_id_b2bhomepage1006_catentry6,@dmelement_id_b2bhomepage1006_catentry7" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="B2BHomePageFeaturedCategories,B2BHomePageFeaturedProducts" />
+      <param name="elementIdsParam" value="@dmelement_id_b2bhomepage1001_emsid,@emspot_id_b2bhomepage1002_emsid" />
+    </task>
+    
+    <task name="UpdateDMTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Screws,Bolts,Nuts,Fasteners,Hardware Lighting" />
+      <param name="elementIdsParam" value="@dmelement_id2_fasteners0004_cat1,@dmelement_id2_fasteners0004_cat2,@dmelement_id2_fasteners0004_cat3,@dmelement_id_hardware1002_cat1,@dmelement_id_hardware1002_cat2" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="emsId" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="HardwareRow3_Categories,HardwareRow4_CatEntries,ScrewsProductRec_CatEntries,NutsProductRec_CatEntries,BoltsProductRec_CatEntries" />
+      <param name="elementIdsParam" value="@dmelement_id_hardware1001_emsid,@dmelement_id_hardware1004_emsid,@dmelement_id_screws1001_emsid,@dmelement_id_nuts1001_emsid,@dmelement_id_bolts1001_emsid" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="LA042_4205,FSC039_3908,LA042_4201,FNU040_4002,FB041_4108,FNU040_4009,FSC039_3093" />
+      <param name="elementIdsParam" value="@dmelement_id_hardware1005_catentry1,@dmelement_id_hardware1005_catentry2,@dmelement_id_hardware1005_catentry3,@dmelement_id_hardware1005_catentry4,@dmelement_id_hardware1005_catentry5,@dmelement_id_hardware1005_catentry6,@dmelement_id_hardware1005_catentry7" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="FSC039_3906,FSC039_3903,FSC039_3905,FSC039_3909,FSC039_3908" />
+      <param name="elementIdsParam" value="@dmelement_id_screws1002_catentry1,@dmelement_id_screws1002_catentry2,@dmelement_id_screws1002_catentry3,@dmelement_id_screws1002_catentry4,@dmelement_id_screws1002_catentry5" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="FB041_4108,FB041_4106,FB041_4103,FB041_4102,FB041_4105" />
+      <param name="elementIdsParam" value="@dmelement_id_nuts1002_catentry1,@dmelement_id_nuts1002_catentry2,@dmelement_id_nuts1002_catentry3,@dmelement_id_nuts1002_catentry4,@dmelement_id_nuts1002_catentry5" />
+    </task>
+    <task name="UpdateDMTable">
+      <param name="type" value="catalogEntryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="FNU040_4005,FNU040_4009,FNU040_4002,FNU040_4001,FNU040_4008" />
+      <param name="elementIdsParam" value="@dmelement_id_bolts1002_catentry1,@dmelement_id_bolts1002_catentry2,@dmelement_id_bolts1002_catentry3,@dmelement_id_bolts1002_catentry4,@dmelement_id_bolts1002_catentry5" />
+    </task>
+    <task name="UpdatePXTable">
+      <param name="type" value="categoryIdList" />
+      <param name="storeId" value="${context:storeEntityIdCAT}" />
+      <param name="valuesParam" value="Furniture" />
+      <param name="elementIdsParam" value="@px_elementnvp_id_125_cat1" />
+    </task>
+    <task name="UpdatePXTable">
+      <param name="type" value="shipModeIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="US Regular Delivery,US Regular Delivery" />
+      <param name="elementIdsParam" value="@px_elementnvp_id_20_shipmode1,@px_elementnvp_id_25_shipmode1" />
+    </task>
+    <task name="UpdatePXTable">
+      <param name="type" value="memberGroupIdList" />
+      <param name="storeId" value="${context:storeEntityId}" />
+      <param name="valuesParam" value="Repeat Customers,Registered Customers" />
+      <param name="elementIdsParam" value="@px_elementnvp_id_212_mbrgrp1,@px_elementnvp_id_30_mbrgrp1" />
+    </task>
+    
+    <task name="dataload">
+      <param name="storeId"               value="${context:storeEntityId}" />
+      <param name="dataLoadConfigFile"    value="com.ibm.commerce.pagelayout/dataload/wc-dataload-storepublish.xml" />
+      <param name="LoadOrder"             value="DefaultLayoutWidgetNVP,Layout,LayoutWidget,LayoutWidgetNVP" />
+      <param name="dataSourceDirectory"   value="${asset:.}" />
+    </task>
+    
+    <task name="dataload">
+      <param name="storeId"               value="${context:storeEntityId}" />
+      <param name="dataLoadConfigFile"    value="com.ibm.commerce.pagelayout/dataload/wc-dataload-layoutAssignment-storepublish.xml" />
+      <param name="dataSourceDirectory"   value="${asset:.}" />
+    </task>
+
+    <task name="commandInvoker">
+      <param name="invoked_commandClassName" value="com.ibm.commerce.scheduler.commands.RefreshRegistryCmd" />
+      <param name="URL" value="/ignore" />
+    </task>
+
+  </target>
+</data-deploy>

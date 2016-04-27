@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY STORE_TYPE "MPS">
+<!ENTITY STORE_DIRECTORY_LOWERCASE "aurorastorefrontassetstore">
+<!ENTITY CAT_STORE_DIR "ExtendedSitesCatalogAssetStore">
+<!ENTITY pt_BR "-6">
+<!ENTITY pl_PL "-22">
+<!ENTITY en_US "-1">
+<!ENTITY ja_JP "-10">
+<!ENTITY ru_RU "-20">
+<!ENTITY zh_CN "-7">
+<!ENTITY ro_RO "-21">
+<!ENTITY MEMBER_ID "@seller_b2c_mbr_id">
+<!ENTITY CAT_STORE_IDENTIFIER_LOWERCASE "extended sites catalog asset store">
+<!ENTITY CAT_STORE_ID "10001">
+<!ENTITY CAT_STORE_IDENTIFIER "Extended Sites Catalog Asset Store">
+<!ENTITY CAT_STORE_DIR_LOWERCASE "extendedsitescatalogassetstore">
+<!ENTITY he_IL "-12">
+<!ENTITY zh_TW "-8">
+<!ENTITY ATTR_CHOICE "Classic">
+<!ENTITY STORE_IDENTIFIER_LOWERCASE "aurorastorefrontassetstore">
+<!ENTITY es_ES "-5">
+<!ENTITY ORGANIZATION_ID "@seller_b2c_orgentity_id">
+<!ENTITY STORE_IDENTIFIER "AuroraStorefrontAssetStore">
+<!ENTITY STORE_DIR "AuroraStorefrontAssetStore">
+<!ENTITY ko_KR "-9">
+<!ENTITY ORGANIZATION_DN "ou=aurorastorefrontassetstore,o=extended sites organization,o=root organization">
+<!ENTITY de_DE "-3">
+<!ENTITY it_IT "-4">
+<!ENTITY CAT_ORGANIZATION_DN "ou=asset store organization,o=extended sites organization,o=root organization">
+<!ENTITY ar_EG "-23">
+<!ENTITY fr_FR "-2">
+<!ENTITY iw_IL "-11">
+<!ENTITY tr_TR "-13">
+<!ENTITY INV_CHOICE "Non-ATP/">
+

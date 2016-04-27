@@ -146,8 +146,35 @@ _________________________________________________________ -->
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-            <div class="navbar-collapse collapse right">
-                <button type="button" class="btn navbar-btn btn-default" data-toggle="modal" data-target="#login-modal">
+            <div class="navbar-collapse collapse right" ng-controller="signin">
+            	<wcf:url var="MyAccountURL" value="AjaxLogonForm">
+				  <wcf:param name="langId" value="${param.langId}" />
+				  <wcf:param name="storeId" value="${param.storeId}" />
+				  <wcf:param name="catalogId" value="${param.catalogId}" />
+				  <wcf:param name="myAcctMain" value="1" />
+				</wcf:url>
+				${userType}************
+				
+				
+				<c:if test="${userType != 'G'}">
+				<wcf:url var="Logon_LogoutURLOriginal" value="Logoff">	    
+				  <wcf:param name="langId" value="${WCParam.langId}" />
+				  <wcf:param name="storeId" value="${WCParam.storeId}" />
+				  <wcf:param name="catalogId" value="${WCParam.catalogId}" />
+				  <wcf:param name="myAcctMain" value="1" />		  		 
+				  <wcf:param name="deleteCartCookie" value="true" />
+				  <wcf:param name="URL" value="${env_TopCategoriesDisplayURL}" />	
+				</wcf:url>
+            	<a id="myAccountQuickLink" href="${fn:escapeXml(MyAccountURL)}"><fmt:message bundle="${storeText}" key="HEADER_MY_ACCOUNT"/></a>
+            	<a id="${widgetId}_loggedInDropdown_SignOut" ng-click="deleteUserLogonIdCookie();logout('${Logon_LogoutURLOriginal}');" class="button_secondary signOutButton" role="button">
+				     <div class="left_border"></div>
+				   	 <div class="button_text"><span>SignOut</span></div>								
+				     <div class="right_border"></div>
+				   </a>
+					
+				
+            	</c:if>
+                <button type="button" class="btn navbar-btn btn-default login" data-toggle="modal" data-target="#login-modal">
                     <span class="sr-only">User login</span>
                     <i class="fa fa-user"></i>
                 </button>
@@ -259,42 +286,125 @@ _________________________________________________________ -->
                     <h4 class="modal-title" id="Login">Customer login</h4>
                 </div>
                 <div class="modal-body">
-                <form name="<c:out value='${widgetId}'/>_GlobalLogon" id="<c:out value='${widgetId}'/>_GlobalLogon"> 
+                <form name="GlobalLogon" id="GlobalLogon"> 
+                	<c:set var="newURL" value="${env_TopCategoriesDisplayURL}"/>
+					<c:set var="reLogonURL" value="${newURL}"/>
+					<c:if test="${empty WCParam.orderMove}">
+						<c:choose>
+							<c:when test="${WCParam.returnPage eq 'quickcheckout'}">
+								<wcf:url var="QuickCheckoutView" value="OrderCopy">
+									<wcf:param name="URL" value="RESTOrderPrepare?URL=QuickCheckoutSummaryView"/>
+									<wcf:param name="orderId" value="."/>
+									<wcf:param name="toOrderId" value="."/>
+									<wcf:param name="shippingAddressFromOrderProfile" value="1"/>
+									<wcf:param name="orderInfoFrom" value="q"/>
+									<wcf:param name="payInfoFrom" value="q"/>
+									<wcf:param name="langId" value="${langId}" />
+									<wcf:param name="storeId" value="${WCParam.storeId}" />
+									<wcf:param name="catalogId" value="${WCParam.catalogId}" />
+									<wcf:param name="status" value="P" />       
+									<wcf:param name="orderItemId*" value="" />
+									<wcf:param name="quantity*" value="" />                                                                                           
+									<wcf:param name="errorViewName" value="OrderCopyErrorView" />                                                  
+								</wcf:url>
+							 
+								<wcf:url var="orderMove" value="RESTMoveOrderItem">
+									<wcf:param name="URL" value="RESTOrderCalculate?URL=${QuickCheckoutView}"/>
+									<wcf:param name="page" value="${WCParam.page}"/>
+									<wcf:param name="fromOrderId" value="*"/>
+									<wcf:param name="toOrderId" value="."/>
+									<wcf:param name="deleteIfEmpty" value="*"/>
+									<wcf:param name="continue" value="1"/>
+									<wcf:param name="createIfEmpty" value="1"/>
+									<wcf:param name="calculationUsageId" value="-1"/>
+									<wcf:param name="calculationUsageId" value="-2"/>
+									<wcf:param name="calculationUsageId" value="-7"/>
+									<wcf:param name="updatePrices" value="0"/>
+									<wcf:param name="storeId" value="${WCParam.storeId}" />
+									<wcf:param name="catalogId" value="${WCParam.catalogId}" />
+									<wcf:param name="globalLogIn" value="true" />
+								</wcf:url>						
+							</c:when>
+							<c:otherwise>			
+								<c:if test="${empty WCParam.URL}">
+									<%-- Assume MultipleActiveOrders feature is enabled. May have many inactive orders. In this case, dont want to merge the orders, just calculate the total --%>
+									<c:set var="orderMove" value="RESTOrderCalculate?URL=${newURL}?calculationUsageId=-1&calculationUsageId=-2&deleteCartCookie=true&page=${WCParam.page}&catalogId=${WCParam.catalogId}&storeId=${WCParam.storeId}&globalLogIn=true"/>
+					
+									<%-- If MultipleActiveOrders is disabled and current order is NOT NULL, then call orderMove --%>
+									<flow:ifDisabled feature="MultipleActiveOrders">
+										
+										<c:set var="orderItemMoveRequired" value="false"/>
+										
+										<c:set var="cookieOrderIdKey" value="WC_CartOrderId_${storeId}"/>
+										<c:set var="cartId" value="${cookie[cookieOrderIdKey].value}"/>
+										<c:if test="${!empty cartId}">
+											<c:set var="cookieCartTotalKey" value="WC_CartTotal_${cartId}"/>
+											<c:set var="cartTotal" value="${cookie[cookieCartTotalKey].value}"/>
+											<c:if test="${!empty cartTotal && !fn:startsWith(cartTotal,0)}">
+												<%-- Both orderId and cartTotal cookies are present and # of items in cart is > 0. So orderItemMove is required --%>
+												<c:set var="orderItemMoveRequired" value="true"/>
+											</c:if>
+										</c:if>
+					
+										<c:if test="${orderItemMoveRequired}">
+											<wcf:url var="orderMove" value="RESTMoveOrderItem">
+												<%-- There should be only 1 order. Merge all the orders with the current one --%>
+												<wcf:param name="URL" value="RESTOrderCalculate?URL=${newURL}calculationUsageId=-1&calculationUsageId=-2&deleteCartCookie=true"/>
+												<wcf:param name="page" value="${WCParam.page}"/>
+												<wcf:param name="fromOrderId" value="*"/>
+												<wcf:param name="toOrderId" value="."/>
+												<wcf:param name="deleteIfEmpty" value="*"/>
+												<wcf:param name="continue" value="1"/>
+												<wcf:param name="createIfEmpty" value="1"/>
+												<wcf:param name="calculationUsageId" value="-1"/>
+												<wcf:param name="calculationUsageId" value="-2"/>
+												<wcf:param name="calculationUsageId" value="-7"/>
+												<wcf:param name="updatePrices" value="0"/>
+												<wcf:param name="storeId" value="${WCParam.storeId}" />
+												<wcf:param name="catalogId" value="${WCParam.catalogId}" />
+												<wcf:param name="globalLogIn" value="true" />
+											</wcf:url>
+										</c:if>
+									</flow:ifDisabled>
+								</c:if>			
+							</c:otherwise>
+						</c:choose>
+					</c:if>		
 					<input type="hidden" name="storeId" value="<c:out value="${WCParam.storeId}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_storeId_In_Logon_1"/>
 					<input type="hidden" name="catalogId" value="<c:out value="${WCParam.catalogId}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_catalogId_In_Logon_1"/>
-					<input type="hidden" name="reLogonURL" value="<c:out value="${reLogonURL}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_reLogonURL_In_Logon_1"/>
+					<input ng-model="login.reLogonURL" ng-init="login.reLogonURL = '${reLogonURL}'" type="hidden" name="reLogonURL" value="<c:out value="${reLogonURL}"/>" id="reLogonURL"/>
 					<c:choose>
 					<c:when test="${(!empty logonId) && (!empty validationCode) && (empty WCParam.errorMessage)}">
-							<input type="hidden" name="myAcctMain" value="<c:out value="1"/>"/>
+							<input ng-model="login.myAcctMain" ng-init="login.myAcctMain = '<c:out value="1"/>'" type="hidden" name="myAcctMain" value="<c:out value="1"/>"/>
 					</c:when>
 					<c:otherwise>
-							<input type="hidden" name="myAcctMain" value="<c:out value="${myAcctMain}"/>"/>
+							<input ng-model="login.myAcctMain" ng-init="login.myAcctMain = '<c:out value="${myAcctMain}"/>'" type="hidden" name="myAcctMain" value="<c:out value="${myAcctMain}"/>"/>
 					</c:otherwise>
 					</c:choose>
-					<input type="hidden" name="fromOrderId" value="*" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_fromOrderId_In_Logon_1"/>
-					<input type="hidden" name="toOrderId" value="." id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_toOrderId_In_Logon_1"/>
-					<input type="hidden" name="deleteIfEmpty" value="*" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_deleteIfEmpty_In_Logon_1" />
-					<input type="hidden" name="continue" value="1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_continue_In_Logon_1" />
-					<input type="hidden" name="createIfEmpty" value="1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_createIfEmpty_In_Logon_1" />
-					<input type="hidden" name="calculationUsageId" value="-1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_calculationUsageId_In_Logon_1" />
-					<input type="hidden" name="updatePrices" value="0" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_updatePrices_In_Logon_1"/>
-					<input type="hidden" name="errorViewName" value="AjaxOrderItemDisplayView" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_errorViewName_In_Logon_1"/>                                                 
-					<input type="hidden" name="previousPage" value="" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_previousPage_In_Logon_1"/>
-					<input type="hidden" name="returnPage" value="<c:out value="${returnPage}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_returnPage_In_Logon_1"/>
+					<input ng-model="login.fromOrderId" ng-init="login.fromOrderId = '*'" type="hidden" name="fromOrderId" value="*" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_fromOrderId_In_Logon_1"/>
+					<input ng-model="login.toOrderId" ng-init="login.toOrderId = '.'" type="hidden" name="toOrderId" value="." id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_toOrderId_In_Logon_1"/>
+					<input ng-model="login.deleteIfEmpty" ng-init="login.deleteIfEmpty = '*'" type="hidden" name="deleteIfEmpty" value="*" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_deleteIfEmpty_In_Logon_1" />
+					<input ng-model="login.continue" ng-init="login.continue = '1'" type="hidden" name="continue" value="1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_continue_In_Logon_1" />
+					<input ng-model="login.createIfEmpty" ng-init="login.createIfEmpty = '1'" type="hidden" name="createIfEmpty" value="1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_createIfEmpty_In_Logon_1" />
+					<input ng-model="login.calculationUsageId" ng-init="login.calculationUsageId = '-1'" type="hidden" name="calculationUsageId" value="-1" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_calculationUsageId_In_Logon_1" />
+					<input ng-model="login.updatePrices" ng-init="login.updatePrices = '0'" type="hidden" name="updatePrices" value="0" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_updatePrices_In_Logon_1"/>
+					<input ng-model="login.errorViewName" ng-init="login.errorViewName = 'AjaxOrderItemDisplayView'" type="hidden" name="errorViewName" value="AjaxOrderItemDisplayView" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_errorViewName_In_Logon_1"/>                                                 
+					<input ng-model="login.previousPage" ng-init="login.previousPage = ' '" type="hidden" name="previousPage" value="" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_previousPage_In_Logon_1"/>
+					<input ng-model="login.returnPage" ng-init="login.returnPage = '<c:out value="${returnPage}"/> '" type="hidden" name="returnPage" value="<c:out value="${returnPage}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_returnPage_In_Logon_1"/>
                		<c:if test="${!empty nextUrl}">
 					<input type="hidden" name="nextUrl" value="<c:out value="${nextUrl}"/>"/>
 					</c:if>
 					<c:choose>
 						<c:when test="${returnPage eq 'quickcheckout'}">				
-							<input type="hidden" name="URL" value="<c:out value='${orderMove}' />" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_1" />
+							<input ng-model="login.URL" ng-init="login.URL = '<c:out value='${orderMove}' />'" type="hidden" name="URL" value="<c:out value='${orderMove}' />" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_1" />
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${!empty URL}">
-									<input type="hidden" name="URL" value="<c:out value='${URL}'/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_2" />
+									<input ng-model="login.URL" ng-init="login.URL = '<c:out value='${URL}'/>'" type="hidden" name="URL" value="<c:out value='${URL}'/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_2" />
 								</c:when>
 								<c:otherwise>																
-									<input type="hidden" name="URL" value="<c:out value="${orderMove}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_3" />
+									<input ng-model="login.URL" ng-init="login.URL = '<c:out value='${orderMove}'/>'" type="hidden" name="URL" value="<c:out value="${orderMove}"/>" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_URL_In_Logon_3" />
 								</c:otherwise>
 							</c:choose>
 						</c:otherwise>
@@ -305,40 +415,19 @@ _________________________________________________________ -->
 						<div class="field">
 						<p class="label">Login Id</p>										
 						<p class="errorLabel" id="<c:out value='${widgetId}'/>_inlineLogonErrorMessage_GL_logonId"></p>	
-							<input <c:out value="${aria_invalid}"/> aria-required="true" aria-label=""
+							<input ng-model="login.logonId" <c:out value="${aria_invalid}"/> aria-required="true" aria-label=""
 							<c:if test="${((!empty page) && (page == 'account') && (empty reLogonURL)) || (!empty WCParam.errorMessage)}">aria-describedby="<c:if test="${!empty WCParam.errorMessage}">logonErrorMessage </c:if><c:if test="${(!empty page) && (page == 'account') && (empty reLogonURL)}">logonWaitingActivationMessage</c:if>"</c:if>
-							name="logonId" type="text" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_logonId_In_Logon_1" value="<c:out value="${logonId}"/>" onkeypress="if(event.keyCode==13){ javascript:if(GlobalLoginJS.prepareSubmit('<c:out value='${widgetId}'/>')){setDeleteCartCookie();GlobalLoginJS.submitGLSignInForm('<c:out value='${widgetId}'/>_GlobalLogon','<c:out value='${widgetId}'/>');};};" class="input_field"/>							
+							name="logonId" type="text" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_logonId_In_Logon_1" value="<c:out value="${logonId}"/>" class="input_field"/>							
 						</div>
 						<div class="field">
 							<p class="label" for="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1">Password</p>
 							<p class="errorLabel" id="<c:out value='${widgetId}'/>_inlinelogonErrorMessage_GL_logonPassword"></p>	
-							<input <c:out value="${aria_invalid}"/> aria-required="true" aria-label=""
+							<input ng-model="login.password" <c:out value="${aria_invalid}"/> aria-required="true" aria-label=""
 							<c:if test="${((!empty page) && (page == 'account') && (empty reLogonURL)) || (!empty WCParam.errorMessage)}">aria-describedby="<c:if test="${!empty WCParam.errorMessage}">logonErrorMessage </c:if><c:if test="${(!empty page) && (page == 'account') && (empty reLogonURL)}">logonWaitingActivationMessage</c:if>"</c:if>
-							name="logonPassword" autocomplete="off" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1" type="password" onkeypress="if(event.keyCode==13){ javascript:if(GlobalLoginJS.prepareSubmit('<c:out value='${widgetId}'/>')){setDeleteCartCookie();GlobalLoginJS.submitGLSignInForm('<c:out value='${widgetId}'/>_GlobalLogon','<c:out value='${widgetId}'/>');};};" class="input_field">
+							name="logonPassword" autocomplete="off" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1" type="password" class="input_field">
 						</div>	
-						<c:if test="${rememberMeFlag == 'false'}">
-							<div class="field checkbox" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_div_10">						
-								<input type="hidden" name="rememberMe" value="false" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1" />																									
-								<img id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img" alt="" class="checkedCheckBox" role="checkbox" aria-checked="false" aria-label="<fmt:message bundle="${widgetText}" key="GLOBALLOGIN_REMEMBER_ME"/>" tabindex="0" src="${jspStoreImgDir}images/checkbox.png"
-									onclick="javascript:GlobalLoginJS.changeRememberMeState('${jspStoreImgDir}','<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img');"
-									onKeyPress="javascript:if(event.keyCode == 0 || event.keyCode == 13 || event.keyCode == 32){
-										if(event.preventDefault) {event.preventDefault();} else {event.returnValue = false;}
-											GlobalLoginJS.changeRememberMeState('${jspStoreImgDir}','<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img');}">
-								Remember me
-							</div>
-							</c:if>
-							<c:if test="${rememberMeFlag == 'true'}">
-							<div class="field checkbox" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_div_10">						
-								<input type="hidden" name="rememberMe" value="true" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1" />																									
-								<img id="<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img" alt="" class="checkedCheckBox active" role="checkbox" aria-checked="true" aria-label="" tabindex="0" src="${jspStoreImgDir}images/checkbox_checked"
-									onclick="javascript:GlobalLoginJS.changeRememberMeState('${jspStoreImgDir}','<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img');"
-									onKeyPress="javascript:if(event.keyCode == 0 || event.keyCode == 13 || event.keyCode == 32){
-										if(event.preventDefault) {event.preventDefault();} else {event.returnValue = false;}
-											GlobalLoginJS.changeRememberMeState('${jspStoreImgDir}','<c:out value='${widgetId}'/>_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img');event.preventDefault();}">
-								Remember me
-							</div>
-							</c:if>
-							<a href="#" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_links_2" ng-click="submitSignin()" class="button_primary" role="button">
+						
+							<a href="#" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_links_2" ng-click="InitHTTPSecure();submitSignin(login);" class="button_primary" role="button">
 								<div class="left_border"></div>
 								<div class="button_text"><span>sign in</span></div>
 								<div class="right_border"></div>
@@ -346,7 +435,28 @@ _________________________________________________________ -->
 			        </form>
                     <p class="text-center text-muted">Not registered yet?</p>
                     <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-
+					<div class="footer">
+					<c:if test="${empty WCParam.RegisterURL}">
+					<wcf:url var="RegisterURL" value="UserRegistrationForm">
+							<wcf:param name="langId" value="${WCParam.langId}" />
+							<wcf:param name="storeId" value="${WCParam.storeId}" />
+							<wcf:param name="catalogId" value="${WCParam.catalogId}" />
+							<wcf:param name="myAcctMain" value="1" />
+							<wcf:param name="registerNew" value="Y" />
+							<c:if test="${!empty WCParam.nextUrl}">
+								<wcf:param name="nextUrl" value="${WCParam.nextUrl}" />
+							</c:if>    
+							<c:if test="${!empty WCParam.URL}">
+								<wcf:param name="postRegisterURL" value="${WCParam.URL}" />
+							</c:if>                                                
+						</wcf:url>
+					</c:if>
+					<a href="#" id="<c:out value='${widgetId}'/>_WC_AccountDisplay_links_3" onclick="<c:out value="${RegisterURL}"/>" class="button_secondary" role="button">
+						<div class="left_border"></div>
+						<div class="button_text"><span>SignOut</span></div>								
+						<div class="right_border"></div>
+					</a>
+					</div>
                 </div>
             </div>
         </div>

@@ -30,10 +30,17 @@
 --%>
 <script type="text/javascript" src="${jspStoreImgDir}javascript/common/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="${jspStoreImgDir}javascript/common/bootstrap.min.js"></script>
-<script type="text/javascript" src="${jspStoreImgDir}javascript/common/jquery.cookie.js"></script>
-<script type="text/javascript" src="${jspStoreImgDir}javascript/common/front.js"></script>
+<script type="text/javascript" src="${jspStoreImgDir}javascript/common/jquery_cookie.js"></script>
+
 <script type="text/javascript" src="${jspStoreImgDir}javascript/common/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.0/angular.js"></script>
+<script type="text/javascript" src="${jspStoreImgDir}javascript/common/front.js"></script>
+<%-- 
 <script type="text/javascript" src="${jspStoreImgDir}javascript/angular/angular.js"></script>
+<script type="text/javascript" src="${jspStoreImgDir}javascript/angular/ngCookies/cookies.js"></script>
+<script type="text/javascript" src="${jspStoreImgDir}javascript/angular/ngCookies/cookieStores.js"></script>
+<script type="text/javascript" src="${jspStoreImgDir}javascript/angular/ngCookies/cookieWriter.js"></script>
+--%>
 <script type="text/javascript" src="${jspStoreImgDir}javascript/common/respond.min.js"></script>
 <script type="text/javascript" src="${jspStoreImgDir}javascript/module/headermodule.js"></script>
 <script type="text/javascript" src="${jspStoreImgDir}javascript/common/autocomplete.js"></script>

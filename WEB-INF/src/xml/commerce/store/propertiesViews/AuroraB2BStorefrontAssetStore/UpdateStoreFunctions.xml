@@ -1,0 +1,89 @@
+<Definitions>
+
+  <!--
+    ======
+    Usage:
+    ======
+    <UpdateDefFile action="">
+      ... (nodes to add)
+    </UpdateDefFile>
+
+    ==================
+    supported actions:
+    ==================
+      addToParent
+        to add content directly under a specified parent node from the def file
+      addWithLevel
+        to add content a few levels under a specified parent node from the def file.
+        This is needed if the immediate parent of the element has no unique attribute, so there is
+        no way to locate the parent node. In that case, parentNode represents the lowest level ancestor
+        that can be uniquely identified, and level specifies how many levels the ancestor is up the chain
+      removeElement
+        to remove a single element from the def file
+
+    ====================
+    required parameters:
+    ====================
+      addToParent
+      - parentNodeName
+        name of the parent node where this block of code should be put under
+      - nodeName
+        name of nodes to add (used to check if node is already exist in def file)
+      - nodeUniqueAttributeIdentifier
+        name of the attribute which can be used to uniquely identify the node (used to check if node is already exist)
+
+      addWithLevel
+      - parentNodeName
+        name of the parent node where the new element should be put under
+      - parentUniqueAttributeIdentifier
+        name of attribute which can be used to uniquely identify the parent node
+      - parentAttrValue
+        value of unique attribute
+      - downLevel
+        level to go inside the parent node to add the new element
+      - nodeName
+        name of element node to add (used to check if element is already exist in def file)
+      - nodeUniqueAttributeIdentifier
+        name of the attribute which can be used to uniquely identify the node (used to check if node is already exist)
+      - nodeAttrValue
+        value of the unique attribute (used to check if node is already exist)
+
+      removeElement
+      - nodeName
+        name of element node to be removed
+      - nodeUniqueAttributeIdentifier
+        name of the attribute which can be used to uniquely identify the node
+      - nodeAttrValue
+        value of the unique attribute
+  -->
+
+  <!-- insert new PropertyTabPane nodes directly under PropertyTabs node -->
+  <UpdateDefFile action="addWithLevel" parentNodeName="ObjectProperties" parentUniqueAttributeIdentifier="definitionName" parentAttrValue="cmc/store/StoreProperties_10151"
+                 downLevel="1" nodeName="PropertyTabPane" nodeUniqueAttributeIdentifier="name" nodeAttrValue="MyAccount">
+    <PropertyTabPane name="MyAccount" text="${FlexFlow_10151.MyAccountPanel.title}">
+      <PropertyPane baseDefinition="cmc/store/MyAccountFlexFlow_10151"/>
+    </PropertyTabPane>
+  </UpdateDefFile>
+
+  <UpdateDefFile action="addWithLevel" parentNodeName="PropertyPane" parentUniqueAttributeIdentifier="definitionName" parentAttrValue="cmc/store/RegistrationFlexFlow_10151"
+                 downLevel="1" nodeName="PropertyCheckbox" nodeUniqueAttributeIdentifier="name" nodeAttrValue="Org.Registration.checkbox">
+	  <PropertyCheckbox name="Org.Registration.checkbox" helpText="${FlexFlow_10151.allowOrgRegistration.checkboxEnable.title}" promptText="${FlexFlow_10151.allowOrgRegistration.checkboxEnable.label}" objectPath="StoreFlow[name=allowOrgRegistration]" propertyName="enabled" />
+  </UpdateDefFile>  
+
+
+  <UpdateDefFile action="addWithLevel" parentNodeName="PropertyPane" parentUniqueAttributeIdentifier="definitionName" parentAttrValue="cmc/store/OrdersFlexFlow_10151"
+                 downLevel="1" nodeName="PropertyCheckbox" nodeUniqueAttributeIdentifier="name" nodeAttrValue="RequisitionList.checkbox">
+    <PropertyCheckbox name="RequisitionList.checkbox" helpText="${FlexFlow_10151.RequisitionList.checkboxEnable.title}" promptText="${FlexFlow_10151.RequisitionList.checkboxEnable.label}" objectPath="StoreFlow[name=RequisitionList]" propertyName="enabled" />
+  </UpdateDefFile>  
+
+  <UpdateDefFile action="addToParent" parentNodeName="Definitions"  nodeName="PropertyTabPane" nodeUniqueAttributeIdentifier="cmc/store/MyAccountFlexFlow_10151">
+    <PropertyPane definitionName="cmc/store/MyAccountFlexFlow_10151" >
+	  <dependency localName="FlexFlow_10151" moduleName="cmc/store/FlexFlow_10151"/>
+      <PropertyGroup name="group" collapsable="false" >
+        <PropertyStaticText text="${FlexFlow_10151.MyAccountPanel.description}" />
+        <PropertyCheckbox name="accountParticipantRole.checkbox" helpText="${FlexFlow_10151.accountParticipantRole.checkboxEnable.title}" promptText="${FlexFlow_10151.accountParticipantRole.checkboxEnable.label}" objectPath="StoreFlow[name=accountParticipantRole]" propertyName="enabled" />
+      </PropertyGroup>
+    </PropertyPane>  
+ </UpdateDefFile>
+
+</Definitions>

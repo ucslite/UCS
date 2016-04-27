@@ -1,0 +1,49 @@
+<%--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2009 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+--%>
+
+<%--
+  *****
+  * This jspf calls the ResourceBundleDataBean to obtain a list of mandatory user registration fields of the current store.
+  *****
+--%>
+
+<!-- BEGIN MandatoryUserRegistrationFields.jspf -->
+
+<%
+
+	com.ibm.commerce.common.beans.ResourceBundleDataBean resourceBundleDB = new com.ibm.commerce.common.beans.ResourceBundleDataBean();
+	resourceBundleDB.setPropertyFileName("UserRegistration");
+	com.ibm.commerce.beans.DataBeanManager.activate(resourceBundleDB, request);
+
+	java.util.Hashtable propertyHT = resourceBundleDB.getPropertyHashtable();
+	java.util.Enumeration propertyKeys = propertyHT.keys();
+	Object propertyKey = null;
+	java.util.Hashtable settingHT = null;
+	StringBuilder mandatorySettingBuilder = new StringBuilder();
+	while (propertyKeys.hasMoreElements()) {
+		propertyKey = propertyKeys.nextElement();
+		settingHT = (java.util.Hashtable)propertyHT.get(propertyKey);
+		if (((Boolean)settingHT.get("Required")).booleanValue()) {
+			mandatorySettingBuilder.append(propertyKey);
+			mandatorySettingBuilder.append(",");
+		}
+	}
+	
+	if (mandatorySettingBuilder.length() > 0) {
+		pageContext.setAttribute("mandatoryFields", mandatorySettingBuilder.toString());
+	}
+  
+%>
+
+<!-- END MandatoryUserRegistrationFields.jspf -->

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY HOS_STORE_DIR_LOWERCASE "auroraesite">
+<!ENTITY STORE_DIRECTORY_LOWERCASE "extendedsitescatalogassetstore">
+<!ENTITY MAR_STORE_DIR_LOWERCASE "aurorastorefrontassetstore">
+<!ENTITY CATALOG_ID "@catalog_id">
+<!ENTITY zh_CN "-7">
+<!ENTITY ro_RO "-21">
+<!ENTITY CAT_STORE_IDENTIFIER_LOWERCASE "extended sites catalog asset store">
+<!ENTITY TRADEPOSCN_ID "@tradeposcn_id">
+<!ENTITY CAT_MEMBER_ID "@catalog_mbr_id">
+<!ENTITY it_IT "-4">
+<!ENTITY MAR_STORE_DIR "AuroraStorefrontAssetStore">
+<!ENTITY CATALOG_TARGET_STORE_ID "">
+<!ENTITY HOS_STORE_DIR "AuroraESite">
+<!ENTITY MAR_MEMBER_ID "@marketing_mbr_id">
+<!ENTITY CAT_STOREENT_ID "@catalogStore">
+<!ENTITY MARKETING_TARGET_STORE_ID "">
+<!ENTITY INV_CHOICE "Non-ATP/">
+<!ENTITY tr_TR "-13">
+<!ENTITY MAR_ORGANIZATION_DN "ou=aurorastorefrontassetstore,o=extended sites organization,o=root organization">
+<!ENTITY CAT_STORE_DIR "ExtendedSitesCatalogAssetStore">
+<!ENTITY pt_BR "-6">
+<!ENTITY HOS_STORE_IDENTIFIER "AuroraESite">
+<!ENTITY en_US "-1">
+<!ENTITY pl_PL "-22">
+<!ENTITY ja_JP "-10">
+<!ENTITY LIST_TRADEPOSCN_ID "@list_tradeposcn_id">
+<!ENTITY ru_RU "-20">
+<!ENTITY VENDOR_ID "@vendor_id_1">
+<!ENTITY CAT_STORE_IDENTIFIER "Extended Sites Catalog Asset Store">
+<!ENTITY HOSTING_TARGET_STORE_ID "">
+<!ENTITY HOS_STORE_IDENTIFIER_LOWERCASE "auroraesite">
+<!ENTITY CAT_STORE_DIR_LOWERCASE "extendedsitescatalogassetstore">
+<!ENTITY zh_TW "-8">
+<!ENTITY he_IL "-12">
+<!ENTITY ATTR_CHOICE "Classic">
+<!ENTITY es_ES "-5">
+<!ENTITY STORE_DIR "ExtendedSitesCatalogAssetStore">
+<!ENTITY FFMCENTER_ID "@ffmcenter_id_1">
+<!ENTITY ko_KR "-9">
+<!ENTITY MAR_STORE_IDENTIFIER_LOWERCASE "aurorastorefrontassetstore">
+<!ENTITY MAR_STOREENT_ID "@marketingStore">
+<!ENTITY de_DE "-3">
+<!ENTITY CAT_ORGANIZATION_DN "ou=asset store organization,o=extended sites organization,o=root organization">
+<!ENTITY ar_EG "-23">
+<!ENTITY fr_FR "-2">
+<!ENTITY MAR_STORE_IDENTIFIER "AuroraStorefrontAssetStore">
+<!ENTITY HOS_ORGANIZATION_DN "ou=extended sites seller organizationauroraesite,o=extended sites seller organization,o=root organization">
+<!ENTITY iw_IL "-11">
+<!ENTITY HOS_STOREENT_ID "@hostingStore">
+<!ENTITY HOS_MEMBER_ID "@hosting_mbr_id">
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data-deploy SYSTEM "ibm-wc-load.dtd">
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2013 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<data-deploy base-dir="." default-target="all">
+
+    <asset id="foreignKeys" location="ForeignKeys.dtd" type="dtd"/>
+    <asset id="." location=""/>
+
+    <deploy-task-cmd name="dataload" class="com.ibm.commerce.tools.devtools.publish.tasks.DataLoadTaskCmd"/>
+    <deploy-task-cmd name="findStore" class="com.ibm.commerce.tools.devtools.publish.tasks.StoreIdBaseDeployTaskCmd"/>
+    <deploy-task-cmd name="commandInvoker" class="com.ibm.commerce.tools.devtools.publish.tasks.CommandInvokerTaskCmd"/>
+
+    <target id="all">
+        <task name="catalogDataDeploy">
+          <param name="STORE_DIR" value="${asset:foreignKeys#CAT_STORE_DIR}" />
+          <param name="CAT_STORE_DIR" value="${asset:foreignKeys#CAT_STORE_DIR}" />
+          <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+          <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+          <param name="MAR_STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+          <param name="MAR_ORGANIZATION_DN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+          <param name="HOS_STORE_DIR" value="${asset:foreignKeys#HOS_STORE_DIR}" />
+          <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#HOS_STORE_IDENTIFIER}" />
+          <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#HOS_ORGANIZATION_DN}" />
+          <param name="storeArchiveFilename" value="${wc:SampleSarPath}/common/samplecatalogs/CASSampleData.sar"/>
+          <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+          <param name="ATTR_CHOICE" value="${asset:foreignKeys#ATTR_CHOICE}" />
+        </task>
+
+        <task name="catalogDataDeploy">
+          <param name="STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="CAT_STORE_DIR" value="${asset:foreignKeys#CAT_STORE_DIR}" />
+          <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+          <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+          <param name="MAR_STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+          <param name="MAR_ORGANIZATION_DN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+          <param name="HOS_STORE_DIR" value="${asset:foreignKeys#HOS_STORE_DIR}" />
+          <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#HOS_STORE_IDENTIFIER}" />
+          <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#HOS_ORGANIZATION_DN}" />
+          <param name="storeArchiveFilename" value="${wc:SampleSarPath}/common/samplecatalogs/SASSampleData.sar"/>
+          <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+          <param name="ATTR_CHOICE" value="${asset:foreignKeys#ATTR_CHOICE}" />
+        </task>
+
+        <task name="findStore">
+            <param name="storeIdentifier" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+            <param name="organizationDN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+            <export name="storeEntityId" value="storeEntityId"/>
+            <export name="storeType" value="storeType"/>
+        </task>
+
+        <task name="catalogDataDeploy">
+          <param name="STORE_DIR" value="${asset:foreignKeys#STORE_DIR}" />
+          <param name="STORE_IDENTIFIER" value="${asset:foreignKeys#HOS_STORE_IDENTIFIER}" />
+          <param name="ORGANIZATION_DN" value="${asset:foreignKeys#HOS_ORGANIZATION_DN}" />
+          <param name="CAT_STORE_DIR" value="${asset:foreignKeys#CAT_STORE_DIR}" />
+          <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+          <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+          <param name="MAR_STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+          <param name="MAR_ORGANIZATION_DN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+          <param name="HOS_STORE_DIR" value="${asset:foreignKeys#HOS_STORE_DIR}" />
+          <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#HOS_STORE_IDENTIFIER}" />
+          <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#HOS_ORGANIZATION_DN}" />
+          <param name="storeArchiveFilename" value="${wc:SampleSarPath}/common/samplecatalogs/${context:storeType}SampleData.sar"/>
+          <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+          <param name="ATTR_CHOICE" value="${asset:foreignKeys#ATTR_CHOICE}" />
+        </task>
+
+		<task name="catalogDataDeploy">
+          <param name="STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="CAT_STORE_DIR" value="${asset:foreignKeys#CAT_STORE_DIR}" />
+          <param name="CAT_STORE_IDENTIFIER" value="${asset:foreignKeys#CAT_STORE_IDENTIFIER}" />
+          <param name="CAT_ORGANIZATION_DN" value="${asset:foreignKeys#CAT_ORGANIZATION_DN}" />
+          <param name="MAR_STORE_DIR" value="${asset:foreignKeys#MAR_STORE_DIR}" />
+          <param name="MAR_STORE_IDENTIFIER" value="${asset:foreignKeys#MAR_STORE_IDENTIFIER}" />
+          <param name="MAR_ORGANIZATION_DN" value="${asset:foreignKeys#MAR_ORGANIZATION_DN}" />
+          <param name="HOS_STORE_DIR" value="${asset:foreignKeys#HOS_STORE_DIR}" />
+          <param name="HOS_STORE_IDENTIFIER" value="${asset:foreignKeys#HOS_STORE_IDENTIFIER}" />
+          <param name="HOS_ORGANIZATION_DN" value="${asset:foreignKeys#HOS_ORGANIZATION_DN}" />
+          <param name="storeArchiveFilename" value="${wc:SampleSarPath}/common/samplecatalogs/ESiteSampleData.sar"/>
+          <param name="INV_CHOICE" value="${asset:foreignKeys#INV_CHOICE}" />
+          <param name="ATTR_CHOICE" value="${asset:foreignKeys#ATTR_CHOICE}" />
+        </task>
+        <task name="commandInvoker">
+            <param name="invoked_commandClassName" value="com.ibm.commerce.scheduler.commands.RefreshRegistryCmd" />
+            <param name="URL" value="/ignore" />
+        </task>
+        
+  </target>
+</data-deploy>

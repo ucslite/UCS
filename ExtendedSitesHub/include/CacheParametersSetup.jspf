@@ -1,0 +1,80 @@
+<%--
+/*
+ *-------------------------------------------------------------------
+ * Licensed Materials - Property of IBM 
+ *
+ * WebSphere Commerce
+ *
+ * (c) Copyright International Business Machines Corporation. 2003
+ *     All rights reserved.
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ *-------------------------------------------------------------------
+*/
+////////////////////////////////////////////////////////////////////////////////
+//
+// Change History
+//
+// YYMMDD    F/D#   WHO       Description
+//------------------------------------------------------------------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+--%>
+
+<%@ page import="com.ibm.commerce.beans.DataBeanManager" %>
+<%@ page import="com.ibm.commerce.user.beans.UserRegistrationDataBean" %>
+<%@ page import="com.ibm.commerce.user.beans.RoleDataBean" %>
+
+<%
+	String userState = null;
+	boolean siteAdmin = false;
+	boolean sellAdmin = false;	// User must have Seller Admin Status for manage organization
+	boolean channelAdmin = false;
+	String strSiteAdmin = "false";
+	String strSellAdmin = "false";
+	String strChannelAdmin = "false";
+	
+	if  (cmdcontext != null) {
+		// Get the users state
+		userState= cmdcontext.getUser().getRegisterType().trim();
+	}
+
+	// determine user id and organization for currently logged on user
+	UserRegistrationDataBean bnRegUser = new UserRegistrationDataBean();
+	bnRegUser.setCommandContext(cmdcontext);
+	DataBeanManager.activate(bnRegUser, request);
+	Integer [] userRoles = bnRegUser.getRoles();
+	
+	if (userRoles != null) {
+	
+		//Get User's Role and determine whether to display the Administration links
+		for (int i=0; i < userRoles.length; i++) 
+		{
+			RoleDataBean dbRole = new RoleDataBean();
+			//Using setInitKey_RoleId here instead of setRoleId because the databean 
+			//won't activate properly. setInitKey_RoleId is from RoleAccessBean. To comply
+			//with models and access control, we do not use RoleAccessBean.
+			dbRole.setInitKey_RoleId (userRoles[i].toString());
+			DataBeanManager.activate(dbRole, request);
+		
+			//In the Roles table, a Seller Administration user is defined as having role -20
+			if (dbRole.getRoleId().equals ("-20")) 
+			{
+				sellAdmin = true;
+				strSellAdmin = "true";
+			}
+			if (dbRole.getRoleId().equals ("-1")) 
+			{
+				siteAdmin = true;
+				strSiteAdmin = "true";
+			}
+			if (dbRole.getRoleId().equals ("-27")) 
+			{
+				channelAdmin = true;
+				strChannelAdmin = "true";
+			}
+		}
+	}
+
+%>

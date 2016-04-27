@@ -952,6 +952,6 @@ if(typeof(ShoppingListDialogJS) == "undefined" || ShoppingListDialogJS == null |
 	 * itemAddedReadyForDelete applies to items in cart - since cart has only items and no products,
 	 * so no need to make another call to pick item image & name
 	 */
-	dojo.topic.subscribe("ShoppingListItem_Added", ShoppingListDialogJS.showDialog);
+	//dojo.topic.subscribe("ShoppingListItem_Added", ShoppingListDialogJS.showDialog);
 
 }

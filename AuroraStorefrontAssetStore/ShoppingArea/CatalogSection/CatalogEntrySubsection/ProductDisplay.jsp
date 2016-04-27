@@ -251,7 +251,7 @@
 --%>
 <c:set var="emsNameLocalPrefix" value="${fn:replace(emsNameLocalPrefix,'\\\\','')}"/>
 
-<html xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#"
+<html xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#" ng-app="home"
 <flow:ifEnabled feature="FacebookIntegration">
 	<%-- Facebook requires this to work in IE browsers --%>
 	xmlns:fb="http://www.facebook.com/2008/fbml" 
@@ -276,10 +276,10 @@ xmlns:waistate="http://www.w3.org/2005/07/aaa" lang="${shortLocale}" xml:lang="$
 		
 		<!-- Include script files -->
 		<%@include file="../../../Common/CommonJSToInclude.jspf" %>
-		<script type="text/javascript" src="${jsAssetsDir}javascript/CommonContextsDeclarations.js"></script>
+		<%--<script type="text/javascript" src="${jsAssetsDir}javascript/CommonContextsDeclarations.js"></script>
 		<script type="text/javascript" src="${jsAssetsDir}javascript/CommonControllersDeclaration.js"></script>
-		<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/collapsible.js"></script>
-		<script type="text/javascript">
+		<script type="text/javascript" src="${jsAssetsDir}javascript/Widgets/collapsible.js"></script> --%>
+		<%-- <script type="text/javascript">
 			dojo.addOnLoad(function() { 
 					shoppingActionsServicesDeclarationJS.setCommonParameters('<c:out value="${langId}" />','<c:out value="${storeId}" />','<c:out value="${catalogId}" />');
 					<c:if test="${!empty redirectSKUUrl}">					
@@ -290,7 +290,7 @@ xmlns:waistate="http://www.w3.org/2005/07/aaa" lang="${shortLocale}" xml:lang="$
 					document.cookie = "WC_DeleteCartCookie_${requestScope.storeId}=true;path=/";				
 				</c:if>
 		</script>
-		
+		--%>
 		<flow:ifEnabled feature="FacebookIntegration">
 			<%@include file="../../../Common/JSTLEnvironmentSetupExtForFacebook.jspf" %>
 			
@@ -333,11 +333,10 @@ xmlns:waistate="http://www.w3.org/2005/07/aaa" lang="${shortLocale}" xml:lang="$
 			<meta property="fb:app_id" name="fb_app_id" content="<c:out value="${facebookAppId}"/>"/>
 		</flow:ifEnabled>
 		
-			<wcpgl:jsInclude/>
+			<%-- <wcpgl:jsInclude/>--%>
 	</head>
 		
-	<body>
-		<%-- This file includes the progressBar mark-up and success/error message display markup --%>
+	<body ng-controller="productdetail" >
 		<%@ include file="../../../Common/CommonJSPFToInclude.jspf"%>
 <div id="IntelligentOfferMainPartNumber" style="display:none;"><c:out value="${partNumber}" /></div>
 <div id="IntelligentOfferCategoryId" style="display:none;"><c:out value="${categoryId}" /></div>
@@ -484,8 +483,9 @@ xmlns:waistate="http://www.w3.org/2005/07/aaa" lang="${shortLocale}" xml:lang="$
 		<!-- Begin Page -->						
 		<c:set var="layoutPageIdentifier" value="${productId}"/>
 		<c:set var="layoutPageName" value="${partNumber}"/>
+		<%--
 		<%@ include file="/Widgets_701/Common/ESpot/LayoutPreviewSetup.jspf"%>
-				
+			 --%>	
 		<div id="page">
 			<div id="grayOut"></div>
 			<div id="headerWrapper">
@@ -493,9 +493,69 @@ xmlns:waistate="http://www.w3.org/2005/07/aaa" lang="${shortLocale}" xml:lang="$
 				<c:import url = "${env_jspStoreDir}Widgets/Header/Header.jsp" />
 				<%out.flush();%>
 			</div>
-			
+			<%-- 
 			<c:set var="rootWidget" value="${pageDesign.widget}"/>
 			<wcpgl:widgetImport uniqueID="${rootWidget.widgetDefinitionId}" debug=false/>
+			--%>
+			<div id="content">
+				<div class="container">
+					<div class="col-md-12">
+					 <ul class="breadcrumb">
+                      <%out.flush();%>
+						<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.BreadcrumbTrail/BreadcrumbTrail.jsp" />
+					 <%out.flush();%>
+                       
+                    </ul>
+                     <div class="box text-center">
+
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <h1>White Blouse Armani</h1>
+                                <p class="text-muted">In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide. Pellentesque habitant morbi tristique senectus et netuss.</p>
+                                <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
+                                </p>
+                            </div>
+                        </div>
+                     </div>
+                    </div>
+                    <div class="col-md-9">
+                    <div id="productMain" class="row">
+	                    <div class="col-sm-6">
+						<%out.flush();%>
+							<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_FullImage/FullImage.jsp" />
+						 <%out.flush();%>
+						 </div>
+						 <div class="col-sm-6">
+							 <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_NamePartNumberAndPrice/NamePartNumberAndPrice.jsp" />
+							 <%out.flush();%>
+							 <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_ShortDescription/ShortDescription.jsp" />
+							 <%out.flush();%>
+							  <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_DefiningAttributes/DefiningAttributes.jsp" />
+							 <%out.flush();%>
+							  <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_InventoryAvailability/InventoryAvailability.jsp" />
+							 <%out.flush();%>
+							 <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_ShopperActions/ShopperActions.jsp" />
+							 <%out.flush();%>
+							  <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_AddToRequisitionLists/AddToRequisitionLists.jsp" />
+							 <%out.flush();%>
+						 </div>
+					</div>
+					<div id="details" class="box">
+					  		 <%out.flush();%>
+								<c:import url = "../../../../ucslite_widgets/com.ibm.commerce.store.widgets.PDP_LongDescription/LongDescription.jsp" />
+							 <%out.flush();%>
+					
+					</div>
+					</div> 
+					 
+				</div>
+			</div>
 			
 			<div id="footerWrapper">
 				<%out.flush();%>
